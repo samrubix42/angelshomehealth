@@ -1,6 +1,6 @@
 <div>
     <!-- 1. TOP UTILITY INFORMATION BAR -->
-    <div class="bg-[#050505] border-b border-[#1f1f23] py-2 px-4 text-[11px] sm:text-xs">
+    <div class="bg-[#050505] border-b border-[#1f1f23] py-1.5 px-4 text-[11px] sm:text-xs">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 text-[#a1a1aa]">
             <!-- Left Info (Location & Accreditation) -->
             <div class="flex items-center gap-2 sm:gap-4 truncate">
@@ -30,10 +30,10 @@
     <!-- 2. MAIN STICKY NAVIGATION BAR WITH ALPINE MOBILE DRAWER -->
     <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-[#000000]/95 backdrop-blur-md border-b border-[#27272a]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 sm:h-24">
+            <div class="flex items-center justify-between h-14 sm:h-16 lg:h-18">
                 <!-- Brand Logo (Image ONLY) -->
-                <a href="#" class="flex items-center py-2 group">
-                    <img src="/logo.png" alt="Angels Home Health Logo" class="h-10 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105">
+                <a href="#" class="flex items-center py-1 group">
+                    <img src="/logo.png" alt="Angels Home Health Logo" class="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105">
                 </a>
 
                 <!-- Desktop Navigation Links -->
@@ -48,13 +48,13 @@
 
                 <!-- Header CTA Action -->
                 <div class="hidden sm:flex items-center gap-4">
-                    <a href="#consultation" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-6 py-2.5 sm:px-7 sm:py-3 rounded-full text-xs sm:text-sm transition-all transform hover:scale-105 uppercase tracking-wider shadow-lg">
+                    <a href="#consultation" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-5 py-2 rounded-full text-xs transition-all transform hover:scale-105 uppercase tracking-wider shadow-lg">
                         Schedule Consultation
                     </a>
                 </div>
 
                 <!-- Mobile Menu Toggle Button -->
-                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden text-[#a1a1aa] hover:text-[#C8A14F] p-2 focus:outline-none" aria-label="Toggle menu">
+                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden text-[#a1a1aa] hover:text-[#C8A14F] p-1.5 focus:outline-none" aria-label="Toggle menu">
                     <i :class="mobileOpen ? 'ri-close-line' : 'ri-menu-3-line'" class="text-2xl"></i>
                 </button>
             </div>
