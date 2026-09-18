@@ -18,6 +18,8 @@
     @livewireStyles
 
     <style>
+        [x-cloak] { display: none !important; }
+
         /* CSS Variables with Primary Color #C8A14F & Pure Pitch Black Dark Theme */
         :root {
             --primary-color: #C8A14F;
