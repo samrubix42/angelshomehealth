@@ -32,7 +32,7 @@
              x-init="startAutoSlide()"
              @mouseenter="stopAutoSlide()"
              @mouseleave="startAutoSlide()"
-             class="relative bg-[#000000] border-b border-[#27272a] overflow-hidden min-h-screen flex flex-col justify-between">
+             class="relative bg-[#000000] border-b border-[#27272a] overflow-hidden h-[520px] sm:h-[600px] lg:h-[660px] flex flex-col justify-between">
         
         <!-- Hero Full Screen Slider Slides Wrapper -->
         <div class="relative flex-grow flex items-center justify-center">
@@ -173,79 +173,82 @@
     </section>
 
     <!-- 4. KEY METRICS BAR (PREMIUM LUXURY STATS SECTION) -->
-    <section class="bg-[#050505] py-14 sm:py-16 border-b border-[#27272a] relative overflow-hidden">
+    <section x-data="{ shown: false }" 
+             x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             class="bg-[#050505] py-14 sm:py-16 border-b border-[#27272a] relative overflow-hidden transition-all duration-1000 transform"
+             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         <!-- Subtle Background Glow Spot -->
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,161,79,0.08)_0,transparent_70%)] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
                 
                 <!-- Metric Card 1 -->
-                <div class="bg-[#121212] p-7 sm:p-8 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
+                <div class="bg-[#121212] p-4 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
                     <!-- Top Accent Gold Line on Hover -->
                     <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C8A14F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
-                            <i class="ri-heart-pulse-fill text-2xl"></i>
+                    <div class="flex items-center justify-between mb-4 sm:mb-6">
+                        <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                            <i class="ri-heart-pulse-fill text-lg sm:text-2xl"></i>
                         </div>
-                        <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">Quality</span>
+                        <span class="text-[9px] sm:text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-wider">Quality</span>
                     </div>
 
                     <div>
-                        <span class="block font-heading font-extrabold text-4xl lg:text-5xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">100%</span>
-                        <span class="text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-2 block leading-relaxed">Patient-Centered Care</span>
+                        <span class="block font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">100%</span>
+                        <span class="text-[10px] sm:text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-1 sm:mt-2 block leading-relaxed">Patient-Centered Care</span>
                     </div>
                 </div>
 
                 <!-- Metric Card 2 -->
-                <div class="bg-[#121212] p-7 sm:p-8 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
+                <div class="bg-[#121212] p-4 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
                     <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C8A14F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
-                            <i class="ri-time-fill text-2xl"></i>
+                    <div class="flex items-center justify-between mb-4 sm:mb-6">
+                        <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                            <i class="ri-time-fill text-lg sm:text-2xl"></i>
                         </div>
-                        <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">Available</span>
+                        <span class="text-[9px] sm:text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-wider">Available</span>
                     </div>
 
                     <div>
-                        <span class="block font-heading font-extrabold text-4xl lg:text-5xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">24 / 7</span>
-                        <span class="text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-2 block leading-relaxed">Flexible Care Scheduling</span>
+                        <span class="block font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">24 / 7</span>
+                        <span class="text-[10px] sm:text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-1 sm:mt-2 block leading-relaxed">Flexible Care Scheduling</span>
                     </div>
                 </div>
 
                 <!-- Metric Card 3 -->
-                <div class="bg-[#121212] p-7 sm:p-8 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
+                <div class="bg-[#121212] p-4 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
                     <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C8A14F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
-                            <i class="ri-map-pin-2-fill text-2xl"></i>
+                    <div class="flex items-center justify-between mb-4 sm:mb-6">
+                        <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                            <i class="ri-map-pin-2-fill text-lg sm:text-2xl"></i>
                         </div>
-                        <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">Location</span>
+                        <span class="text-[9px] sm:text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-wider">Location</span>
                     </div>
 
                     <div>
-                        <span class="block font-heading font-extrabold text-3xl lg:text-4xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">Mount Dora</span>
-                        <span class="text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-2 block leading-relaxed">Florida & Surrounding Areas</span>
+                        <span class="block font-heading font-extrabold text-xl sm:text-3xl lg:text-4xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">Mount Dora</span>
+                        <span class="text-[10px] sm:text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-1 sm:mt-2 block leading-relaxed">Florida & Surrounding Areas</span>
                     </div>
                 </div>
 
                 <!-- Metric Card 4 -->
-                <div class="bg-[#121212] p-7 sm:p-8 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
+                <div class="bg-[#121212] p-4 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
                     <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C8A14F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
-                            <i class="ri-stethoscope-fill text-2xl"></i>
+                    <div class="flex items-center justify-between mb-4 sm:mb-6">
+                        <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                            <i class="ri-stethoscope-fill text-lg sm:text-2xl"></i>
                         </div>
-                        <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">Services</span>
+                        <span class="text-[9px] sm:text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-wider">Services</span>
                     </div>
 
                     <div>
-                        <span class="block font-heading font-extrabold text-3xl lg:text-4xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">Full Spectrum</span>
-                        <span class="text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-2 block leading-relaxed">Skilled Nursing & Therapy</span>
+                        <span class="block font-heading font-extrabold text-xl sm:text-3xl lg:text-4xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">Full Spectrum</span>
+                        <span class="text-[10px] sm:text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-1 sm:mt-2 block leading-relaxed">Skilled Nursing & Therapy</span>
                     </div>
                 </div>
 
@@ -256,6 +259,7 @@
     <!-- 4.5. OUR IN-HOME HEALTH SERVICES SECTION (AUTO-SLIDING CAROUSEL) -->
     <section id="services" 
              x-data="{ 
+                 shown: false,
                  serviceSlide: 0, 
                  totalServiceSlides: 2, 
                  serviceTimer: null,
@@ -283,10 +287,11 @@
                      this.startAutoSlide();
                  }
              }"
-             x-init="startAutoSlide()"
+             x-init="startAutoSlide(); const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
              @mouseenter="stopAutoSlide()"
              @mouseleave="startAutoSlide()"
-             class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden">
+             class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden transition-all duration-1000 transform"
+             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -583,12 +588,16 @@
     </section>
 
     <!-- 4.6. HOME HEALTH CARE YOU CAN TRUST (ABOUT / TRUST SECTION WITH LEFT IMAGE as1.jpg) -->
-    <section id="about-trust" class="py-16 md:py-20 bg-[#000000] border-b border-[#27272a] relative overflow-hidden">
+    <section id="about-trust" 
+             x-data="{ shown: false }" 
+             x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             class="py-16 md:py-20 bg-[#000000] border-b border-[#27272a] relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                 
                 <!-- LEFT COLUMN: Image with Gold Border Frame (No Overlay Badge) -->
-                <div class="lg:col-span-6 relative group">
+                <div class="lg:col-span-6 relative group transition-all duration-1000 transform"
+                     :class="shown ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'">
                     <div class="relative rounded-3xl overflow-hidden border-2 border-[#C8A14F]/40 shadow-[0_0_40px_rgba(200,161,79,0.15)] group-hover:border-[#C8A14F] transition-all duration-500">
                         <img src="{{ asset('images/as1.jpg') }}" 
                              alt="Angels Home Health Caregiver & Senior Patient" 
@@ -598,7 +607,8 @@
                 </div>
 
                 <!-- RIGHT COLUMN: Clean & Modern Text Content -->
-                <div class="lg:col-span-6 space-y-6">
+                <div class="lg:col-span-6 space-y-6 transition-all duration-1000 delay-200 transform"
+                     :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
                     <div class="space-y-3">
                         <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
                             Dedicated In-Home Provider
@@ -621,30 +631,30 @@
                     </div>
 
                     <!-- Clean Service Bullet Points Grid -->
-                    <div class="grid sm:grid-cols-2 gap-3.5 pt-1">
-                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3.5 rounded-xl border border-[#27272a]">
-                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                    <div class="grid grid-cols-2 gap-2.5 sm:gap-3.5 pt-1">
+                        <div class="flex items-center gap-2.5 sm:gap-3 bg-[#0a0a0a] p-2.5 sm:p-3.5 rounded-xl border border-[#27272a]">
+                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-xs sm:text-sm">
                                 <i class="ri-heart-pulse-fill"></i>
                             </div>
-                            <span class="text-xs sm:text-sm font-semibold text-white">Skilled Nursing & Care</span>
+                            <span class="text-[11px] sm:text-sm font-semibold text-white leading-tight">Skilled Nursing & Care</span>
                         </div>
-                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3.5 rounded-xl border border-[#27272a]">
-                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                        <div class="flex items-center gap-2.5 sm:gap-3 bg-[#0a0a0a] p-2.5 sm:p-3.5 rounded-xl border border-[#27272a]">
+                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-xs sm:text-sm">
                                 <i class="ri-user-follow-fill"></i>
                             </div>
-                            <span class="text-xs sm:text-sm font-semibold text-white">Physical Therapy</span>
+                            <span class="text-[11px] sm:text-sm font-semibold text-white leading-tight">Physical Therapy</span>
                         </div>
-                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3.5 rounded-xl border border-[#27272a]">
-                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                        <div class="flex items-center gap-2.5 sm:gap-3 bg-[#0a0a0a] p-2.5 sm:p-3.5 rounded-xl border border-[#27272a]">
+                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-xs sm:text-sm">
                                 <i class="ri-brain-line"></i>
                             </div>
-                            <span class="text-xs sm:text-sm font-semibold text-white">Behavioral Health</span>
+                            <span class="text-[11px] sm:text-sm font-semibold text-white leading-tight">Behavioral Health</span>
                         </div>
-                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3.5 rounded-xl border border-[#27272a]">
-                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                        <div class="flex items-center gap-2.5 sm:gap-3 bg-[#0a0a0a] p-2.5 sm:p-3.5 rounded-xl border border-[#27272a]">
+                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-xs sm:text-sm">
                                 <i class="ri-stethoscope-fill"></i>
                             </div>
-                            <span class="text-xs sm:text-sm font-semibold text-white">Chronic Disease Care</span>
+                            <span class="text-[11px] sm:text-sm font-semibold text-white leading-tight">Chronic Disease Care</span>
                         </div>
                     </div>
 
@@ -665,13 +675,17 @@
     </section>
 
     <!-- 5. WHAT MAKES US DIFFERENT? SECTION (LEFT CONTENT PARAGRAPHS WITH CHECKPOINTS, RIGHT LARGE IMAGE bg2.jpg NO BADGE) -->
-    <section id="difference" class="py-16 md:py-20 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden">
+    <section id="difference" 
+             x-data="{ shown: false }" 
+             x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             class="py-16 md:py-20 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                 
                 <!-- LEFT COLUMN: Content with 5 Clean Paragraph Checkpoints -->
-                <div class="lg:col-span-6 space-y-6">
+                <div class="lg:col-span-6 space-y-6 transition-all duration-1000 delay-100 transform"
+                     :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
                     <div class="space-y-3">
                         <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
                             Our Core Pillars of Excellence
@@ -766,7 +780,8 @@
                 </div>
 
                 <!-- RIGHT COLUMN: High Impact Image bg2.jpg with Premium Frame (NO BADGE) -->
-                <div class="lg:col-span-6 relative group flex items-center">
+                <div class="lg:col-span-6 relative group flex items-center transition-all duration-1000 delay-300 transform"
+                     :class="shown ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'">
                     <div class="relative w-full rounded-3xl overflow-hidden border-2 border-[#C8A14F]/40 shadow-[0_0_40px_rgba(200,161,79,0.18)] group-hover:border-[#C8A14F] transition-all duration-500">
                         <img src="{{ asset('images/bg2.jpg') }}" 
                              alt="What Makes Us Different - Angels Home Health" 
@@ -780,7 +795,11 @@
     </section>
 
     <!-- 6. WHY CHOOSE US? (FEATURED IMAGE IN CENTER CIRCULAR FORMAT + LEFT & RIGHT KEY POINTS) -->
-    <section id="why-us" class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a]">
+    <section id="why-us" 
+             x-data="{ shown: false }" 
+             x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a] transition-all duration-1000 transform"
+             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
@@ -889,7 +908,11 @@
     </section>
 
     <!-- 6.5. HOW IN-HOME CARE WORKS (4-STEP PROCESS SECTION) -->
-    <section id="process" class="py-20 md:py-28 bg-[#000000] border-b border-[#27272a]">
+    <section id="process" 
+             x-data="{ shown: false }" 
+             x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             class="py-20 md:py-28 bg-[#000000] border-b border-[#27272a] transition-all duration-1000 transform"
+             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
@@ -953,7 +976,11 @@
     </section>
 
     <!-- 7. MISSION & VISION SECTION -->
-    <section id="mission" class="py-20 md:py-28 bg-[#000000] border-b border-[#27272a]">
+    <section id="mission" 
+             x-data="{ shown: false }" 
+             x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             class="py-20 md:py-28 bg-[#000000] border-b border-[#27272a] transition-all duration-1000 transform"
+             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-10">
                 <!-- Our Mission -->
@@ -985,11 +1012,10 @@
         </div>
     </section>
 
-
-
     <!-- 8.4. AUTO-SLIDING TESTIMONIALS SECTION (3 CARDS AT A TIME, NO PICTURES) -->
     <section id="testimonials" 
              x-data="{ 
+                 shown: false,
                  activeSlide: 0, 
                  totalSlides: 2, 
                  timer: null,
@@ -1017,10 +1043,11 @@
                      this.startAutoSlide();
                  }
              }"
-             x-init="startAutoSlide()"
+             x-init="startAutoSlide(); const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
              @mouseenter="stopAutoSlide()"
              @mouseleave="startAutoSlide()"
-             class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden">
+             class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden transition-all duration-1000 transform"
+             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -1206,7 +1233,11 @@
     </section>
 
     <!-- 8.5. FREQUENTLY ASKED QUESTIONS (ACCORDION SECTION) -->
-    <section id="faq" class="py-20 md:py-28 bg-[#000000] border-b border-[#27272a]" x-data="{ activeFaq: 0 }">
+    <section id="faq" 
+             x-data="{ shown: false, activeFaq: 0 }" 
+             x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             class="py-20 md:py-28 bg-[#000000] border-b border-[#27272a] transition-all duration-1000 transform"
+             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
@@ -1277,7 +1308,11 @@
     </section>
 
     <!-- 9. CONSULTATION & CONTACT FORM -->
-    <section id="consultation" class="py-20 md:py-28 bg-[#000000]">
+    <section id="consultation" 
+             x-data="{ shown: false }" 
+             x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             class="py-20 md:py-28 bg-[#000000] transition-all duration-1000 transform"
+             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
