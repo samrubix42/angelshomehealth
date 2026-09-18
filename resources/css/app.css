@@ -2,8 +2,68 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    --font-display: 'Cormorant Garamond', serif;
+
+    --color-primary: #C8A14F;
+    --color-primary-hover: #d8b260;
+    --color-primary-light: #e4c67d;
+    --color-primary-dark: #ab8b25;
+    --color-primary-muted: rgba(200, 161, 79, 0.15);
+
+    --color-obsidian: #000000;
+    --color-surface-dark: #0a0a0a;
+    --color-surface-card: #121212;
+    --color-surface-elevated: #1a1a1a;
+
+    --color-text-main: #ffffff;
+    --color-text-sub: #a1a1aa;
+    --color-text-muted: #71717a;
+
+    --color-border-dark: #27272a;
 }
+
+:root {
+    --primary-color: #C8A14F;
+    --primary-hover: #d8b260;
+    --primary-light: #e4c67d;
+    --primary-dark: #ab8b25;
+    --primary-muted: rgba(200, 161, 79, 0.15);
+    --primary-border: rgba(200, 161, 79, 0.35);
+
+    --color-bg-black: #000000;
+    --color-bg-surface: #0a0a0a;
+    --color-bg-card: #121212;
+    --color-bg-elevated: #1a1a1a;
+
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+
+    --border-dark: #27272a;
+}
+
+/* Custom Utilities for Pure Obsidian Black & Gold Theme */
+.font-heading {
+    font-family: var(--font-heading), 'Outfit', sans-serif;
+}
+
+.font-display {
+    font-family: var(--font-display), 'Cormorant Garamond', serif;
+}
+
+.bg-pure-black { background-color: var(--color-bg-black); }
+.bg-surface-dark { background-color: var(--color-bg-surface); }
+.bg-card-dark { background-color: var(--color-bg-card); }
+.bg-elevated-dark { background-color: var(--color-bg-elevated); }
+
+.text-primary-gold { color: var(--primary-color); }
+.bg-primary-gold { background-color: var(--primary-color); }
+.bg-primary-hover:hover { background-color: var(--primary-hover); }
+.border-primary-gold { border-color: var(--primary-color); }
+.border-gold-subtle { border-color: var(--primary-border); }
+.border-dark-subtle { border-color: var(--border-dark); }
