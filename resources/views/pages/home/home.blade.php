@@ -172,97 +172,609 @@
         </div>
     </section>
 
-    <!-- 4. KEY METRICS BAR -->
-    <section class="bg-[#0a0a0a] py-10 border-b border-[#27272a]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="p-6 bg-[#121212] rounded-2xl border border-[#27272a]">
-                    <span class="block font-heading font-extrabold text-3xl lg:text-4xl text-[#C8A14F]">100%</span>
-                    <span class="text-xs text-[#a1a1aa] font-heading font-medium uppercase tracking-wider mt-1 block">Patient-Centered Care</span>
+    <!-- 4. KEY METRICS BAR (PREMIUM LUXURY STATS SECTION) -->
+    <section class="bg-[#050505] py-14 sm:py-16 border-b border-[#27272a] relative overflow-hidden">
+        <!-- Subtle Background Glow Spot -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,161,79,0.08)_0,transparent_70%)] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Metric Card 1 -->
+                <div class="bg-[#121212] p-7 sm:p-8 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
+                    <!-- Top Accent Gold Line on Hover -->
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C8A14F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                            <i class="ri-heart-pulse-fill text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">Quality</span>
+                    </div>
+
+                    <div>
+                        <span class="block font-heading font-extrabold text-4xl lg:text-5xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">100%</span>
+                        <span class="text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-2 block leading-relaxed">Patient-Centered Care</span>
+                    </div>
                 </div>
-                <div class="p-6 bg-[#121212] rounded-2xl border border-[#27272a]">
-                    <span class="block font-heading font-extrabold text-3xl lg:text-4xl text-[#C8A14F]">24 / 7</span>
-                    <span class="text-xs text-[#a1a1aa] font-heading font-medium uppercase tracking-wider mt-1 block">Flexible Scheduling</span>
+
+                <!-- Metric Card 2 -->
+                <div class="bg-[#121212] p-7 sm:p-8 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C8A14F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                            <i class="ri-time-fill text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">Available</span>
+                    </div>
+
+                    <div>
+                        <span class="block font-heading font-extrabold text-4xl lg:text-5xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">24 / 7</span>
+                        <span class="text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-2 block leading-relaxed">Flexible Care Scheduling</span>
+                    </div>
                 </div>
-                <div class="p-6 bg-[#121212] rounded-2xl border border-[#27272a]">
-                    <span class="block font-heading font-extrabold text-3xl lg:text-4xl text-[#C8A14F]">Mount Dora</span>
-                    <span class="text-xs text-[#a1a1aa] font-heading font-medium uppercase tracking-wider mt-1 block">Florida & Surrounding Areas</span>
+
+                <!-- Metric Card 3 -->
+                <div class="bg-[#121212] p-7 sm:p-8 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C8A14F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                            <i class="ri-map-pin-2-fill text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">Location</span>
+                    </div>
+
+                    <div>
+                        <span class="block font-heading font-extrabold text-3xl lg:text-4xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">Mount Dora</span>
+                        <span class="text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-2 block leading-relaxed">Florida & Surrounding Areas</span>
+                    </div>
                 </div>
-                <div class="p-6 bg-[#121212] rounded-2xl border border-[#27272a]">
-                    <span class="block font-heading font-extrabold text-3xl lg:text-4xl text-[#C8A14F]">Full Spectrum</span>
-                    <span class="text-xs text-[#a1a1aa] font-heading font-medium uppercase tracking-wider mt-1 block">Skilled Nursing & Therapy</span>
+
+                <!-- Metric Card 4 -->
+                <div class="bg-[#121212] p-7 sm:p-8 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 transform hover:-translate-y-1.5 shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] relative overflow-hidden group flex flex-col justify-between">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C8A14F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-[#000000] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:scale-110 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                            <i class="ri-stethoscope-fill text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">Services</span>
+                    </div>
+
+                    <div>
+                        <span class="block font-heading font-extrabold text-3xl lg:text-4xl text-white tracking-tight group-hover:text-[#C8A14F] transition-colors duration-300">Full Spectrum</span>
+                        <span class="text-xs text-[#a1a1aa] font-heading font-semibold uppercase tracking-wider mt-2 block leading-relaxed">Skilled Nursing & Therapy</span>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- 5. WHAT MAKES US DIFFERENT? SECTION -->
-    <section id="difference" class="py-20 md:py-28 bg-[#000000] border-b border-[#27272a]">
+    <!-- 4.5. OUR IN-HOME HEALTH SERVICES SECTION (AUTO-SLIDING CAROUSEL) -->
+    <section id="services" 
+             x-data="{ 
+                 serviceSlide: 0, 
+                 totalServiceSlides: 2, 
+                 serviceTimer: null,
+                 startAutoSlide() {
+                     this.serviceTimer = setInterval(() => {
+                         this.serviceSlide = (this.serviceSlide + 1) % this.totalServiceSlides;
+                     }, 7000);
+                 },
+                 stopAutoSlide() {
+                     if (this.serviceTimer) clearInterval(this.serviceTimer);
+                 },
+                 goTo(index) {
+                     this.serviceSlide = index;
+                     this.stopAutoSlide();
+                     this.startAutoSlide();
+                 },
+                 next() {
+                     this.serviceSlide = (this.serviceSlide + 1) % this.totalServiceSlides;
+                     this.stopAutoSlide();
+                     this.startAutoSlide();
+                 },
+                 prev() {
+                     this.serviceSlide = (this.serviceSlide - 1 + this.totalServiceSlides) % this.totalServiceSlides;
+                     this.stopAutoSlide();
+                     this.startAutoSlide();
+                 }
+             }"
+             x-init="startAutoSlide()"
+             @mouseenter="stopAutoSlide()"
+             @mouseleave="startAutoSlide()"
+             class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden">
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
+                    Full-Spectrum Healthcare
+                </span>
                 <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
-                    What Makes Us Different?
+                    Our In-Home Health Services
                 </h2>
                 <p class="text-[#a1a1aa] text-base sm:text-lg leading-relaxed font-medium">
-                    At Angels Home Health of Florida, we elevate standard home health care into a compassionate, clinical partnership tailored to your family.
+                    From skilled wound nursing and physical rehabilitation to cardiac monitoring and Alzheimer's care, our clinical team delivers personalized support in your home.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Pillar 1 -->
-                <div class="bg-[#0a0a0a] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-colors space-y-4">
-                    <div class="w-12 h-12 rounded-full bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-user-star-line text-2xl"></i>
+            <!-- Continuous Horizontal Carousel Slider Track -->
+            <div class="overflow-hidden w-full pb-4">
+                <div class="flex transition-transform duration-700 ease-in-out"
+                     :style="'transform: translateX(-' + (serviceSlide * 100) + '%)'">
+                    
+                    <!-- Set 1 (Services 1, 2, 3) -->
+                    <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1">
+                        
+                        <!-- Service 1: Wound Care -->
+                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
+                            <div>
+                                <div class="relative h-52 w-full overflow-hidden">
+                                    <img src="{{ asset('images/service_wound_nursing.jpg') }}" alt="Wound Care & Clinical Assessment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
+                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                        Skilled Nursing
+                                    </span>
+                                </div>
+                                <div class="p-6 sm:p-7 space-y-4">
+                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
+                                        Wound Care & Assessment
+                                    </h3>
+                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
+                                        Expert wound management, sterile dressing changes, surgical site monitoring, and infection control supervised by registered nurses.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Sterile Dressing Changes & Care</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Surgical Site & Infection Monitoring</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Bath, Shower & Hygiene Assistance</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2">
+                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                    <span>Learn More</span>
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 2: Physical Therapy -->
+                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
+                            <div>
+                                <div class="relative h-52 w-full overflow-hidden">
+                                    <img src="{{ asset('images/service_physical_therapy.jpg') }}" alt="Physical & Rehab Therapy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
+                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                        Rehabilitation
+                                    </span>
+                                </div>
+                                <div class="p-6 sm:p-7 space-y-4">
+                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
+                                        Physical & Rehab Therapy
+                                    </h3>
+                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
+                                        Targeted physical therapy routines, post-orthopedic surgery recovery, and gait training to restore strength, balance, and independence.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Post-Surgery Orthopedic Rehab</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Fall Prevention & Balance Training</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Mobility & Exercise Guidance</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2">
+                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                    <span>Learn More</span>
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 3: Cardiac Care -->
+                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
+                            <div>
+                                <div class="relative h-52 w-full overflow-hidden">
+                                    <img src="{{ asset('images/service_cardiac_monitoring.jpg') }}" alt="Cardiac Care & Vital Monitoring" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
+                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                        Clinical Support
+                                    </span>
+                                </div>
+                                <div class="p-6 sm:p-7 space-y-4">
+                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
+                                        Cardiac & Vital Care
+                                    </h3>
+                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
+                                        Continuous monitoring of blood pressure, blood sugar, cardiac rhythms, and timely medication administration by trained nurses.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Blood Pressure & Vital Recording</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Medication Education & Administration</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Diabetic & Pulmonary Monitoring</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2">
+                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                    <span>Learn More</span>
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Led by Medical Expertise</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">
-                        Our experienced team brings decades of hands-on experience and clinical insight, ensuring every care plan is grounded in medical excellence and tailored to individual needs.
-                    </p>
+
+                    <!-- Set 2 (Services 4, 5, 6) -->
+                    <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1">
+                        
+                        <!-- Service 4: Alzheimer's & Dementia -->
+                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
+                            <div>
+                                <div class="relative h-52 w-full overflow-hidden">
+                                    <img src="{{ asset('images/service_memory_dementia.jpg') }}" alt="Alzheimer's & Dementia Support" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
+                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                        Specialized Memory Care
+                                    </span>
+                                </div>
+                                <div class="p-6 sm:p-7 space-y-4">
+                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
+                                        Alzheimer’s & Dementia Care
+                                    </h3>
+                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
+                                        Patient, structured cognitive engagement, memory support games, healthy meal planning, and safe daily routine assistance.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Cognitive & Memory Engagement</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Meal Prep & Nutritional Guidance</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Parkinson's & Memory Support</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2">
+                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                    <span>Learn More</span>
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 5: Complex Clinical Nursing -->
+                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
+                            <div>
+                                <div class="relative h-52 w-full overflow-hidden">
+                                    <img src="{{ asset('images/service_complex_nursing.jpg') }}" alt="Complex Medical Support" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
+                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                        Advanced Clinical Care
+                                    </span>
+                                </div>
+                                <div class="p-6 sm:p-7 space-y-4">
+                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
+                                        Complex Clinical Nursing
+                                    </h3>
+                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
+                                        High-acuity in-home nursing including catheter care, colostomy care, post-surgical management, and chronic disease supervision.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Catheter & Colostomy Care</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Post-Surgical Clinical Monitoring</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Comprehensive Health Assessments</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2">
+                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                    <span>Learn More</span>
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 6: Occupational & Daily Assistance -->
+                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
+                            <div>
+                                <div class="relative h-52 w-full overflow-hidden">
+                                    <img src="{{ asset('images/service_occupational_daily.jpg') }}" alt="Occupational & Housekeeping" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
+                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                        Personal & OT Support
+                                    </span>
+                                </div>
+                                <div class="p-6 sm:p-7 space-y-4">
+                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
+                                        Occupational & Daily Assistance
+                                    </h3>
+                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
+                                        Occupational therapy for daily living, light housekeeping, laundry, dishwashing, errands, and 24-hour flexible care.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Light Housekeeping & Laundry</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>Doctor Appointments & Transportation</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
+                                            <span>24-Hour & Flexible Care Schedules</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2">
+                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                    <span>Learn More</span>
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Slider Controls (Rounded Pill Indicators + Arrows) -->
+            <div class="flex items-center justify-center gap-4 mt-12">
+                <button type="button" @click="prev()" class="w-11 h-11 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all shadow-md" aria-label="Previous services">
+                    <i class="ri-arrow-left-s-line text-2xl"></i>
+                </button>
+                <div class="flex items-center gap-2">
+                    <button type="button" @click="goTo(0)" :class="serviceSlide === 0 ? 'w-10 bg-[#C8A14F]' : 'w-3 bg-[#27272a]'" class="h-3 rounded-full transition-all duration-300" aria-label="Go to service set 1"></button>
+                    <button type="button" @click="goTo(1)" :class="serviceSlide === 1 ? 'w-10 bg-[#C8A14F]' : 'w-3 bg-[#27272a]'" class="h-3 rounded-full transition-all duration-300" aria-label="Go to service set 2"></button>
+                </div>
+                <button type="button" @click="next()" class="w-11 h-11 rounded-full bg-[#000000] text-[#000000] hover:bg-[#C8A14F] border border-[#27272a] flex items-center justify-center transition-all shadow-md" aria-label="Next services">
+                    <i class="ri-arrow-right-s-line text-2xl text-white hover:text-[#000000]"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4.6. HOME HEALTH CARE YOU CAN TRUST (ABOUT / TRUST SECTION WITH LEFT IMAGE as1.jpg) -->
+    <section id="about-trust" class="py-16 md:py-20 bg-[#000000] border-b border-[#27272a] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                
+                <!-- LEFT COLUMN: Image with Gold Border Frame (No Overlay Badge) -->
+                <div class="lg:col-span-6 relative group">
+                    <div class="relative rounded-3xl overflow-hidden border-2 border-[#C8A14F]/40 shadow-[0_0_40px_rgba(200,161,79,0.15)] group-hover:border-[#C8A14F] transition-all duration-500">
+                        <img src="{{ asset('images/as1.jpg') }}" 
+                             alt="Angels Home Health Caregiver & Senior Patient" 
+                             class="w-full h-auto min-h-[340px] sm:min-h-[420px] max-h-[520px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#000000]/40 via-transparent to-transparent"></div>
+                    </div>
                 </div>
 
-                <!-- Pillar 2 -->
-                <div class="bg-[#0a0a0a] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-colors space-y-4">
-                    <div class="w-12 h-12 rounded-full bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-hospital-line text-2xl"></i>
+                <!-- RIGHT COLUMN: Clean & Modern Text Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
+                            Dedicated In-Home Provider
+                        </span>
+                        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+                            Home Health Care You Can Trust
+                        </h2>
+                        <p class="text-sm sm:text-base text-[#C8A14F] font-heading font-semibold leading-relaxed">
+                            Dedicated home health care provider in Mount Dora, Florida & Around
+                        </p>
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Comprehensive In-Home Services</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">
-                        From skilled nursing and physical therapy to behavioral health and chronic disease management, we offer a full spectrum of care — all delivered in the comfort of your home.
-                    </p>
+
+                    <div class="space-y-3.5 text-[#a1a1aa] text-sm sm:text-base leading-relaxed font-medium">
+                        <p>
+                            <strong class="text-white">Angels Home Health of Florida</strong> is a dedicated home health care provider based in Mount Dora, Florida.
+                        </p>
+                        <p>
+                            Our mission is to deliver comprehensive, compassionate care throughout Florida. We offer a full spectrum of services, including <span class="text-white font-semibold">Skilled Nursing</span>, <span class="text-white font-semibold">Physical Therapy</span>, <span class="text-white font-semibold">Behavioral Health</span>, and <span class="text-white font-semibold">Chronic Disease Management</span>, right in the comfort of your home.
+                        </p>
+                    </div>
+
+                    <!-- Clean Service Bullet Points Grid -->
+                    <div class="grid sm:grid-cols-2 gap-3.5 pt-1">
+                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3.5 rounded-xl border border-[#27272a]">
+                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                                <i class="ri-heart-pulse-fill"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-white">Skilled Nursing & Care</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3.5 rounded-xl border border-[#27272a]">
+                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                                <i class="ri-user-follow-fill"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-white">Physical Therapy</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3.5 rounded-xl border border-[#27272a]">
+                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                                <i class="ri-brain-line"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-white">Behavioral Health</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3.5 rounded-xl border border-[#27272a]">
+                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                                <i class="ri-stethoscope-fill"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-white">Chronic Disease Care</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-3 flex flex-col sm:flex-row items-center gap-4">
+                        <a href="tel:13527292727" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
+                            <i class="ri-phone-fill text-sm"></i>
+                            <span>Call +1 352 729 2727</span>
+                        </a>
+                        <a href="#consultation" class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all">
+                            Request Free Consultation
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Pillar 3 -->
-                <div class="bg-[#0a0a0a] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-colors space-y-4">
-                    <div class="w-12 h-12 rounded-full bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-heart-pulse-line text-2xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WHAT MAKES US DIFFERENT? SECTION (LEFT CONTENT PARAGRAPHS WITH CHECKPOINTS, RIGHT LARGE IMAGE bg2.jpg NO BADGE) -->
+    <section id="difference" class="py-16 md:py-20 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                
+                <!-- LEFT COLUMN: Content with 5 Clean Paragraph Checkpoints -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
+                            Our Core Pillars of Excellence
+                        </span>
+                        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
+                            What Makes Us Different?
+                        </h2>
+                        <p class="text-[#a1a1aa] text-sm sm:text-base leading-relaxed font-medium">
+                            At Angels Home Health of Florida, we elevate standard home health care into a compassionate, clinical partnership tailored to your family.
+                        </p>
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Patient-Centered Approach</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">
-                        We treat every patient like family, focusing on dignity, respect, and personalized attention that fosters trust, comfort, and healing.
-                    </p>
+
+                    <!-- 5 Clean Checkpoints -->
+                    <div class="space-y-4">
+                        
+                        <!-- Checkpoint 1 -->
+                        <div class="flex items-start gap-3.5 group">
+                            <div class="w-7 h-7 rounded-full bg-[#C8A14F]/10 border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 mt-0.5 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                                <i class="ri-checkbox-circle-fill text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">
+                                    Led by Medical Expertise
+                                </h3>
+                                <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
+                                    Decades of clinical insight ensuring personalized, physician-guided care plans for every patient.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Checkpoint 2 -->
+                        <div class="flex items-start gap-3.5 group">
+                            <div class="w-7 h-7 rounded-full bg-[#C8A14F]/10 border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 mt-0.5 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                                <i class="ri-checkbox-circle-fill text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">
+                                    Comprehensive In-Home Services
+                                </h3>
+                                <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
+                                    Full spectrum of skilled nursing, physical therapy, behavioral health, and chronic disease management.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Checkpoint 3 -->
+                        <div class="flex items-start gap-3.5 group">
+                            <div class="w-7 h-7 rounded-full bg-[#C8A14F]/10 border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 mt-0.5 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                                <i class="ri-checkbox-circle-fill text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">
+                                    Patient-Centered Approach
+                                </h3>
+                                <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
+                                    Treating every patient like family with dignity, respect, and customized care that fosters healing.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Checkpoint 4 -->
+                        <div class="flex items-start gap-3.5 group">
+                            <div class="w-7 h-7 rounded-full bg-[#C8A14F]/10 border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 mt-0.5 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                                <i class="ri-checkbox-circle-fill text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">
+                                    Statewide Reach, Local Touch
+                                </h3>
+                                <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
+                                    Based in Mount Dora with accessible, community-focused care provided across Florida.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Checkpoint 5 -->
+                        <div class="flex items-start gap-3.5 group">
+                            <div class="w-7 h-7 rounded-full bg-[#C8A14F]/10 border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 mt-0.5 group-hover:bg-[#C8A14F] group-hover:text-[#000000] transition-all duration-300">
+                                <i class="ri-checkbox-circle-fill text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">
+                                    Commitment to Continuity
+                                </h3>
+                                <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
+                                    Dedicated care teams and clear communication ensuring patients and families feel fully supported.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-                <!-- Pillar 4 -->
-                <div class="bg-[#0a0a0a] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-colors space-y-4">
-                    <div class="w-12 h-12 rounded-full bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-map-pin-2-line text-2xl"></i>
+                <!-- RIGHT COLUMN: High Impact Image bg2.jpg with Premium Frame (NO BADGE) -->
+                <div class="lg:col-span-6 relative group flex items-center">
+                    <div class="relative w-full rounded-3xl overflow-hidden border-2 border-[#C8A14F]/40 shadow-[0_0_40px_rgba(200,161,79,0.18)] group-hover:border-[#C8A14F] transition-all duration-500">
+                        <img src="{{ asset('images/bg2.jpg') }}" 
+                             alt="What Makes Us Different - Angels Home Health" 
+                             class="w-full h-auto min-h-[340px] sm:min-h-[420px] max-h-[520px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#000000]/40 via-transparent to-transparent"></div>
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Statewide Reach, Local Touch</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">
-                        Though based in Mount Dora, our services extend across Florida, combining broad accessibility with the warmth of community-based care.
-                    </p>
                 </div>
 
-                <!-- Pillar 5 -->
-                <div class="bg-[#0a0a0a] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-colors space-y-4 md:col-span-2 lg:col-span-2">
-                    <div class="w-12 h-12 rounded-full bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-customer-service-2-line text-2xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Commitment to Continuity</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">
-                        We prioritize consistent care and communication, ensuring patients and families always feel supported, informed, and empowered throughout their health journey.
-                    </p>
-                </div>
             </div>
         </div>
     </section>
@@ -473,75 +985,7 @@
         </div>
     </section>
 
-    <!-- 8. SERVICES BREAKDOWN SECTION -->
-    <section id="services" class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
-                    Our In-Home Health Services
-                </h2>
-                <p class="text-[#a1a1aa] text-base sm:text-lg leading-relaxed font-medium">
-                    We offer a comprehensive range of services, from personal care and medication management to companionship and light housekeeping. Our dedicated team ensures your loved ones receive the support they need to live comfortably, safely, and with dignity at home.
-                </p>
-            </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-[#121212] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-colors space-y-4">
-                    <div class="w-10 h-10 rounded-full bg-[#0a0a0a] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-user-heart-line text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Personal Care & Assistance</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">Assistance with daily activities including bathing, dressing, grooming, mobility, and hygiene with complete dignity.</p>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-[#121212] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-colors space-y-4">
-                    <div class="w-10 h-10 rounded-full bg-[#0a0a0a] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-capsule-line text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Medication Management</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">Timely medication reminders, prescription management, and administration supervised by experienced caregivers.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-[#121212] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-colors space-y-4">
-                    <div class="w-10 h-10 rounded-full bg-[#0a0a0a] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-team-line text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Companionship</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">Meaningful conversation, emotional support, social interaction, and engaging activities for mental well-being.</p>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="bg-[#121212] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-colors space-y-4">
-                    <div class="w-10 h-10 rounded-full bg-[#0a0a0a] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-home-heart-line text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Light Housekeeping</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">Keeping the home safe and clean with meal preparation, laundry, dusting, and light tidying services.</p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="bg-[#121212] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-colors space-y-4">
-                    <div class="w-10 h-10 rounded-full bg-[#0a0a0a] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-stethoscope-line text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Skilled Nursing & Rehab</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">Advanced clinical nursing, wound care, post-surgical rehabilitation, and physical therapy at home.</p>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="bg-[#121212] p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-colors space-y-4">
-                    <div class="w-10 h-10 rounded-full bg-[#0a0a0a] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F]">
-                        <i class="ri-heart-pulse-line text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Chronic Disease Management</h3>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed">Support for Alzheimer’s, Parkinson’s, diabetes, cardiac conditions, and chronic illness care.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 8.4. AUTO-SLIDING TESTIMONIALS SECTION (3 CARDS AT A TIME, NO PICTURES) -->
     <section id="testimonials" 

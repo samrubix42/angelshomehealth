@@ -30,7 +30,7 @@
             <div class="flex items-center justify-between h-24 sm:h-28">
                 <!-- Brand Logo (Image ONLY - Prominent & Increased Size) -->
                 <a href="#" class="flex items-center py-2 group">
-                    <img src="/logo.png" alt="Angels Home Health Logo" class="h-16 sm:h-20 w-auto object-contain transition-transform group-hover:scale-105">
+                    <img src="/logo.png" alt="Angels Home Health Logo" class="h-12 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
                 </a>
 
                 <!-- Desktop Navigation Links -->
