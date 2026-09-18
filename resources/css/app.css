@@ -67,3 +67,20 @@
 .border-primary-gold { border-color: var(--primary-color); }
 .border-gold-subtle { border-color: var(--primary-border); }
 .border-dark-subtle { border-color: var(--border-dark); }
+
+/* Marquee Animation for Ticker Bar */
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
