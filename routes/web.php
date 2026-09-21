@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+// Public Website Routes
 Route::livewire('/', 'pages::home')->name('home');
 Route::livewire('/about', 'pages::about')->name('about');
 Route::livewire('/services', 'pages::services')->name('services');
@@ -11,14 +12,21 @@ Route::livewire('/contact', 'pages::contact')->name('contact');
 Route::livewire('/blog', 'pages::blog')->name('blog');
 Route::livewire('/blog/{slug?}', 'pages::blog-show')->name('blog.show');
 
-Route::livewire('/login', 'auth::login')->name('login');
-Route::livewire('/admin', 'admin::dashboard')->name('admin.dashboard');
-Route::get('/logout', function () {
-    Auth::logout();
-    request()->session()->invalidate();
-    request()->session()->regenerateToken();
+// Guest Authentication Routes
+Route::middleware('guest')->group(function () {
+    Route::livewire('/login', 'auth::login')->name('login');
+});
 
-    return redirect('/login');
-})->name('logout');
+// Authenticated Admin Routes
+Route::middleware('auth')->group(function () {
+    Route::livewire('/admin', 'admin::dashboard')->name('admin.dashboard');
+    Route::livewire('/admin/testimonials', 'admin::testimonial')->name('admin.testimonials');
 
+    Route::get('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
 
+        return redirect('/login');
+    })->name('logout');
+});

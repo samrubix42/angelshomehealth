@@ -33,9 +33,15 @@
             </p>
 
             <!-- 1. Dashboard -->
-            <a href="/admin" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading font-semibold text-xs transition-all {{ request()->is('admin') ? 'bg-slate-900 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100/80 hover:text-slate-900' }}">
-                <i class="ri-dashboard-3-line text-base {{ request()->is('admin') ? 'text-[#C8A14F]' : 'text-slate-400' }}"></i>
+            <a href="/admin" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading font-semibold text-xs transition-all {{ request()->is('admin') && !request()->is('admin/*') ? 'bg-slate-900 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100/80 hover:text-slate-900' }}">
+                <i class="ri-dashboard-3-line text-base {{ request()->is('admin') && !request()->is('admin/*') ? 'text-[#C8A14F]' : 'text-slate-400' }}"></i>
                 <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Dashboard</span>
+            </a>
+
+            <!-- 2. Testimonials -->
+            <a href="/admin/testimonials" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading font-semibold text-xs transition-all {{ request()->is('admin/testimonials*') ? 'bg-slate-900 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100/80 hover:text-slate-900' }}">
+                <i class="ri-star-smile-line text-base {{ request()->is('admin/testimonials*') ? 'text-[#C8A14F]' : 'text-slate-400' }}"></i>
+                <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Testimonials</span>
             </a>
 
             <!-- 2. Services -->
