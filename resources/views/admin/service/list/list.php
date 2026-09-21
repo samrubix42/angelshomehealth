@@ -2,14 +2,20 @@
 
 use App\Models\Service;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Services Management | Admin Portal')] class extends Component {
+new #[Layout('layouts::admin')] #[Title('Services Management | Admin Portal')] class extends Component
+{
     public string $search = '';
+
     public string $statusFilter = 'All';
+
     public ?int $deletingServiceId = null;
+
     public bool $showDeleteModal = false;
+
     public string $feedbackMessage = '';
 
     public function mount(): void
@@ -37,7 +43,7 @@ new #[Title('Services Management | Admin Portal')] class extends Component {
     public function toggleActive(int $id): void
     {
         $service = Service::findOrFail($id);
-        $service->is_active = !$service->is_active;
+        $service->is_active = ! $service->is_active;
         $service->save();
 
         $this->feedbackMessage = "Service '{$service->title}' status updated.";

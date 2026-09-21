@@ -58,5 +58,9 @@ class DatabaseSeeder extends Seeder
         foreach ($testimonials as $data) {
             Testimonial::firstOrCreate(['name' => $data['name']], $data);
         }
+
+        $this->call([
+            ServiceSeeder::class,
+        ]);
     }
 }
