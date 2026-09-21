@@ -24,19 +24,19 @@ new class extends Component
 
     public bool $formSubmitted = false;
 
-    #[Computed]
+  
     public function sliders()
     {
         return HomeSlider::where('is_active', true)->orderBy('id', 'asc')->get();
     }
 
-    #[Computed]
+ 
     public function services()
     {
         return Service::where('is_active', true)->get();
     }
 
-    #[Computed]
+
     public function testimonials()
     {
         return Testimonial::where('is_active', true)->latest()->get();
