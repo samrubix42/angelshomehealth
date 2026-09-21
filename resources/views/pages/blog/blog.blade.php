@@ -77,7 +77,7 @@
                                 <span class="text-xs text-[#d4d4d8] font-semibold">By Medical Clinical Team</span>
                             </div>
 
-                            <a href="/contact" class="inline-flex items-center gap-2 bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg">
+                            <a href="/blog/5-essential-benefits-of-in-home-skilled-nursing-post-surgery" class="inline-flex items-center gap-2 bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg">
                                 <span>Read Article</span>
                                 <i class="ri-arrow-right-line"></i>
                             </a>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="px-6 pb-6 pt-2 border-t border-[#1f1f23] flex items-center justify-between mt-4">
                         <span class="text-xs text-[#71717a]">By Clinical Care Team</span>
-                        <a href="/contact" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
+                        <a href="/blog/5-essential-benefits-of-in-home-skilled-nursing-post-surgery" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
                             <span>Read</span>
                             <i class="ri-arrow-right-line"></i>
                         </a>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="px-6 pb-6 pt-2 border-t border-[#1f1f23] flex items-center justify-between mt-4">
                         <span class="text-xs text-[#71717a]">By Memory Care Specialist</span>
-                        <a href="/contact" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
+                        <a href="/blog/understanding-alzheimers-care-at-home" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
                             <span>Read</span>
                             <i class="ri-arrow-right-line"></i>
                         </a>
@@ -199,7 +199,7 @@
                     </div>
                     <div class="px-6 pb-6 pt-2 border-t border-[#1f1f23] flex items-center justify-between mt-4">
                         <span class="text-xs text-[#71717a]">By Chronic Disease Team</span>
-                        <a href="/contact" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
+                        <a href="/blog/5-essential-benefits-of-in-home-skilled-nursing-post-surgery" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
                             <span>Read</span>
                             <i class="ri-arrow-right-line"></i>
                         </a>
@@ -231,7 +231,7 @@
                     </div>
                     <div class="px-6 pb-6 pt-2 border-t border-[#1f1f23] flex items-center justify-between mt-4">
                         <span class="text-xs text-[#71717a]">By Physical Therapist</span>
-                        <a href="/contact" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
+                        <a href="/blog/top-10-fall-prevention-tips-for-seniors" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
                             <span>Read</span>
                             <i class="ri-arrow-right-line"></i>
                         </a>

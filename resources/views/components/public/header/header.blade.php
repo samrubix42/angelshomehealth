@@ -73,19 +73,19 @@
                             <a href="/services" class="block px-4 py-2.5 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs font-bold text-[#C8A14F] border-b border-[#1f1f23] transition-colors">
                                 All Services Overview
                             </a>
-                            <a href="/services#skilled-nursing" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
+                            <a href="/services/skilled-nursing" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
                                 Skilled Nursing & Rehab
                             </a>
-                            <a href="/services#therapy" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
+                            <a href="/services/physical-therapy" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
                                 Physical & Occupational Therapy
                             </a>
-                            <a href="/services#behavioral" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
+                            <a href="/services/behavioral-health" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
                                 Behavioral Health Services
                             </a>
-                            <a href="/services#chronic" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
+                            <a href="/services/chronic-disease-management" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
                                 Chronic Disease Management
                             </a>
-                            <a href="/services#memory" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
+                            <a href="/services/memory-care" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
                                 Alzheimer's & Memory Care
                             </a>
                         </div>
@@ -176,11 +176,11 @@
                 </button>
                 <div x-show="mobileServicesOpen" x-collapse class="pl-3 pt-3 space-y-2.5 font-medium text-xs text-[#a1a1aa]">
                     <a href="/services" @click="mobileOpen = false" class="block text-[#C8A14F] font-bold py-1 border-b border-[#1f1f23]">All Services Overview</a>
-                    <a href="/services#skilled-nursing" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Skilled Nursing & Rehab</a>
-                    <a href="/services#therapy" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Physical & Occupational Therapy</a>
-                    <a href="/services#behavioral" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Behavioral Health Services</a>
-                    <a href="/services#chronic" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Chronic Disease Management</a>
-                    <a href="/services#memory" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1">Alzheimer's & Memory Care</a>
+                    <a href="/services/skilled-nursing" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Skilled Nursing & Rehab</a>
+                    <a href="/services/physical-therapy" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Physical & Occupational Therapy</a>
+                    <a href="/services/behavioral-health" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Behavioral Health Services</a>
+                    <a href="/services/chronic-disease-management" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Chronic Disease Management</a>
+                    <a href="/services/memory-care" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1">Alzheimer's & Memory Care</a>
                 </div>
             </div>
 

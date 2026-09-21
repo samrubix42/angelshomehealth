@@ -40,10 +40,13 @@
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Medication Administration</span></li>
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Post-Hospital Recovery</span></li>
                     </ul>
-                    <div class="pt-2">
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>Request Skilled Care</span>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="/services/skilled-nursing" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
+                            <span>View Full Service Details</span>
                             <i class="ri-arrow-right-line"></i>
+                        </a>
+                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
+                            <span>Request Skilled Care</span>
                         </a>
                     </div>
                 </div>
@@ -65,10 +68,13 @@
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Stroke & Joint Rehab</span></li>
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Occupational Living Skills</span></li>
                     </ul>
-                    <div class="pt-2">
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>Request Therapy</span>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="/services/physical-therapy" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
+                            <span>View Full Service Details</span>
                             <i class="ri-arrow-right-line"></i>
+                        </a>
+                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
+                            <span>Request Therapy</span>
                         </a>
                     </div>
                 </div>
@@ -96,10 +102,13 @@
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Medication Adherence Support</span></li>
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Copoint Family Counseling</span></li>
                     </ul>
-                    <div class="pt-2">
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>Request Behavioral Care</span>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="/services/behavioral-health" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
+                            <span>View Full Service Details</span>
                             <i class="ri-arrow-right-line"></i>
+                        </a>
+                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
+                            <span>Request Behavioral Care</span>
                         </a>
                     </div>
                 </div>
@@ -121,10 +130,13 @@
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>COPD Oxygen Supervision</span></li>
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Hospital Readmission Prevention</span></li>
                     </ul>
-                    <div class="pt-2">
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>Request Disease Management</span>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="/services/chronic-disease-management" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
+                            <span>View Full Service Details</span>
                             <i class="ri-arrow-right-line"></i>
+                        </a>
+                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
+                            <span>Request Disease Management</span>
                         </a>
                     </div>
                 </div>
@@ -152,10 +164,13 @@
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Parkinson's & Dementia Support</span></li>
                         <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Respite Support for Families</span></li>
                     </ul>
-                    <div class="pt-2">
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>Request Memory Care</span>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="/services/memory-care" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
+                            <span>View Full Service Details</span>
                             <i class="ri-arrow-right-line"></i>
+                        </a>
+                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
+                            <span>Request Memory Care</span>
                         </a>
                     </div>
                 </div>
