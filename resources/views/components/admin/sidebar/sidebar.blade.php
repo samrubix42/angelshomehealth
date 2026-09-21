@@ -1,4 +1,4 @@
-<aside class="fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-zinc-200 z-50 flex flex-col justify-between transition-all duration-300 transform lg:translate-x-0"
+<aside class="fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-zinc-200 z-40 flex flex-col justify-between transition-all duration-300 transform lg:translate-x-0"
        x-bind:class="{
            'translate-x-0': sidebarOpen,
            '-translate-x-full lg:translate-x-0': !sidebarOpen,
@@ -36,6 +36,12 @@
             <a href="/admin" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all {{ request()->is('admin') && !request()->is('admin/*') ? 'bg-zinc-900 text-zinc-50 shadow-xs' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900' }}">
                 <i class="ri-dashboard-3-line text-base {{ request()->is('admin') && !request()->is('admin/*') ? 'text-zinc-50' : 'text-zinc-400' }}"></i>
                 <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Dashboard</span>
+            </a>
+
+            <!-- 1.5. Home Sliders -->
+            <a href="/admin/homesliders" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all {{ request()->is('admin/homesliders*') ? 'bg-zinc-900 text-zinc-50 shadow-xs' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900' }}">
+                <i class="ri-slideshow-line text-base {{ request()->is('admin/homesliders*') ? 'text-zinc-50' : 'text-zinc-400' }}"></i>
+                <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Home Sliders</span>
             </a>
 
             <!-- 2. Services Management -->

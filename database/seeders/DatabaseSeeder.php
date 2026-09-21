@@ -63,6 +63,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             CategorySeeder::class,
             BlogSeeder::class,
+            HomeSliderSeeder::class,
         ]);
     }
 }

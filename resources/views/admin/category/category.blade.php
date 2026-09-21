@@ -134,7 +134,7 @@
 
     <!-- 5. CREATE / EDIT MODAL -->
     @if ($showModal)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="fixed inset-0 z-[100] overflow-y-auto">
             <!-- Modal Backdrop -->
             <div wire:click="closeModal" 
                  x-transition:enter="ease-out duration-200" 
@@ -143,94 +143,98 @@
                  x-transition:leave="ease-in duration-150" 
                  x-transition:leave-start="opacity-100" 
                  x-transition:leave-end="opacity-0" 
-                 class="fixed inset-0 bg-zinc-950/40 backdrop-blur-xs"></div>
+                 class="fixed inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity"></div>
 
-            <!-- Modal Content Card -->
-            <div x-transition:enter="ease-out duration-200" 
-                 x-transition:enter-start="opacity-0 scale-95" 
-                 x-transition:enter-end="opacity-100 scale-100" 
-                 x-transition:leave="ease-in duration-150" 
-                 x-transition:leave-start="opacity-100 scale-100" 
-                 x-transition:leave-end="opacity-0 scale-95" 
-                 class="relative w-full max-w-md bg-white rounded-xl border border-zinc-200 shadow-xl overflow-hidden z-10">
-                
-                <!-- Modal Header -->
-                <div class="px-6 py-4 border-b border-zinc-100 flex items-center justify-between">
-                    <h3 class="text-sm font-semibold text-zinc-900 flex items-center gap-2">
-                        <i class="{{ $isEditing ? 'ri-edit-line' : 'ri-folder-add-line' }} text-zinc-400"></i>
-                        <span>{{ $isEditing ? 'Edit Category' : 'Add New Category' }}</span>
-                    </h3>
-                    <button wire:click="closeModal" type="button" class="text-zinc-400 hover:text-zinc-600 p-1 rounded-md hover:bg-zinc-100 transition-colors">
-                        <i class="ri-close-line text-lg"></i>
-                    </button>
+            <!-- Modal Center Wrapper -->
+            <div class="flex min-h-full items-center justify-center p-4 sm:p-6 text-center">
+                <div x-transition:enter="ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 scale-95" 
+                     x-transition:enter-end="opacity-100 scale-100" 
+                     x-transition:leave="ease-in duration-150" 
+                     x-transition:leave-start="opacity-100 scale-100" 
+                     x-transition:leave-end="opacity-0 scale-95" 
+                     class="relative transform overflow-hidden rounded-2xl bg-white border border-zinc-200 text-left shadow-2xl transition-all w-full max-w-md my-8 z-10">
+                    
+                    <!-- Modal Header -->
+                    <div class="px-6 py-4 border-b border-zinc-100 flex items-center justify-between bg-white">
+                        <h3 class="text-sm font-bold text-zinc-900 flex items-center gap-2">
+                            <i class="{{ $isEditing ? 'ri-edit-line' : 'ri-folder-add-line' }} text-zinc-400"></i>
+                            <span>{{ $isEditing ? 'Edit Category' : 'Add New Category' }}</span>
+                        </h3>
+                        <button wire:click="closeModal" type="button" class="w-8 h-8 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-500 flex items-center justify-center transition-colors">
+                            <i class="ri-close-line text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Body Form -->
+                    <form wire:submit.prevent="save" class="p-6 space-y-4">
+                        <!-- Title Input -->
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-700 mb-1">Category Title *</label>
+                            <input type="text" 
+                                   wire:model.live="title" 
+                                   placeholder="e.g. Elderly Care Services" 
+                                   class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3.5 py-2 text-xs text-zinc-900 placeholder:text-zinc-400 transition-all">
+                            @error('title') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                        </div>
+
+                        <!-- Slug Input -->
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-700 mb-1">URL Slug *</label>
+                            <input type="text" 
+                                   wire:model="slug" 
+                                   placeholder="elderly-care-services" 
+                                   class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3.5 py-2 text-xs font-mono text-zinc-900 placeholder:text-zinc-400 transition-all">
+                            @error('slug') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                        </div>
+
+                        <!-- Active Checkbox -->
+                        <div class="pt-1">
+                            <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                                <input type="checkbox" wire:model="is_activate" class="w-4 h-4 rounded bg-white border-zinc-300 text-zinc-900 focus:ring-zinc-950">
+                                <span class="text-xs font-medium text-zinc-700">Active status (Visible in platform)</span>
+                            </label>
+                        </div>
+
+                        <!-- Modal Actions -->
+                        <div class="pt-4 flex items-center justify-end gap-3 border-t border-zinc-100">
+                            <button type="button" wire:click="closeModal" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-700 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
+                                Cancel
+                            </button>
+                            <button type="submit" class="px-5 py-2 rounded-lg bg-zinc-900 text-zinc-50 font-medium text-xs hover:bg-zinc-800 transition-all shadow-xs flex items-center gap-1.5">
+                                <i class="ri-check-line text-sm"></i>
+                                <span>{{ $isEditing ? 'Update Category' : 'Create Category' }}</span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
-
-                <!-- Modal Body Form -->
-                <form wire:submit.prevent="save" class="p-6 space-y-4">
-                    <!-- Title Input -->
-                    <div>
-                        <label class="block text-xs font-medium text-zinc-700 mb-1">Category Title *</label>
-                        <input type="text" 
-                               wire:model.live="title" 
-                               placeholder="e.g. Elderly Care Services" 
-                               class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3 py-2 text-xs text-zinc-900 placeholder:text-zinc-400 transition-all">
-                        @error('title') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
-                    </div>
-
-                    <!-- Slug Input -->
-                    <div>
-                        <label class="block text-xs font-medium text-zinc-700 mb-1">URL Slug *</label>
-                        <input type="text" 
-                               wire:model="slug" 
-                               placeholder="elderly-care-services" 
-                               class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3 py-2 text-xs font-mono text-zinc-900 placeholder:text-zinc-400 transition-all">
-                        @error('slug') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
-                    </div>
-
-                    <!-- Active Checkbox -->
-                    <div class="pt-2">
-                        <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                            <input type="checkbox" wire:model="is_activate" class="w-4 h-4 rounded bg-white border-zinc-300 text-zinc-900 focus:ring-zinc-950">
-                            <span class="text-xs font-medium text-zinc-700">Active status (Visible in platform)</span>
-                        </label>
-                    </div>
-
-                    <!-- Modal Actions -->
-                    <div class="pt-4 flex items-center justify-end gap-3 border-t border-zinc-100">
-                        <button type="button" wire:click="closeModal" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-700 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
-                            Cancel
-                        </button>
-                        <button type="submit" class="px-5 py-2 rounded-lg bg-zinc-900 text-zinc-50 font-medium text-xs hover:bg-zinc-800 transition-all shadow-xs flex items-center gap-1.5">
-                            <i class="ri-check-line text-sm"></i>
-                            <span>{{ $isEditing ? 'Update Category' : 'Create Category' }}</span>
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     @endif
 
     <!-- 6. DELETE CONFIRMATION MODAL -->
     @if ($showDeleteModal)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div wire:click="closeDeleteModal" class="fixed inset-0 bg-zinc-950/40 backdrop-blur-xs"></div>
-            <div class="relative w-full max-w-sm bg-white rounded-xl border border-zinc-200 shadow-xl overflow-hidden z-10 p-6 space-y-4">
-                <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center border border-red-100">
-                    <i class="ri-error-warning-line text-xl"></i>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold text-zinc-900">Delete Category</h3>
-                    <p class="text-xs text-zinc-500 mt-1">
-                        Are you sure you want to delete this category? This action cannot be undone.
-                    </p>
-                </div>
-                <div class="flex items-center justify-end gap-2 pt-2">
-                    <button type="button" wire:click="closeDeleteModal" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-700 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
-                        Cancel
-                    </button>
-                    <button type="button" wire:click="delete" class="px-4 py-2 rounded-lg bg-red-600 text-white font-medium text-xs hover:bg-red-700 transition-all shadow-xs">
-                        Delete Permanently
-                    </button>
+        <div class="fixed inset-0 z-[100] overflow-y-auto">
+            <div wire:click="closeDeleteModal" class="fixed inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity"></div>
+            <div class="flex min-h-full items-center justify-center p-4 text-center">
+                <div class="relative transform overflow-hidden rounded-2xl bg-white border border-zinc-200 shadow-2xl max-w-sm w-full p-6 text-center space-y-4 my-8 z-10">
+                    <div class="w-11 h-11 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-xl mx-auto border border-red-200">
+                        <i class="ri-error-warning-line"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-base font-bold text-zinc-900">Delete Category?</h3>
+                        <p class="text-xs text-zinc-500 leading-relaxed">
+                            Are you sure you want to delete this category? This action cannot be undone.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center gap-2.5 pt-2">
+                        <button type="button" wire:click="closeDeleteModal" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-700 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
+                            Cancel
+                        </button>
+                        <button type="button" wire:click="delete" class="px-4 py-2 rounded-lg bg-red-600 text-white font-medium text-xs hover:bg-red-700 transition-all shadow-xs">
+                            Delete Permanently
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

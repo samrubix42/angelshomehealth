@@ -126,91 +126,97 @@
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
          x-cloak
-         class="fixed inset-0 bg-black/80 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+         class="fixed inset-0 z-[100] overflow-y-auto">
         
-        <div x-show="$wire.showModal" 
-             x-transition:enter="transition ease-out duration-200 transform"
-             x-transition:enter-start="opacity-0 scale-95"
-             x-transition:enter-end="opacity-100 scale-100"
-             x-transition:leave="transition ease-in duration-150 transform"
-             x-transition:leave-start="opacity-100 scale-100"
-             x-transition:leave-end="opacity-0 scale-95"
-             @click.outside="$wire.closeModal()"
-             class="bg-white rounded-xl border border-zinc-200 shadow-xl max-w-md w-full p-6 space-y-5">
-            
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between border-b border-zinc-100 pb-3">
-                <div class="space-y-0.5">
-                    <h3 class="font-semibold text-base text-zinc-900">
-                        {{ $isEditing ? 'Edit Testimonial' : 'Add New Testimonial' }}
-                    </h3>
-                    <p class="text-xs text-zinc-500">Patient story or physician recommendation.</p>
-                </div>
+        <!-- Modal Backdrop -->
+        <div wire:click="closeModal" class="fixed inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity"></div>
 
-                <button wire:click="closeModal" type="button" class="w-7 h-7 rounded-md bg-zinc-100 hover:bg-zinc-200 text-zinc-500 flex items-center justify-center transition-colors">
-                    <i class="ri-close-line text-base"></i>
-                </button>
-            </div>
-
-            <!-- Form Body -->
-            <form wire:submit.prevent="save" class="space-y-4">
+        <!-- Modal Center Wrapper -->
+        <div class="flex min-h-full items-center justify-center p-4 sm:p-6 text-center">
+            <div x-show="$wire.showModal" 
+                 x-transition:enter="transition ease-out duration-200 transform"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-150 transform"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="relative transform overflow-hidden rounded-2xl bg-white border border-zinc-200 text-left shadow-2xl transition-all w-full max-w-lg max-h-[90vh] flex flex-col my-8">
                 
-                <!-- Patient Name -->
-                <div>
-                    <label class="block text-xs font-medium text-zinc-700 mb-1">Full Name *</label>
-                    <input type="text" wire:model="name" placeholder="e.g. Sarah Jenkins" class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3 py-2 text-xs text-zinc-900 placeholder:text-zinc-400 transition-all">
-                    @error('name') <span class="text-[11px] text-red-500 mt-1 block">{{ $message }}</span> @enderror
-                </div>
-
-                <!-- Designation / Role -->
-                <div>
-                    <label class="block text-xs font-medium text-zinc-700 mb-1">Designation / Location *</label>
-                    <input type="text" wire:model="designation" placeholder="e.g. Daughter of Patient • Mount Dora, FL" class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3 py-2 text-xs text-zinc-900 placeholder:text-zinc-400 transition-all">
-                    @error('designation') <span class="text-[11px] text-red-500 mt-1 block">{{ $message }}</span> @enderror
-                </div>
-
-                <!-- Rating Selector (1 to 5 Stars) -->
-                <div>
-                    <label class="block text-xs font-medium text-zinc-700 mb-1">Star Rating *</label>
-                    <div class="flex items-center gap-1.5">
-                        @for($star = 1; $star <= 5; $star++)
-                            <button type="button" 
-                                    wire:click="$set('rating', {{ $star }})" 
-                                    class="p-1.5 rounded-lg border transition-all flex items-center justify-center {{ $rating >= $star ? 'bg-amber-50 border-amber-300 text-amber-500' : 'bg-zinc-50 border-zinc-200 text-zinc-300' }}">
-                                <i class="ri-star-fill text-sm"></i>
-                            </button>
-                        @endfor
-                        <span class="text-xs font-medium text-zinc-700 ml-2">{{ $rating }} / 5 Stars</span>
+                <!-- Modal Header -->
+                <div class="px-6 py-4 border-b border-zinc-100 flex items-center justify-between shrink-0 bg-white">
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-base text-zinc-900">
+                            {{ $isEditing ? 'Edit Testimonial' : 'Add New Testimonial' }}
+                        </h3>
+                        <p class="text-xs text-zinc-500">Patient story or physician recommendation.</p>
                     </div>
-                    @error('rating') <span class="text-[11px] text-red-500 mt-1 block">{{ $message }}</span> @enderror
+
+                    <button wire:click="closeModal" type="button" class="w-8 h-8 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-500 flex items-center justify-center transition-colors">
+                        <i class="ri-close-line text-lg"></i>
+                    </button>
                 </div>
 
-                <!-- Review Text -->
-                <div>
-                    <label class="block text-xs font-medium text-zinc-700 mb-1">Review Content *</label>
-                    <textarea wire:model="review" rows="4" placeholder="Write the patient's testimonial quote..." class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3 py-2 text-xs text-zinc-900 placeholder:text-zinc-400 transition-all"></textarea>
-                    @error('review') <span class="text-[11px] text-red-500 mt-1 block">{{ $message }}</span> @enderror
-                </div>
+                <!-- Form Body -->
+                <form id="testimonialForm" wire:submit.prevent="save" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    
+                    <!-- Patient Name -->
+                    <div>
+                        <label class="block text-xs font-semibold text-zinc-700 mb-1">Full Name *</label>
+                        <input type="text" wire:model="name" placeholder="e.g. Sarah Jenkins" class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3.5 py-2 text-xs text-zinc-900 placeholder:text-zinc-400 transition-all">
+                        @error('name') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                    </div>
 
-                <!-- Active Status Checkbox -->
-                <div class="pt-1">
-                    <label class="flex items-center gap-2 cursor-pointer select-none">
-                        <input type="checkbox" wire:model="is_active" class="w-4 h-4 rounded bg-white border-zinc-300 text-zinc-900 focus:ring-zinc-950">
-                        <span class="text-xs font-medium text-zinc-700">Publish on Website Immediately</span>
-                    </label>
-                </div>
+                    <!-- Designation / Role -->
+                    <div>
+                        <label class="block text-xs font-semibold text-zinc-700 mb-1">Designation / Location *</label>
+                        <input type="text" wire:model="designation" placeholder="e.g. Daughter of Patient • Mount Dora, FL" class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3.5 py-2 text-xs text-zinc-900 placeholder:text-zinc-400 transition-all">
+                        @error('designation') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                    </div>
 
-                <!-- Modal Actions -->
-                <div class="pt-3 border-t border-zinc-100 flex items-center justify-end gap-2">
-                    <button wire:click="closeModal" type="button" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-900 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
+                    <!-- Rating Selector (1 to 5 Stars) -->
+                    <div>
+                        <label class="block text-xs font-semibold text-zinc-700 mb-1">Star Rating *</label>
+                        <div class="flex items-center gap-1.5">
+                            @for($star = 1; $star <= 5; $star++)
+                                <button type="button" 
+                                        wire:click="$set('rating', {{ $star }})" 
+                                        class="p-1.5 rounded-lg border transition-all flex items-center justify-center {{ $rating >= $star ? 'bg-amber-50 border-amber-300 text-amber-500' : 'bg-zinc-50 border-zinc-200 text-zinc-300' }}">
+                                    <i class="ri-star-fill text-sm"></i>
+                                </button>
+                            @endfor
+                            <span class="text-xs font-medium text-zinc-700 ml-2">{{ $rating }} / 5 Stars</span>
+                        </div>
+                        @error('rating') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                    </div>
+
+                    <!-- Review Text -->
+                    <div>
+                        <label class="block text-xs font-semibold text-zinc-700 mb-1">Review Content *</label>
+                        <textarea wire:model="review" rows="4" placeholder="Write the patient's testimonial quote..." class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg px-3.5 py-2 text-xs text-zinc-900 placeholder:text-zinc-400 transition-all"></textarea>
+                        @error('review') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                    </div>
+
+                    <!-- Active Status Checkbox -->
+                    <div class="pt-1">
+                        <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                            <input type="checkbox" wire:model="is_active" class="w-4 h-4 rounded bg-white border-zinc-300 text-zinc-900 focus:ring-zinc-950">
+                            <span class="text-xs font-medium text-zinc-700">Publish on Website Immediately</span>
+                        </label>
+                    </div>
+
+                </form>
+
+                <!-- Modal Footer -->
+                <div class="px-6 py-4 border-t border-zinc-100 bg-zinc-50 flex items-center justify-end gap-3 shrink-0">
+                    <button wire:click="closeModal" type="button" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-700 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
                         Cancel
                     </button>
-                    <button type="submit" class="px-4 py-2 rounded-lg bg-zinc-900 text-zinc-50 font-medium text-xs hover:bg-zinc-800 transition-all shadow-xs">
+                    <button type="submit" form="testimonialForm" class="px-5 py-2 rounded-lg bg-zinc-900 text-zinc-50 font-medium text-xs hover:bg-zinc-800 transition-all shadow-xs">
                         {{ $isEditing ? 'Update Testimonial' : 'Save Testimonial' }}
                     </button>
                 </div>
 
-            </form>
+            </div>
         </div>
     </div>
 
@@ -223,34 +229,40 @@
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
          x-cloak
-         class="fixed inset-0 bg-black/80 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+         class="fixed inset-0 z-[100] overflow-y-auto">
         
-        <div x-show="$wire.showDeleteModal" 
-             x-transition:enter="transition ease-out duration-200 transform"
-             x-transition:enter-start="opacity-0 scale-95"
-             x-transition:enter-end="opacity-100 scale-100"
-             x-transition:leave="transition ease-in duration-150 transform"
-             x-transition:leave-start="opacity-100 scale-100"
-             x-transition:leave-end="opacity-0 scale-95"
-             @click.outside="$wire.closeDeleteModal()"
-             class="bg-white rounded-xl border border-zinc-200 shadow-xl max-w-sm w-full p-6 text-center space-y-4">
-            
-            <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-lg mx-auto border border-red-200">
-                <i class="ri-delete-bin-line"></i>
-            </div>
+        <!-- Backdrop -->
+        <div wire:click="closeDeleteModal" class="fixed inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity"></div>
 
-            <div class="space-y-1">
-                <h4 class="font-semibold text-base text-zinc-900">Delete Testimonial?</h4>
-                <p class="text-xs text-zinc-500">This action cannot be undone. Are you sure you want to remove this review?</p>
-            </div>
+        <!-- Center Dialog Wrapper -->
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+            <div x-show="$wire.showDeleteModal" 
+                 x-transition:enter="transition ease-out duration-200 transform"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-150 transform"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="relative transform overflow-hidden rounded-2xl bg-white border border-zinc-200 shadow-2xl max-w-sm w-full p-6 text-center space-y-4 my-8 z-10">
+                
+                <div class="w-11 h-11 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-xl mx-auto border border-red-200">
+                    <i class="ri-delete-bin-line"></i>
+                </div>
 
-            <div class="flex items-center justify-center gap-2 pt-2">
-                <button wire:click="closeDeleteModal" type="button" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-900 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
-                    Cancel
-                </button>
-                <button wire:click="delete" type="button" class="px-4 py-2 rounded-lg bg-red-600 text-white font-medium text-xs hover:bg-red-700 transition-all shadow-xs">
-                    Yes, Delete
-                </button>
+                <div class="space-y-1">
+                    <h4 class="font-bold text-base text-zinc-900">Delete Testimonial?</h4>
+                    <p class="text-xs text-zinc-500 leading-relaxed">This action cannot be undone. Are you sure you want to remove this review?</p>
+                </div>
+
+                <div class="flex items-center justify-center gap-2.5 pt-2">
+                    <button wire:click="closeDeleteModal" type="button" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-700 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
+                        Cancel
+                    </button>
+                    <button wire:click="delete" type="button" class="px-4 py-2 rounded-lg bg-red-600 text-white font-medium text-xs hover:bg-red-700 transition-all shadow-xs flex items-center gap-1">
+                        <i class="ri-delete-bin-line"></i>
+                        <span>Yes, Delete</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

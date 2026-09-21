@@ -149,26 +149,28 @@
 
     <!-- 4. DELETE CONFIRMATION MODAL -->
     @if ($showDeleteModal)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div wire:click="closeDeleteModal" class="fixed inset-0 bg-zinc-950/40 backdrop-blur-xs"></div>
-            <div class="relative w-full max-w-sm bg-white rounded-xl border border-zinc-200 shadow-xl overflow-hidden z-10 p-6 text-center space-y-4">
-                
-                <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-lg mx-auto border border-red-200">
-                    <i class="ri-delete-bin-line"></i>
-                </div>
+        <div class="fixed inset-0 z-[100] overflow-y-auto">
+            <div wire:click="closeDeleteModal" class="fixed inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity"></div>
+            <div class="flex min-h-full items-center justify-center p-4 text-center">
+                <div class="relative transform overflow-hidden rounded-2xl bg-white border border-zinc-200 shadow-2xl max-w-sm w-full p-6 text-center space-y-4 my-8 z-10">
+                    <div class="w-11 h-11 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-xl mx-auto border border-red-200">
+                        <i class="ri-delete-bin-line"></i>
+                    </div>
 
-                <div class="space-y-1">
-                    <h4 class="font-semibold text-base text-zinc-900">Delete Blog Article?</h4>
-                    <p class="text-xs text-zinc-500">This action cannot be undone. Are you sure you want to remove this article?</p>
-                </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-base text-zinc-900">Delete Blog Article?</h4>
+                        <p class="text-xs text-zinc-500 leading-relaxed">This action cannot be undone. Are you sure you want to remove this article?</p>
+                    </div>
 
-                <div class="flex items-center justify-center gap-2 pt-2">
-                    <button wire:click="closeDeleteModal" type="button" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-900 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
-                        Cancel
-                    </button>
-                    <button wire:click="delete" type="button" class="px-4 py-2 rounded-lg bg-red-600 text-white font-medium text-xs hover:bg-red-700 transition-all shadow-xs">
-                        Yes, Delete
-                    </button>
+                    <div class="flex items-center justify-center gap-2.5 pt-2">
+                        <button wire:click="closeDeleteModal" type="button" class="px-4 py-2 rounded-lg border border-zinc-200 bg-white text-zinc-700 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-xs">
+                            Cancel
+                        </button>
+                        <button wire:click="delete" type="button" class="px-4 py-2 rounded-lg bg-red-600 text-white font-medium text-xs hover:bg-red-700 transition-all shadow-xs flex items-center gap-1">
+                            <i class="ri-delete-bin-line"></i>
+                            <span>Yes, Delete</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

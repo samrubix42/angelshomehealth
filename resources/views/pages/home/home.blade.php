@@ -3,15 +3,16 @@
     <section id="home" 
              x-data="{ 
                  currentSlide: 0, 
-                 totalSlides: 3, 
+                 totalSlides: {{ max(1, $this->sliders->count()) }}, 
                  timer: null,
                  startAutoSlide() {
+                     if (this.totalSlides <= 1) return;
                      this.timer = setInterval(() => {
                          this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-                     }, 5000);
+                     }, 6000);
                  },
                  stopAutoSlide() {
-                     clearInterval(this.timer);
+                     if (this.timer) clearInterval(this.timer);
                  },
                  goTo(index) {
                      this.currentSlide = index;
@@ -32,117 +33,92 @@
              x-init="startAutoSlide()"
              @mouseenter="stopAutoSlide()"
              @mouseleave="startAutoSlide()"
-             class="relative bg-[#000000] border-b border-[#27272a] overflow-hidden h-[520px] sm:h-[600px] lg:h-[660px] flex flex-col justify-between">
+             class="relative bg-[#000000] border-b border-[#27272a] overflow-hidden h-[520px] sm:h-[600px] lg:h-[660px] flex flex-col justify-between group/hero">
         
         <!-- Hero Full Screen Slider Slides Wrapper -->
         <div class="relative flex-grow flex items-center justify-center">
             
-            <!-- SLIDE 1 -->
-            <div x-show="currentSlide === 0" 
-                 x-transition:enter="transition ease-out duration-700"
-                 x-transition:enter-start="opacity-0 scale-95"
-                 x-transition:enter-end="opacity-100 scale-100"
-                 x-transition:leave="transition ease-in duration-500"
-                 x-transition:leave-start="opacity-100 scale-100"
-                 x-transition:leave-end="opacity-0 scale-95"
-                 class="absolute inset-0 flex items-center">
-                <!-- Background Image with Clean 35% Overlay -->
-                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1920&auto=format&fit=crop');"></div>
-                <div class="absolute inset-0 bg-[#000000]/35"></div>
+            @forelse($this->sliders as $index => $slide)
+                <div x-show="currentSlide === {{ $index }}" 
+                     x-transition:enter="transition ease-out duration-700"
+                     x-transition:enter-start="opacity-0 scale-95"
+                     x-transition:enter-end="opacity-100 scale-100"
+                     x-transition:leave="transition ease-in duration-500"
+                     x-transition:leave-start="opacity-100 scale-100"
+                     x-transition:leave-end="opacity-0 scale-95"
+                     class="absolute inset-0 flex items-center"
+                     x-cloak>
+                    <!-- Background Image with Clean 35% Overlay -->
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-100" 
+                         style="background-image: url('{{ $slide->image ?: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1920&auto=format&fit=crop' }}');"></div>
+                    <div class="absolute inset-0 bg-[#000000]/40"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
 
-                <!-- Slide Content (Aligned with Header max-w-7xl) -->
-                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 text-center sm:text-left">
-                    <div class="space-y-6">
-                        <h1 class="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight max-w-4xl drop-shadow-lg">
-                            Dedicated In-Home Care in <span class="text-[#C8A14F]">Mount Dora, FL</span> & Around
-                        </h1>
-                        <p class="text-[#f8fafc] text-base sm:text-xl leading-relaxed max-w-2xl font-medium drop-shadow-md">
-                            Angels Home Health of Florida delivers a full spectrum of skilled nursing, physical therapy, behavioral health, and chronic disease management right in the comfort of your home.
-                        </p>
-                        <div class="pt-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                            <!-- Rounded Pill Buttons -->
-                            <a href="#consultation" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all transform hover:scale-105 shadow-xl">
-                                Schedule Free Consultation
-                            </a>
-                            <a href="#services" class="bg-[#000000]/80 hover:bg-[#121212] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all backdrop-blur-sm">
-                                Explore Our Services
-                            </a>
+                    <!-- Slide Content (Aligned with Header max-w-7xl) -->
+                    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 text-center sm:text-left">
+                        <div class="space-y-6">
+                            <h1 class="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight max-w-4xl drop-shadow-lg">
+                                {!! nl2br(e($slide->title)) !!}
+                            </h1>
+                            @if($slide->paragraph)
+                                <p class="text-[#f8fafc] text-base sm:text-xl leading-relaxed max-w-2xl font-medium drop-shadow-md">
+                                    {{ $slide->paragraph }}
+                                </p>
+                            @endif
+                            <div class="pt-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                                @if($slide->btn_1)
+                                    <a href="{{ $slide->btn_1_url ?: '#consultation' }}" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all transform hover:scale-105 shadow-xl">
+                                        {{ $slide->btn_1 }}
+                                    </a>
+                                @endif
+                                @if($slide->btn_2)
+                                    <a href="{{ $slide->btn_2_url ?: '#services' }}" class="bg-[#000000]/80 hover:bg-[#121212] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all backdrop-blur-sm">
+                                        {{ $slide->btn_2 }}
+                                    </a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- SLIDE 2 -->
-            <div x-show="currentSlide === 1" 
-                 x-transition:enter="transition ease-out duration-700"
-                 x-transition:enter-start="opacity-0 scale-95"
-                 x-transition:enter-end="opacity-100 scale-100"
-                 x-transition:leave="transition ease-in duration-500"
-                 x-transition:leave-start="opacity-100 scale-100"
-                 x-transition:leave-end="opacity-0 scale-95"
-                 class="absolute inset-0 flex items-center">
-                <!-- Background Image with Clean 35% Overlay -->
-                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1920&auto=format&fit=crop');"></div>
-                <div class="absolute inset-0 bg-[#000000]/35"></div>
-
-                <!-- Slide Content (Aligned with Header max-w-7xl) -->
-                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 text-center sm:text-left">
-                    <div class="space-y-6">
-                        <h1 class="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight max-w-4xl drop-shadow-lg">
-                            Personalized Care Plans <span class="text-[#C8A14F]">Tailored to You</span>
-                        </h1>
-                        <p class="text-[#f8fafc] text-base sm:text-xl leading-relaxed max-w-2xl font-medium drop-shadow-md">
-                            We design customized care plans that meet the unique needs of each individual, ensuring comfort, dignity, and independence. From daily personal care to 24-hour support.
-                        </p>
-                        <div class="pt-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                            <!-- Rounded Pill Buttons -->
-                            <a href="#why-us" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all transform hover:scale-105 shadow-xl">
-                                Why Choose Us
-                            </a>
-                            <a href="tel:13527292727" class="bg-[#000000]/80 hover:bg-[#121212] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all backdrop-blur-sm">
-                                Call +1 352 729 2727
-                            </a>
-                        </div>
+            @empty
+                <div class="absolute inset-0 flex items-center justify-center text-center p-6 bg-zinc-950">
+                    <div class="space-y-3">
+                        <h2 class="text-3xl font-bold text-white">Welcome to Angels Home Health</h2>
+                        <p class="text-zinc-400 max-w-md mx-auto text-sm">Full-spectrum compassionate clinical home healthcare in Mount Dora, FL.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- SLIDE 3 -->
-            <div x-show="currentSlide === 2" 
-                 x-transition:enter="transition ease-out duration-700"
-                 x-transition:enter-start="opacity-0 scale-95"
-                 x-transition:enter-end="opacity-100 scale-100"
-                 x-transition:leave="transition ease-in duration-500"
-                 x-transition:leave-start="opacity-100 scale-100"
-                 x-transition:leave-end="opacity-0 scale-95"
-                 class="absolute inset-0 flex items-center">
-                <!-- Background Image with Clean 35% Overlay -->
-                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1920&auto=format&fit=crop');"></div>
-                <div class="absolute inset-0 bg-[#000000]/35"></div>
-
-                <!-- Slide Content (Aligned with Header max-w-7xl) -->
-                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 text-center sm:text-left">
-                    <div class="space-y-6">
-                        <h1 class="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight max-w-4xl drop-shadow-lg">
-                            Trusted Support for <span class="text-[#C8A14F]">Complex Health Needs</span>
-                        </h1>
-                        <p class="text-[#f8fafc] text-base sm:text-xl leading-relaxed max-w-2xl font-medium drop-shadow-md">
-                            Specialized care for Alzheimer’s, Parkinson’s, post-surgery recovery, and chronic health conditions led by board-certified registered nurses and therapists.
-                        </p>
-                        <div class="pt-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                            <!-- Rounded Pill Buttons -->
-                            <a href="#services" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all transform hover:scale-105 shadow-xl">
-                                Medical Services
-                            </a>
-                            <a href="#consultation" class="bg-[#000000]/80 hover:bg-[#121212] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all backdrop-blur-sm">
-                                Speak With a Nurse
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforelse
 
         </div>
+
+        <!-- Slider Navigation Controls (Prev/Next Arrows + Dots) -->
+        @if($this->sliders->count() > 1)
+            <!-- Arrows on Left and Right -->
+            <button type="button" 
+                    @click="prev()" 
+                    class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-[#C8A14F] text-white hover:text-black border border-white/20 hover:border-[#C8A14F] flex items-center justify-center transition-all backdrop-blur-sm opacity-80 sm:opacity-0 sm:group-hover/hero:opacity-100" 
+                    aria-label="Previous Slide">
+                <i class="ri-arrow-left-s-line text-2xl"></i>
+            </button>
+            <button type="button" 
+                    @click="next()" 
+                    class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-[#C8A14F] text-white hover:text-black border border-white/20 hover:border-[#C8A14F] flex items-center justify-center transition-all backdrop-blur-sm opacity-80 sm:opacity-0 sm:group-hover/hero:opacity-100" 
+                    aria-label="Next Slide">
+                <i class="ri-arrow-right-s-line text-2xl"></i>
+            </button>
+
+            <!-- Bottom Indicator Dots -->
+            <div class="relative z-20 pb-6 flex items-center justify-center gap-2.5">
+                <template x-for="i in totalSlides" :key="i">
+                    <button type="button" 
+                            @click="goTo(i - 1)" 
+                            class="h-2 rounded-full transition-all duration-300"
+                            :class="currentSlide === (i - 1) ? 'w-8 bg-[#C8A14F]' : 'w-2 bg-white/40 hover:bg-white/70'"
+                            :aria-label="'Go to slide ' + i">
+                    </button>
+                </template>
+            </div>
+        @endif
 
     </section>
 
@@ -261,9 +237,10 @@
              x-data="{ 
                  shown: false,
                  serviceSlide: 0, 
-                 totalServiceSlides: 2, 
+                 totalServiceSlides: {{ max(1, (int) ceil($this->services->count() / 3)) }}, 
                  serviceTimer: null,
                  startAutoSlide() {
+                     if (this.totalServiceSlides <= 1) return;
                      this.serviceTimer = setInterval(() => {
                          this.serviceSlide = (this.serviceSlide + 1) % this.totalServiceSlides;
                      }, 7000);
@@ -306,283 +283,69 @@
                 </p>
             </div>
 
-            <!-- Continuous Horizontal Carousel Slider Track -->
-            <div class="overflow-hidden w-full pb-4">
+            <!-- Dynamic Services Slider Track -->
+            <div class="overflow-hidden w-full">
                 <div class="flex transition-transform duration-700 ease-in-out"
                      :style="'transform: translateX(-' + (serviceSlide * 100) + '%)'">
                     
-                    <!-- Set 1 (Services 1, 2, 3) -->
-                    <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1">
-                        
-                        <!-- Service 1: Wound Care -->
-                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
-                            <div>
-                                <div class="relative h-52 w-full overflow-hidden">
-                                    <img src="{{ asset('images/service_wound_nursing.jpg') }}" alt="Wound Care & Clinical Assessment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
-                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                        Skilled Nursing
-                                    </span>
+                    @foreach ($this->services->chunk(3) as $chunk)
+                        <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1">
+                            @foreach ($chunk as $service)
+                                <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
+                                    <div>
+                                        <div class="relative h-52 w-full overflow-hidden bg-[#000000]">
+                                            <img src="{{ $service->image ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800' }}" 
+                                                 alt="{{ $service->title }}" 
+                                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800';">
+                                            <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
+                                            <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                                Clinical Service
+                                            </span>
+                                        </div>
+                                        <div class="p-6 sm:p-7 space-y-4">
+                                            <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
+                                                {{ $service->title }}
+                                            </h3>
+                                            <p class="text-xs text-[#a1a1aa] leading-relaxed line-clamp-3">
+                                                {{ $service->short_description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="px-6 pb-6 pt-2">
+                                        <a href="/services/{{ $service->slug }}" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                            <span>Learn More</span>
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="p-6 sm:p-7 space-y-4">
-                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
-                                        Wound Care & Assessment
-                                    </h3>
-                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                                        Expert wound management, sterile dressing changes, surgical site monitoring, and infection control supervised by registered nurses.
-                                    </p>
-                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Sterile Dressing Changes & Care</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Surgical Site & Infection Monitoring</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Bath, Shower & Hygiene Assistance</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="px-6 pb-6 pt-2">
-                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
-                                    <span>Learn More</span>
-                                    <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
+                            @endforeach
                         </div>
-
-                        <!-- Service 2: Physical Therapy -->
-                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
-                            <div>
-                                <div class="relative h-52 w-full overflow-hidden">
-                                    <img src="{{ asset('images/service_physical_therapy.jpg') }}" alt="Physical & Rehab Therapy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
-                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                        Rehabilitation
-                                    </span>
-                                </div>
-                                <div class="p-6 sm:p-7 space-y-4">
-                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
-                                        Physical & Rehab Therapy
-                                    </h3>
-                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                                        Targeted physical therapy routines, post-orthopedic surgery recovery, and gait training to restore strength, balance, and independence.
-                                    </p>
-                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Post-Surgery Orthopedic Rehab</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Fall Prevention & Balance Training</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Mobility & Exercise Guidance</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="px-6 pb-6 pt-2">
-                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
-                                    <span>Learn More</span>
-                                    <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Service 3: Cardiac Care -->
-                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
-                            <div>
-                                <div class="relative h-52 w-full overflow-hidden">
-                                    <img src="{{ asset('images/service_cardiac_monitoring.jpg') }}" alt="Cardiac Care & Vital Monitoring" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
-                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                        Clinical Support
-                                    </span>
-                                </div>
-                                <div class="p-6 sm:p-7 space-y-4">
-                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
-                                        Cardiac & Vital Care
-                                    </h3>
-                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                                        Continuous monitoring of blood pressure, blood sugar, cardiac rhythms, and timely medication administration by trained nurses.
-                                    </p>
-                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Blood Pressure & Vital Recording</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Medication Education & Administration</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Diabetic & Pulmonary Monitoring</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="px-6 pb-6 pt-2">
-                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
-                                    <span>Learn More</span>
-                                    <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Set 2 (Services 4, 5, 6) -->
-                    <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1">
-                        
-                        <!-- Service 4: Alzheimer's & Dementia -->
-                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
-                            <div>
-                                <div class="relative h-52 w-full overflow-hidden">
-                                    <img src="{{ asset('images/service_memory_dementia.jpg') }}" alt="Alzheimer's & Dementia Support" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
-                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                        Specialized Memory Care
-                                    </span>
-                                </div>
-                                <div class="p-6 sm:p-7 space-y-4">
-                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
-                                        Alzheimer’s & Dementia Care
-                                    </h3>
-                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                                        Patient, structured cognitive engagement, memory support games, healthy meal planning, and safe daily routine assistance.
-                                    </p>
-                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Cognitive & Memory Engagement</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Meal Prep & Nutritional Guidance</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Parkinson's & Memory Support</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="px-6 pb-6 pt-2">
-                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
-                                    <span>Learn More</span>
-                                    <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Service 5: Complex Clinical Nursing -->
-                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
-                            <div>
-                                <div class="relative h-52 w-full overflow-hidden">
-                                    <img src="{{ asset('images/service_complex_nursing.jpg') }}" alt="Complex Medical Support" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
-                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                        Advanced Clinical Care
-                                    </span>
-                                </div>
-                                <div class="p-6 sm:p-7 space-y-4">
-                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
-                                        Complex Clinical Nursing
-                                    </h3>
-                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                                        High-acuity in-home nursing including catheter care, colostomy care, post-surgical management, and chronic disease supervision.
-                                    </p>
-                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Catheter & Colostomy Care</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Post-Surgical Clinical Monitoring</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Comprehensive Health Assessments</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="px-6 pb-6 pt-2">
-                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
-                                    <span>Learn More</span>
-                                    <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Service 6: Occupational & Daily Assistance -->
-                        <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
-                            <div>
-                                <div class="relative h-52 w-full overflow-hidden">
-                                    <img src="{{ asset('images/service_occupational_daily.jpg') }}" alt="Occupational & Housekeeping" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
-                                    <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                        Personal & OT Support
-                                    </span>
-                                </div>
-                                <div class="p-6 sm:p-7 space-y-4">
-                                    <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
-                                        Occupational & Daily Assistance
-                                    </h3>
-                                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                                        Occupational therapy for daily living, light housekeeping, laundry, dishwashing, errands, and 24-hour flexible care.
-                                    </p>
-                                    <ul class="space-y-2 text-xs text-[#d4d4d8] pt-1 border-t border-[#27272a]">
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Light Housekeeping & Laundry</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>Doctor Appointments & Transportation</span>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <i class="ri-checkbox-circle-fill text-[#C8A14F]"></i>
-                                            <span>24-Hour & Flexible Care Schedules</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="px-6 pb-6 pt-2">
-                                <a href="#consultation" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
-                                    <span>Learn More</span>
-                                    <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
 
             <!-- Slider Controls (Rounded Pill Indicators + Arrows) -->
-            <div class="flex items-center justify-center gap-4 mt-12">
-                <button type="button" @click="prev()" class="w-11 h-11 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all shadow-md" aria-label="Previous services">
-                    <i class="ri-arrow-left-s-line text-2xl"></i>
-                </button>
-                <div class="flex items-center gap-2">
-                    <button type="button" @click="goTo(0)" :class="serviceSlide === 0 ? 'w-10 bg-[#C8A14F]' : 'w-3 bg-[#27272a]'" class="h-3 rounded-full transition-all duration-300" aria-label="Go to service set 1"></button>
-                    <button type="button" @click="goTo(1)" :class="serviceSlide === 1 ? 'w-10 bg-[#C8A14F]' : 'w-3 bg-[#27272a]'" class="h-3 rounded-full transition-all duration-300" aria-label="Go to service set 2"></button>
+            @if ($this->services->count() > 3)
+                <div class="flex items-center justify-center gap-4 mt-12">
+                    <button type="button" @click="prev()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Previous services">
+                        <i class="ri-arrow-left-s-line text-xl"></i>
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <template x-for="i in totalServiceSlides" :key="i">
+                            <button type="button" 
+                                    @click="goTo(i - 1)" 
+                                    :class="serviceSlide === (i - 1) ? 'w-8 bg-[#C8A14F]' : 'w-2.5 bg-[#27272a] hover:bg-[#C8A14F]/50'" 
+                                    class="h-2.5 rounded-full transition-all duration-300" 
+                                    :aria-label="'Go to service set ' + i"></button>
+                        </template>
+                    </div>
+                    <button type="button" @click="next()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Next services">
+                        <i class="ri-arrow-right-s-line text-xl"></i>
+                    </button>
                 </div>
-                <button type="button" @click="next()" class="w-11 h-11 rounded-full bg-[#000000] text-[#000000] hover:bg-[#C8A14F] border border-[#27272a] flex items-center justify-center transition-all shadow-md" aria-label="Next services">
-                    <i class="ri-arrow-right-s-line text-2xl text-white hover:text-[#000000]"></i>
-                </button>
-            </div>
+            @endif
 
         </div>
     </section>
@@ -1012,14 +775,15 @@
         </div>
     </section>
 
-    <!-- 8.4. AUTO-SLIDING TESTIMONIALS SECTION (3 CARDS AT A TIME, NO PICTURES) -->
+    <!-- 8.4. AUTO-SLIDING TESTIMONIALS SECTION (3 CARDS AT A TIME) -->
     <section id="testimonials" 
              x-data="{ 
                  shown: false,
                  activeSlide: 0, 
-                 totalSlides: 2, 
+                 totalSlides: {{ max(1, (int) ceil($this->testimonials->count() / 3)) }}, 
                  timer: null,
                  startAutoSlide() {
+                     if (this.totalSlides <= 1) return;
                      this.timer = setInterval(() => {
                          this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
                      }, 6000);
@@ -1064,170 +828,55 @@
                 <div class="flex transition-transform duration-700 ease-in-out"
                      :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
                     
-                    <!-- Set 1 (Cards 1, 2, 3) -->
-                    <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        
-                        <!-- Card 1 -->
-                        <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
+                    @foreach ($this->testimonials->chunk(3) as $chunk)
+                        <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-1">
+                            @foreach ($chunk as $testimonial)
+                                <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    <i class="ri-star-fill {{ $i <= $testimonial->rating ? 'text-[#C8A14F]' : 'text-zinc-600' }}"></i>
+                                                @endfor
+                                            </div>
+                                            <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
+                                        </div>
+                                        <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
+                                            "{{ $testimonial->review }}"
+                                        </blockquote>
                                     </div>
-                                    <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
-                                </div>
-                                <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
-                                    "The level of genuine care and medical professionalism from Angels Home Health was beyond our expectations. My husband received post-surgery physical therapy at home, and the caregivers treated us like family."
-                                </blockquote>
-                            </div>
-                            <div class="pt-4 border-t border-[#27272a]">
-                                <h4 class="font-heading font-bold text-white text-base">Robert & Mary Henderson</h4>
-                                <span class="text-xs text-[#C8A14F] font-semibold">Mount Dora, FL · Physical Therapy & Care</span>
-                            </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
+                                    <div class="pt-4 border-t border-[#27272a]">
+                                        <h4 class="font-heading font-bold text-white text-base">{{ $testimonial->name }}</h4>
+                                        <span class="text-xs text-[#C8A14F] font-semibold">{{ $testimonial->designation }}</span>
                                     </div>
-                                    <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
                                 </div>
-                                <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
-                                    "Finding reliable skilled nursing for my elderly mother was stressing our family. Angels Home Health created a tailored medication and personal care routine that gave us total peace of mind."
-                                </blockquote>
-                            </div>
-                            <div class="pt-4 border-t border-[#27272a]">
-                                <h4 class="font-heading font-bold text-white text-base">Patricia Miller</h4>
-                                <span class="text-xs text-[#C8A14F] font-semibold">Lake County, FL · Skilled Nursing Support</span>
-                            </div>
+                            @endforeach
                         </div>
-
-                        <!-- Card 3 -->
-                        <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                    </div>
-                                    <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
-                                </div>
-                                <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
-                                    "Their registered nurses and chronic care managers are top-tier. Responsive, compassionate, and attentive to every detail. I highly recommend them to anyone needing home care in Florida."
-                                </blockquote>
-                            </div>
-                            <div class="pt-4 border-t border-[#27272a]">
-                                <h4 class="font-heading font-bold text-white text-base">James W. Elder</h4>
-                                <span class="text-xs text-[#C8A14F] font-semibold">Tavares, FL · Chronic Disease Management</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Set 2 (Cards 4, 5, 6) -->
-                    <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        
-                        <!-- Card 4 -->
-                        <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                    </div>
-                                    <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
-                                </div>
-                                <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
-                                    "The caregivers are always prompt, polite, and deeply caring. Having daily assistance at home allowed my father to stay in his own house comfortably."
-                                </blockquote>
-                            </div>
-                            <div class="pt-4 border-t border-[#27272a]">
-                                <h4 class="font-heading font-bold text-white text-base">Eleanor & Thomas Wright</h4>
-                                <span class="text-xs text-[#C8A14F] font-semibold">Eustis, FL · Personal Care & Assistance</span>
-                            </div>
-                        </div>
-
-                        <!-- Card 5 -->
-                        <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                    </div>
-                                    <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
-                                </div>
-                                <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
-                                    "After knee replacement surgery, their physical therapist helped me get back on my feet faster than expected. Extraordinary attention and encouragement!"
-                                </blockquote>
-                            </div>
-                            <div class="pt-4 border-t border-[#27272a]">
-                                <h4 class="font-heading font-bold text-white text-base">Marcus Vance</h4>
-                                <span class="text-xs text-[#C8A14F] font-semibold">Leesburg, FL · Post-Surgery Rehab</span>
-                            </div>
-                        </div>
-
-                        <!-- Card 6 -->
-                        <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                    </div>
-                                    <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
-                                </div>
-                                <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
-                                    "Angels Home Health provided specialized care for my mother with memory loss. Their patience and gentle approach have made an immense difference for our whole family."
-                                </blockquote>
-                            </div>
-                            <div class="pt-4 border-t border-[#27272a]">
-                                <h4 class="font-heading font-bold text-white text-base">Sarah Jenkins</h4>
-                                <span class="text-xs text-[#C8A14F] font-semibold">Clermont, FL · Memory Care Support</span>
-                            </div>
-                        </div>
-
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
 
             <!-- Slider Controls (Rounded Pill Indicators + Arrows) -->
-            <div class="flex items-center justify-center gap-4 mt-10">
-                <button type="button" @click="prev()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Previous testimonials">
-                    <i class="ri-arrow-left-s-line text-xl"></i>
-                </button>
-                <div class="flex items-center gap-2">
-                    <button type="button" @click="goTo(0)" :class="activeSlide === 0 ? 'w-8 bg-[#C8A14F]' : 'w-2.5 bg-[#27272a]'" class="h-2.5 rounded-full transition-all duration-300" aria-label="Go to set 1"></button>
-                    <button type="button" @click="goTo(1)" :class="activeSlide === 1 ? 'w-8 bg-[#C8A14F]' : 'w-2.5 bg-[#27272a]'" class="h-2.5 rounded-full transition-all duration-300" aria-label="Go to set 2"></button>
+            @if ($this->testimonials->count() > 3)
+                <div class="flex items-center justify-center gap-4 mt-10">
+                    <button type="button" @click="prev()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Previous testimonials">
+                        <i class="ri-arrow-left-s-line text-xl"></i>
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <template x-for="i in totalSlides" :key="i">
+                            <button type="button" 
+                                    @click="goTo(i - 1)" 
+                                    :class="activeSlide === (i - 1) ? 'w-8 bg-[#C8A14F]' : 'w-2.5 bg-[#27272a] hover:bg-[#C8A14F]/50'" 
+                                    class="h-2.5 rounded-full transition-all duration-300" 
+                                    :aria-label="'Go to testimonial set ' + i"></button>
+                        </template>
+                    </div>
+                    <button type="button" @click="next()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Next testimonials">
+                        <i class="ri-arrow-right-s-line text-xl"></i>
+                    </button>
                 </div>
-                <button type="button" @click="next()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Next testimonials">
-                    <i class="ri-arrow-right-s-line text-xl"></i>
-                </button>
-            </div>
+            @endif
 
         </div>
     </section>

@@ -1,18 +1,45 @@
 <?php
 
+use App\Models\HomeSlider;
+use App\Models\Service;
+use App\Models\Testimonial;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 new class extends Component
 {
     public int $currentSlide = 0;
-    
+
     // Form fields
     public string $name = '';
+
     public string $phone = '';
+
     public string $email = '';
+
     public string $service = 'Personal Care & Hygiene';
+
     public string $notes = '';
+
     public bool $formSubmitted = false;
+
+    #[Computed]
+    public function sliders()
+    {
+        return HomeSlider::where('is_active', true)->orderBy('id', 'asc')->get();
+    }
+
+    #[Computed]
+    public function services()
+    {
+        return Service::where('is_active', true)->get();
+    }
+
+    #[Computed]
+    public function testimonials()
+    {
+        return Testimonial::where('is_active', true)->latest()->get();
+    }
 
     public function nextSlide(): void
     {

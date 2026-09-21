@@ -20,6 +20,7 @@ Route::middleware('guest')->group(function () {
 // Authenticated Admin Routes
 Route::middleware('auth')->group(function () {
     Route::livewire('/admin', 'admin::dashboard')->name('admin.dashboard');
+    Route::livewire('/admin/homesliders', 'admin::homeslider')->name('admin.homesliders');
     Route::livewire('/admin/testimonials', 'admin::testimonial')->name('admin.testimonials');
     Route::livewire('/admin/categories', 'admin::category')->name('admin.categories');
     Route::livewire('/admin/services', 'admin::service.list')->name('admin.services.index');
