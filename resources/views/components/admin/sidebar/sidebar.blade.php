@@ -56,6 +56,12 @@
                 <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Categories</span>
             </a>
 
+            <!-- 5. Blogs Management -->
+            <a href="/admin/blogs" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all {{ request()->is('admin/blogs*') ? 'bg-zinc-900 text-zinc-50 shadow-xs' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900' }}">
+                <i class="ri-newspaper-line text-base {{ request()->is('admin/blogs*') ? 'text-zinc-50' : 'text-zinc-400' }}"></i>
+                <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Blogs</span>
+            </a>
+
             <!-- 4. Public Services Preview -->
             <a href="/services" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition-all">
                 <i class="ri-external-link-line text-base text-zinc-400"></i>

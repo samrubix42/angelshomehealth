@@ -26,6 +26,10 @@ Route::middleware('auth')->group(function () {
     Route::livewire('/admin/services/create', 'admin::service.add')->name('admin.services.create');
     Route::livewire('/admin/services/{service}/edit', 'admin::service.update')->name('admin.services.edit');
 
+    Route::livewire('/admin/blogs', 'admin::blog.list')->name('admin.blogs.index');
+    Route::livewire('/admin/blogs/create', 'admin::blog.add')->name('admin.blogs.create');
+    Route::livewire('/admin/blogs/{blog}/edit', 'admin::blog.update')->name('admin.blogs.edit');
+
     Route::get('/logout', function () {
         Auth::logout();
         request()->session()->invalidate();

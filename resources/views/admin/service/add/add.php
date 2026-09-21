@@ -33,9 +33,9 @@ new #[Layout('layouts::admin')] #[Title('Add New Service | Admin Portal')] class
 
     public function updatedTitle($value): void
     {
-        if (empty($this->slug)) {
-            $this->slug = Str::slug($value);
-        }
+
+        $this->slug = Str::slug($value);
+
     }
 
     public function removeImageUpload(): void
