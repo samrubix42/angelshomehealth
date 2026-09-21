@@ -90,29 +90,6 @@
                 <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Settings</span>
             </a>
 
-            <!-- 4. Public Services Preview -->
-            <a href="/services" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition-all">
-                <i class="ri-external-link-line text-base text-zinc-400"></i>
-                <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Public Services</span>
-            </a>
-
-            <!-- 4. Blog -->
-            <a href="/blog" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition-all">
-                <i class="ri-article-line text-base text-zinc-400"></i>
-                <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Blog & Insights</span>
-            </a>
-
-            <!-- 5. Contact -->
-            <a href="/contact" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition-all">
-                <i class="ri-mail-send-line text-base text-zinc-400"></i>
-                <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Contact Page</span>
-            </a>
-
-            <!-- 6. Main Website -->
-            <a href="/" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition-all">
-                <i class="ri-external-link-line text-base text-zinc-400"></i>
-                <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Main Website</span>
-            </a>
         </div>
 
     </div>
