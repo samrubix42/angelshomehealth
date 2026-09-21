@@ -21,18 +21,18 @@
         [x-cloak] { display: none !important; }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
+            font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #fafafa;
+            color: #09090b;
             -webkit-font-smoothing: antialiased;
         }
 
         .font-heading {
-            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
         }
     </style>
 </head>
-<body x-data="{ sidebarOpen: false, sidebarCollapsed: false }" class="antialiased min-h-screen bg-[#f8fafc] text-[#0f172a] selection:bg-[#C8A14F] selection:text-white flex flex-col">
+<body x-data="{ sidebarOpen: false, sidebarCollapsed: false }" class="antialiased min-h-screen bg-zinc-50/50 text-zinc-950 selection:bg-zinc-900 selection:text-zinc-50 flex flex-col">
 
     <!-- MOBILE SIDEBAR BACKDROP -->
     <div x-show="sidebarOpen" 
@@ -63,15 +63,15 @@
             </main>
 
             <!-- MINIMAL FOOTER -->
-            <footer class="bg-white border-t border-slate-200/80 py-4 px-6 text-center sm:text-left text-xs text-slate-400">
+            <footer class="bg-white border-t border-zinc-200/80 py-4 px-6 text-center sm:text-left text-xs text-zinc-500">
                 <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <p class="font-medium text-slate-500">© {{ date('Y') }} Angels Home Health of Florida. All rights reserved.</p>
+                    <p class="font-normal text-zinc-500">© {{ date('Y') }} Angels Home Health of Florida. All rights reserved.</p>
                     <div class="flex items-center gap-4 text-xs font-medium">
-                        <span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50/80 px-2.5 py-0.5 rounded-full text-[11px] border border-emerald-200/60">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="inline-flex items-center gap-1.5 text-zinc-700 bg-zinc-100 px-2.5 py-0.5 rounded-full text-[11px] border border-zinc-200 font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                             <span>System Active</span>
                         </span>
-                        <span class="text-slate-400">v2.4.0</span>
+                        <span class="text-zinc-400 font-mono text-[11px]">v2.4.0</span>
                     </div>
                 </div>
             </footer>

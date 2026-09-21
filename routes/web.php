@@ -21,6 +21,9 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::livewire('/admin', 'admin::dashboard')->name('admin.dashboard');
     Route::livewire('/admin/testimonials', 'admin::testimonial')->name('admin.testimonials');
+    Route::livewire('/admin/services', 'admin::service.list')->name('admin.services.index');
+    Route::livewire('/admin/services/create', 'admin::service.add')->name('admin.services.create');
+    Route::livewire('/admin/services/{service}/edit', 'admin::service.update')->name('admin.services.edit');
 
     Route::get('/logout', function () {
         Auth::logout();
