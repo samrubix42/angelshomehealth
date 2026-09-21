@@ -3,7 +3,7 @@
     <section id="home" 
              x-data="{ 
                  currentSlide: 0, 
-                 totalSlides: {{ max(1, $this->sliders->count()) }}, 
+                 totalSlides: {{ max(1, $sliders->count()) }}, 
                  timer: null,
                  startAutoSlide() {
                      if (this.totalSlides <= 1) return;
@@ -38,7 +38,7 @@
         <!-- Hero Full Screen Slider Slides Wrapper -->
         <div class="relative flex-grow flex items-center justify-center">
             
-            @forelse($this->sliders as $index => $slide)
+            @forelse($sliders as $index => $slide)
                 <div x-show="currentSlide === {{ $index }}" 
                      x-transition:enter="transition ease-out duration-700"
                      x-transition:enter-start="opacity-0 scale-95"
@@ -92,7 +92,7 @@
         </div>
 
         <!-- Slider Navigation Controls (Prev/Next Arrows + Dots) -->
-        @if($this->sliders->count() > 1)
+        @if($sliders->count() > 1)
             <!-- Arrows on Left and Right -->
             <button type="button" 
                     @click="prev()" 
@@ -237,7 +237,7 @@
              x-data="{ 
                  shown: false,
                  serviceSlide: 0, 
-                 totalServiceSlides: {{ max(1, (int) ceil($this->services->count() / 3)) }}, 
+                 totalServiceSlides: {{ max(1, (int) ceil($services->count() / 3)) }}, 
                  serviceTimer: null,
                  startAutoSlide() {
                      if (this.totalServiceSlides <= 1) return;
@@ -288,7 +288,7 @@
                 <div class="flex transition-transform duration-700 ease-in-out"
                      :style="'transform: translateX(-' + (serviceSlide * 100) + '%)'">
                     
-                    @foreach ($this->services->chunk(3) as $chunk)
+                    @foreach ($services->chunk(3) as $chunk)
                         <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1">
                             @foreach ($chunk as $service)
                                 <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
@@ -327,7 +327,7 @@
             </div>
 
             <!-- Slider Controls (Rounded Pill Indicators + Arrows) -->
-            @if ($this->services->count() > 3)
+            @if ($services->count() > 3)
                 <div class="flex items-center justify-center gap-4 mt-12">
                     <button type="button" @click="prev()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Previous services">
                         <i class="ri-arrow-left-s-line text-xl"></i>
@@ -786,7 +786,7 @@
              x-data="{ 
                  shown: false,
                  activeSlide: 0, 
-                 totalSlides: {{ max(1, (int) ceil($this->testimonials->count() / 3)) }}, 
+                 totalSlides: {{ max(1, (int) ceil($testimonials->count() / 3)) }}, 
                  timer: null,
                  startAutoSlide() {
                      if (this.totalSlides <= 1) return;
@@ -834,7 +834,7 @@
                 <div class="flex transition-transform duration-700 ease-in-out"
                      :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
                     
-                    @foreach ($this->testimonials->chunk(3) as $chunk)
+                    @foreach ($testimonials->chunk(3) as $chunk)
                         <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-1">
                             @foreach ($chunk as $testimonial)
                                 <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
@@ -864,7 +864,7 @@
             </div>
 
             <!-- Slider Controls (Rounded Pill Indicators + Arrows) -->
-            @if ($this->testimonials->count() > 3)
+            @if ($testimonials->count() > 3)
                 <div class="flex items-center justify-center gap-4 mt-10">
                     <button type="button" @click="prev()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Previous testimonials">
                         <i class="ri-arrow-left-s-line text-xl"></i>
