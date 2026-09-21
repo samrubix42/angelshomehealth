@@ -42,10 +42,10 @@
                 </div>
             </div>
             <div>
-                <p class="text-2xl font-bold tracking-tight text-zinc-900">128</p>
-                <div class="flex items-center gap-1 text-xs text-emerald-600 font-medium pt-1">
-                    <i class="ri-arrow-up-line"></i>
-                    <span>+14.2% from last month</span>
+                <p class="text-2xl font-bold tracking-tight text-zinc-900">{{ $this->totalInquiries }}</p>
+                <div class="flex items-center gap-1 text-xs text-amber-600 font-medium pt-1">
+                    <i class="ri-mail-unread-line"></i>
+                    <span>{{ $this->unreadInquiries }} unread care leads</span>
                 </div>
             </div>
         </div>
@@ -141,71 +141,55 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-zinc-100 text-xs">
-                        @forelse($this->filteredInquiries as $inquiry)
-                            <tr class="hover:bg-zinc-50/70 transition-colors">
+                        @forelse($this->inquiries as $inquiry)
+                            <tr class="hover:bg-zinc-50/70 transition-colors {{ !$inquiry->is_read ? 'bg-amber-50/20 font-medium' : '' }}">
                                 <td class="py-3 px-3">
                                     <div class="flex items-center gap-2.5">
                                         <div class="w-7 h-7 rounded-full bg-zinc-100 text-zinc-800 font-semibold text-xs flex items-center justify-center border border-zinc-200 shrink-0">
-                                            {{ substr($inquiry['name'], 0, 1) }}
+                                            {{ substr($inquiry->name, 0, 1) }}
                                         </div>
                                         <div>
-                                            <p class="font-medium text-zinc-900">{{ $inquiry['name'] }}</p>
-                                            <p class="text-[11px] text-zinc-500">{{ $inquiry['phone'] }}</p>
+                                            <p class="font-medium text-zinc-900">{{ $inquiry->name }}</p>
+                                            <p class="text-[11px] text-zinc-500">{{ $inquiry->phone }}</p>
                                         </div>
                                     </div>
                                 </td>
 
                                 <td class="py-3 px-3 text-zinc-700">
                                     <span class="inline-block bg-zinc-100 border border-zinc-200 px-2 py-0.5 rounded text-[11px] font-medium text-zinc-800">
-                                        {{ $inquiry['service'] }}
+                                        {{ $inquiry->service ?: 'General Care' }}
                                     </span>
                                 </td>
 
                                 <td class="py-3 px-3 text-zinc-500 text-[11px] whitespace-nowrap">
-                                    {{ $inquiry['date'] }}
+                                    {{ $inquiry->created_at->format('M d, Y') }}
                                 </td>
 
                                 <td class="py-3 px-3 whitespace-nowrap">
-                                    @if($inquiry['status'] === 'New')
+                                    @if(!$inquiry->is_read)
                                         <span class="bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-0.5 rounded-full text-[11px] font-medium inline-flex items-center gap-1.5">
                                             <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                                            <span>New Inquiry</span>
-                                        </span>
-                                    @elseif($inquiry['status'] === 'Contacted')
-                                        <span class="bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-0.5 rounded-full text-[11px] font-medium inline-flex items-center gap-1.5">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                                            <span>Contacted</span>
-                                        </span>
-                                    @elseif($inquiry['status'] === 'Scheduled')
-                                        <span class="bg-purple-50 text-purple-800 border border-purple-200 px-2.5 py-0.5 rounded-full text-[11px] font-medium inline-flex items-center gap-1.5">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                                            <span>Scheduled</span>
+                                            <span>Unread Lead</span>
                                         </span>
                                     @else
                                         <span class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-0.5 rounded-full text-[11px] font-medium inline-flex items-center gap-1.5">
                                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                            <span>Completed</span>
+                                            <span>Processed</span>
                                         </span>
                                     @endif
                                 </td>
 
                                 <td class="py-3 px-3 text-right whitespace-nowrap">
                                     <div class="flex items-center justify-end gap-1.5">
-                                        @if($inquiry['status'] === 'New')
-                                            <button wire:click="updateStatus({{ $inquiry['id'] }}, 'Contacted')" type="button" class="px-2.5 py-1 rounded-md bg-white border border-zinc-200 hover:bg-zinc-100 text-zinc-800 text-[11px] font-medium transition-colors shadow-xs">
-                                                Mark Contacted
-                                            </button>
-                                        @elseif($inquiry['status'] === 'Contacted')
-                                            <button wire:click="updateStatus({{ $inquiry['id'] }}, 'Scheduled')" type="button" class="px-2.5 py-1 rounded-md bg-white border border-zinc-200 hover:bg-zinc-100 text-zinc-800 text-[11px] font-medium transition-colors shadow-xs">
-                                                Schedule Visit
-                                            </button>
-                                        @else
-                                            <button wire:click="updateStatus({{ $inquiry['id'] }}, 'Completed')" type="button" class="px-2.5 py-1 rounded-md bg-white border border-zinc-200 hover:bg-zinc-100 text-zinc-800 text-[11px] font-medium transition-colors shadow-xs">
-                                                Complete
-                                            </button>
-                                        @endif
+                                        <button wire:click="toggleRead({{ $inquiry->id }})" type="button" class="px-2.5 py-1 rounded-md bg-white border border-zinc-200 hover:bg-zinc-100 text-zinc-800 text-[11px] font-medium transition-colors shadow-xs">
+                                            {{ $inquiry->is_read ? 'Mark Unread' : 'Mark Read' }}
+                                        </button>
 
-                                        <button wire:click="deleteInquiry({{ $inquiry['id'] }})" type="button" class="p-1 text-zinc-400 hover:text-red-600 rounded transition-colors" title="Delete Inquiry">
+                                        <a href="tel:{{ preg_replace('/[^0-9+]/', '', $inquiry->phone) }}" class="p-1 text-zinc-500 hover:text-zinc-900 rounded transition-colors" title="Call">
+                                            <i class="ri-phone-line text-sm"></i>
+                                        </a>
+
+                                        <button wire:click="deleteInquiry({{ $inquiry->id }})" type="button" class="p-1 text-zinc-400 hover:text-red-600 rounded transition-colors" title="Delete Inquiry">
                                             <i class="ri-delete-bin-line text-sm"></i>
                                         </button>
                                     </div>

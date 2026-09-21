@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Contact;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -28,10 +29,19 @@ new #[Layout('layouts::app')] #[Title('Service Details | Angels Home Health of F
 
     public function submitInquiry(): void
     {
-        $this->validate([
+        $validated = $this->validate([
             'name' => 'required|min:2',
             'phone' => 'required|min:7',
             'email' => 'required|email',
+        ]);
+
+        Contact::create([
+            'name' => $validated['name'],
+            'phone' => $validated['phone'],
+            'email' => $validated['email'],
+            'service' => $this->serviceData['title'] ?? 'General Care Inquiry',
+            'notes' => $this->notes,
+            'is_read' => false,
         ]);
 
         $this->formSubmitted = true;

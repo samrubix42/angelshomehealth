@@ -65,6 +65,7 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             HomeSliderSeeder::class,
             SettingSeeder::class,
+            ContactSeeder::class,
         ]);
     }
 }

@@ -68,7 +68,23 @@
                 <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Blogs</span>
             </a>
 
-            <!-- 6. General Settings -->
+            <!-- 6. Inquiries / Contacts -->
+            <a href="/admin/contacts" class="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all {{ request()->is('admin/contacts*') ? 'bg-zinc-900 text-zinc-50 shadow-xs' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900' }}">
+                <div class="flex items-center gap-3">
+                    <i class="ri-mail-unread-line text-base {{ request()->is('admin/contacts*') ? 'text-zinc-50' : 'text-zinc-400' }}"></i>
+                    <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Inquiries</span>
+                </div>
+                @php
+                    $unreadCount = \App\Models\Contact::where('is_read', false)->count();
+                @endphp
+                @if ($unreadCount > 0)
+                    <span x-show="!sidebarCollapsed" x-cloak class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-500 text-black">
+                        {{ $unreadCount }}
+                    </span>
+                @endif
+            </a>
+
+            <!-- 7. General Settings -->
             <a href="/admin/settings" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all {{ request()->is('admin/settings*') ? 'bg-zinc-900 text-zinc-50 shadow-xs' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900' }}">
                 <i class="ri-settings-4-line text-base {{ request()->is('admin/settings*') ? 'text-zinc-50' : 'text-zinc-400' }}"></i>
                 <span class="truncate" x-show="!sidebarCollapsed" x-cloak>Settings</span>
