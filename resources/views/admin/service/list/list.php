@@ -46,7 +46,11 @@ new #[Layout('layouts::admin')] #[Title('Services Management | Admin Portal')] c
         $service->is_active = ! $service->is_active;
         $service->save();
 
-        $this->feedbackMessage = "Service '{$service->title}' status updated.";
+        $this->dispatch('toast-show', [
+            'message' => "Service '{$service->title}' status updated.",
+            'type' => 'info',
+            'position' => 'top-right',
+        ]);
     }
 
     public function openDeleteModal(int $id): void
@@ -68,7 +72,11 @@ new #[Layout('layouts::admin')] #[Title('Services Management | Admin Portal')] c
             $title = $service->title;
             $service->delete();
 
-            $this->feedbackMessage = "Service '{$title}' deleted successfully.";
+            $this->dispatch('toast-show', [
+                'message' => "Service '{$title}' deleted successfully.",
+                'type' => 'success',
+                'position' => 'top-right',
+            ]);
         }
 
         $this->closeDeleteModal();

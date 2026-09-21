@@ -9,20 +9,29 @@ new #[Layout('layouts::admin')] #[Title('Testimonials Management | Angels Home H
 {
     // Form fields
     public ?int $testimonialId = null;
+
     public string $name = '';
+
     public string $designation = '';
+
     public string $review = '';
+
     public int $rating = 5;
+
     public bool $is_active = true;
 
     // Modal state controls
     public bool $showModal = false;
+
     public bool $isEditing = false;
+
     public bool $showDeleteModal = false;
+
     public ?int $deleteId = null;
 
     // Search and Filters
     public string $search = '';
+
     public string $statusFilter = 'All';
 
     // Feedback message
@@ -45,14 +54,14 @@ new #[Layout('layouts::admin')] #[Title('Testimonials Management | Angels Home H
     {
         $this->resetValidation();
         $testimonial = Testimonial::findOrFail($id);
-        
+
         $this->testimonialId = $testimonial->id;
         $this->name = $testimonial->name;
         $this->designation = $testimonial->designation;
         $this->review = $testimonial->review;
         $this->rating = $testimonial->rating;
         $this->is_active = $testimonial->is_active;
-        
+
         $this->isEditing = true;
         $this->showModal = true;
     }
@@ -84,9 +93,15 @@ new #[Layout('layouts::admin')] #[Title('Testimonials Management | Angels Home H
             ]
         );
 
-        $this->feedbackMessage = $this->isEditing 
-            ? 'Testimonial updated successfully.' 
+        $message = $this->isEditing
+            ? 'Testimonial updated successfully.'
             : 'New testimonial added successfully.';
+
+        $this->dispatch('toast-show', [
+            'message' => $message,
+            'type' => 'success',
+            'position' => 'top-right',
+        ]);
 
         $this->showModal = false;
     }
@@ -94,10 +109,14 @@ new #[Layout('layouts::admin')] #[Title('Testimonials Management | Angels Home H
     public function toggleActive(int $id): void
     {
         $testimonial = Testimonial::findOrFail($id);
-        $testimonial->is_active = !$testimonial->is_active;
+        $testimonial->is_active = ! $testimonial->is_active;
         $testimonial->save();
 
-        $this->feedbackMessage = 'Testimonial status updated.';
+        $this->dispatch('toast-show', [
+            'message' => 'Testimonial status updated.',
+            'type' => 'info',
+            'position' => 'top-right',
+        ]);
     }
 
     public function openDeleteModal(int $id): void
@@ -116,7 +135,11 @@ new #[Layout('layouts::admin')] #[Title('Testimonials Management | Angels Home H
     {
         if ($this->deleteId) {
             Testimonial::destroy($this->deleteId);
-            $this->feedbackMessage = 'Testimonial deleted successfully.';
+            $this->dispatch('toast-show', [
+                'message' => 'Testimonial deleted successfully.',
+                'type' => 'success',
+                'position' => 'top-right',
+            ]);
         }
 
         $this->showDeleteModal = false;
@@ -126,12 +149,12 @@ new #[Layout('layouts::admin')] #[Title('Testimonials Management | Angels Home H
     public function getTestimonialsProperty()
     {
         return Testimonial::query()
-            ->when($this->statusFilter === 'Active', fn($q) => $q->where('is_active', true))
-            ->when($this->statusFilter === 'Hidden', fn($q) => $q->where('is_active', false))
-            ->when(!empty($this->search), function($q) {
-                $q->where('name', 'like', '%' . $this->search . '%')
-                  ->orWhere('designation', 'like', '%' . $this->search . '%')
-                  ->orWhere('review', 'like', '%' . $this->search . '%');
+            ->when($this->statusFilter === 'Active', fn ($q) => $q->where('is_active', true))
+            ->when($this->statusFilter === 'Hidden', fn ($q) => $q->where('is_active', false))
+            ->when(! empty($this->search), function ($q) {
+                $q->where('name', 'like', '%'.$this->search.'%')
+                    ->orWhere('designation', 'like', '%'.$this->search.'%')
+                    ->orWhere('review', 'like', '%'.$this->search.'%');
             })
             ->latest()
             ->get();

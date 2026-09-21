@@ -24,19 +24,6 @@
         </button>
     </div>
 
-    <!-- 2. FEEDBACK NOTIFICATION BANNER -->
-    @if($feedbackMessage)
-        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)" class="bg-emerald-50 border border-emerald-200 p-3.5 rounded-xl text-xs text-emerald-800 flex items-center justify-between transition-all">
-            <div class="flex items-center gap-2">
-                <i class="ri-checkbox-circle-fill text-emerald-600 text-base"></i>
-                <span class="font-medium">{{ $feedbackMessage }}</span>
-            </div>
-            <button @click="show = false" type="button" class="text-emerald-500 hover:text-emerald-700">
-                <i class="ri-close-line"></i>
-            </button>
-        </div>
-    @endif
-
     <!-- 3. SEARCH & STATUS FILTER BAR -->
     <div class="bg-white p-4 rounded-xl border border-zinc-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
         

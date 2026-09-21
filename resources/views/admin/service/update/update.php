@@ -49,6 +49,11 @@ new #[Layout('layouts::admin')] #[Title('Edit Service | Admin Portal')] class ex
     public function removeImageUpload(): void
     {
         $this->imageUpload = null;
+        $this->dispatch('toast-show', [
+            'message' => 'Image removed successfully!',
+            'type' => 'success',
+            'position' => 'top-right',
+        ]);
     }
 
     public function save()
