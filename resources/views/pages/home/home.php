@@ -4,14 +4,12 @@ use App\Models\Contact;
 use App\Models\HomeSlider;
 use App\Models\Service;
 use App\Models\Testimonial;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 new class extends Component
 {
     public int $currentSlide = 0;
 
-    // Form fields
     public string $name = '';
 
     public string $phone = '';
@@ -25,21 +23,38 @@ new class extends Component
     public bool $formSubmitted = false;
 
   
+    public function with(): array
+    {
+        return [
+            'sliders' => $this->sliders(),
+            'services' => $this->services(),
+            'testimonials' => $this->testimonials(),
+        ];
+    }
+
     public function sliders()
     {
         return HomeSlider::where('is_active', true)->orderBy('id', 'asc')->get();
     }
 
- 
     public function services()
     {
         return Service::where('is_active', true)->get();
     }
 
-
     public function testimonials()
     {
         return Testimonial::where('is_active', true)->latest()->get();
+    }
+
+    public function __get($property)
+    {
+        return match ($property) {
+            'sliders' => $this->sliders(),
+            'services' => $this->services(),
+            'testimonials' => $this->testimonials(),
+            default => parent::__get($property),
+        };
     }
 
     public function nextSlide(): void
