@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Cache;
 
 class Setting extends Model
 {
@@ -13,19 +12,29 @@ class Setting extends Model
     ];
 
     /**
-     * Retrieve a setting by key with optional default and caching.
+     * In-memory cache for the current request cycle.
+     */
+    protected static array $inMemorySettings = [];
+
+    /**
+     * Retrieve a setting by key with optional default.
      */
     public static function get(string $key, mixed $default = null): mixed
     {
-        return Cache::remember("setting_{$key}", 3600, function () use ($key, $default) {
-            $setting = static::where('key', $key)->first();
+        if (array_key_exists($key, static::$inMemorySettings)) {
+            return static::$inMemorySettings[$key] ?? $default;
+        }
 
-            return ($setting && $setting->value !== null && $setting->value !== '') ? $setting->value : $default;
-        });
+        $setting = static::where('key', $key)->first();
+        $value = ($setting && $setting->value !== null && $setting->value !== '') ? $setting->value : $default;
+
+        static::$inMemorySettings[$key] = $value;
+
+        return $value;
     }
 
     /**
-     * Set a setting value and clear its cache.
+     * Set a setting value.
      */
     public static function set(string $key, ?string $value): static
     {
@@ -34,7 +43,7 @@ class Setting extends Model
             ['value' => $value]
         );
 
-        Cache::forget("setting_{$key}");
+        static::$inMemorySettings[$key] = $value;
 
         return $setting;
     }
