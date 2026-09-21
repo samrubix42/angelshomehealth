@@ -21,14 +21,20 @@
                         Angels Home Health of Florida is a premier home health care provider based in Mount Dora, Florida. Delivering skilled nursing, physical therapy, behavioral health, and chronic care in the comfort of your home.
                     </p>
 
-                    <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
+                    <div class="pt-2 flex flex-wrap items-center gap-4">
                         <a href="/contact" class="w-full sm:w-auto bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-widest text-center transition-all transform hover:scale-105 shadow-xl">
                             Request Free Consultation
                         </a>
-                        <a href="tel:13527292727" class="w-full sm:w-auto bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-8 py-4 rounded-full text-xs uppercase tracking-widest text-center transition-all flex items-center justify-center gap-2">
+                        <a href="{{ phone_url() }}" class="w-full sm:w-auto bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-8 py-4 rounded-full text-xs uppercase tracking-widest text-center transition-all flex items-center justify-center gap-2">
                             <i class="ri-phone-fill text-[#C8A14F]"></i>
-                            <span>+1 352 729 2727</span>
+                            <span>{{ setting('phone', '+1 352 729 2727') }}</span>
                         </a>
+                        @if (setting('whatsapp'))
+                            <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-semibold px-7 py-4 rounded-full text-xs uppercase tracking-widest text-center transition-all flex items-center justify-center gap-2 shadow-lg">
+                                <i class="ri-whatsapp-line text-lg"></i>
+                                <span>WhatsApp Us</span>
+                            </a>
+                        @endif
                     </div>
                 </div>
 
@@ -264,14 +270,20 @@
             <p class="text-sm sm:text-lg text-[#a1a1aa]">
                 Speak directly with our registered nursing coordinator in Mount Dora today.
             </p>
-            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
                 <a href="/contact" class="w-full sm:w-auto bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-xs uppercase tracking-widest transition-all transform hover:scale-105 shadow-xl">
                     Schedule Free Consultation
                 </a>
-                <a href="tel:13527292727" class="w-full sm:w-auto bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
+                <a href="{{ phone_url() }}" class="w-full sm:w-auto bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
                     <i class="ri-phone-fill text-[#C8A14F]"></i>
-                    <span>+1 352 729 2727</span>
+                    <span>{{ setting('phone', '+1 352 729 2727') }}</span>
                 </a>
+                @if (setting('whatsapp'))
+                    <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-semibold px-8 py-4 rounded-full text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow-lg">
+                        <i class="ri-whatsapp-line text-lg"></i>
+                        <span>WhatsApp Us</span>
+                    </a>
+                @endif
             </div>
         </div>
     </section>

@@ -128,9 +128,25 @@
                         <div>
                             <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Call Us Directly</h4>
                             <p class="text-xs text-[#a1a1aa] mt-0.5">24/7 Phone Support Available</p>
-                            <a href="tel:13527292727" class="text-lg font-bold text-[#C8A14F] hover:underline block mt-1">+1 352 729 2727</a>
+                            <a href="{{ phone_url() }}" class="text-lg font-bold text-[#C8A14F] hover:underline block mt-1">{{ setting('phone', '+1 352 729 2727') }}</a>
                         </div>
                     </div>
+
+                    <!-- WhatsApp Card -->
+                    @if (setting('whatsapp'))
+                        <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] hover:border-emerald-500/60 transition-all duration-300 flex items-start gap-4 group shadow-xl">
+                            <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black shrink-0 text-xl transition-all">
+                                <i class="ri-whatsapp-fill"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-base text-white group-hover:text-emerald-400 transition-colors">Chat on WhatsApp</h4>
+                                <p class="text-xs text-[#a1a1aa] mt-0.5">Instant Medical & Assessment Inquiries</p>
+                                <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="text-base font-bold text-emerald-400 hover:underline block mt-1">
+                                    {{ setting('whatsapp', '+1 352 729 2727') }} &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    @endif
 
                     <!-- Email Card -->
                     <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex items-start gap-4 group shadow-xl">
@@ -140,7 +156,7 @@
                         <div>
                             <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Send Us An Email</h4>
                             <p class="text-xs text-[#a1a1aa] mt-0.5">General & Medical Inquiries</p>
-                            <a href="mailto:info@angelshomehealthfl.com" class="text-sm font-semibold text-[#C8A14F] hover:underline block mt-1">info@angelshomehealthfl.com</a>
+                            <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-sm font-semibold text-[#C8A14F] hover:underline block mt-1">{{ setting('email', 'info@angelshomehealthfl.com') }}</a>
                         </div>
                     </div>
 
@@ -151,8 +167,8 @@
                         </div>
                         <div>
                             <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Office Location</h4>
-                            <p class="text-xs text-[#a1a1aa] mt-0.5">Mount Dora, Florida Headquarters</p>
-                            <p class="text-sm text-white mt-1 leading-relaxed font-medium">3400, CR 19-A, Mount Dora, FL 32757, U.S.</p>
+                            <p class="text-xs text-[#a1a1aa] mt-0.5">{{ setting('location', 'Mount Dora, Florida Headquarters') }}</p>
+                            <p class="text-sm text-white mt-1 leading-relaxed font-medium">{{ setting('address', '3400, CR 19-A, Mount Dora, FL 32757, U.S.') }}</p>
                         </div>
                     </div>
 
@@ -165,6 +181,12 @@
                         <p class="text-xs text-[#a1a1aa] leading-relaxed">
                             Angels Home Health of Florida is an ACHC Accredited & Florida Registered Home Health Agency providing care across Mount Dora and surrounding counties.
                         </p>
+                        @if (setting('working_hours'))
+                            <p class="text-xs text-[#C8A14F] font-semibold flex items-center gap-1.5 pt-1 border-t border-[#1f1f23]">
+                                <i class="ri-time-line"></i>
+                                <span>{{ setting('working_hours') }}</span>
+                            </p>
+                        @endif
                     </div>
 
                 </div>
@@ -178,26 +200,32 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
                 <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-4 py-1.5 rounded-full uppercase tracking-widest inline-block">
-                    Mount Dora Location
+                    {{ setting('location', 'Mount Dora Location') }}
                 </span>
                 <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
                     Visit Our Headquarters
                 </h2>
                 <p class="text-sm text-[#a1a1aa]">
-                    3400, CR 19-A, Mount Dora, FL 32757, United States
+                    {{ setting('address', '3400, CR 19-A, Mount Dora, FL 32757, United States') }}
                 </p>
             </div>
 
             <!-- Map Card Container -->
             <div class="relative rounded-3xl overflow-hidden border-2 border-[#C8A14F]/40 shadow-[0_0_40px_rgba(200,161,79,0.15)] bg-[#0a0a0a]">
-                <iframe 
-                    src="https://maps.google.com/maps?q=3400%20CR%2019-A,%20Mount%20Dora,%20FL%2032757&t=&z=14&ie=UTF8&iwloc=&output=embed" 
-                    class="w-full h-80 sm:h-[420px] border-0 filter grayscale invert contrast-125 opacity-90 hover:opacity-100 transition-opacity" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Angels Home Health Location Map">
-                </iframe>
+                @if (str_contains(setting('google_map', ''), '<iframe'))
+                    <div class="w-full h-80 sm:h-[420px] [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0 filter grayscale invert contrast-125 opacity-90 hover:opacity-100 transition-opacity">
+                        {!! setting('google_map') !!}
+                    </div>
+                @else
+                    <iframe 
+                        src="{{ setting('google_map', 'https://maps.google.com/maps?q=3400%20CR%2019-A,%20Mount%20Dora,%20FL%2032757&t=&z=14&ie=UTF8&iwloc=&output=embed') }}" 
+                        class="w-full h-80 sm:h-[420px] border-0 filter grayscale invert contrast-125 opacity-90 hover:opacity-100 transition-opacity" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Angels Home Health Location Map">
+                    </iframe>
+                @endif
                 
                 <!-- Map Overlay Badge Card -->
                 <div class="absolute bottom-6 left-6 right-6 sm:right-auto bg-[#000000]/90 backdrop-blur-md p-5 rounded-2xl border border-[#27272a] max-w-md shadow-2xl space-y-3">
@@ -207,13 +235,13 @@
                         </div>
                         <div>
                             <h4 class="font-heading font-bold text-sm text-white">Angels Home Health of Florida</h4>
-                            <p class="text-xs text-[#a1a1aa]">Mount Dora Headquarters</p>
+                            <p class="text-xs text-[#a1a1aa]">{{ setting('location', 'Mount Dora Headquarters') }}</p>
                         </div>
                     </div>
                     <p class="text-xs text-[#d4d4d8] leading-relaxed">
-                        Serving Lake County & Statewide Florida. Open 24/7 for patient admissions & emergency care coordination.
+                        {{ setting('address', '3400, CR 19-A, Mount Dora, FL 32757') }}. Serving Lake County & Statewide Florida.
                     </p>
-                    <a href="https://maps.google.com/?q=3400+CR+19-A,+Mount+Dora,+FL+32757" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
+                    <a href="https://maps.google.com/?q={{ urlencode(setting('address', '3400 CR 19-A, Mount Dora, FL 32757')) }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
                         <span>Open in Google Maps</span>
                         <i class="ri-external-link-line"></i>
                     </a>

@@ -11,43 +11,70 @@
                 </p>
                 <!-- Social Media Links -->
                 <div class="flex items-center gap-3 pt-2">
-                    <a href="https://www.facebook.com/angelshomecarefl" target="_blank" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-[#C8A14F] hover:text-[#C8A14F] flex items-center justify-center transition-colors text-white" aria-label="Facebook">
-                        <i class="ri-facebook-fill text-base"></i>
-                    </a>
-                    <a href="https://www.instagram.com/angelshomehealthfl//" target="_blank" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-[#C8A14F] hover:text-[#C8A14F] flex items-center justify-center transition-colors text-white" aria-label="Instagram">
-                        <i class="ri-instagram-line text-base"></i>
-                    </a>
-                    <a href="https://x.com/angelshomefl" target="_blank" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-[#C8A14F] hover:text-[#C8A14F] flex items-center justify-center transition-colors text-white" aria-label="Twitter">
-                        <i class="ri-twitter-x-line text-base"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/angels-home-health-florida" target="_blank" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-[#C8A14F] hover:text-[#C8A14F] flex items-center justify-center transition-colors text-white" aria-label="LinkedIn">
-                        <i class="ri-linkedin-fill text-base"></i>
-                    </a>
+                    @if (setting('facebook'))
+                        <a href="{{ setting('facebook') }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-[#C8A14F] hover:text-[#C8A14F] flex items-center justify-center transition-colors text-white" aria-label="Facebook">
+                            <i class="ri-facebook-fill text-base"></i>
+                        </a>
+                    @endif
+                    @if (setting('instagram'))
+                        <a href="{{ setting('instagram') }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-[#C8A14F] hover:text-[#C8A14F] flex items-center justify-center transition-colors text-white" aria-label="Instagram">
+                            <i class="ri-instagram-line text-base"></i>
+                        </a>
+                    @endif
+                    @if (setting('twitter'))
+                        <a href="{{ setting('twitter') }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-[#C8A14F] hover:text-[#C8A14F] flex items-center justify-center transition-colors text-white" aria-label="Twitter">
+                            <i class="ri-twitter-x-line text-base"></i>
+                        </a>
+                    @endif
+                    @if (setting('linkedin'))
+                        <a href="{{ setting('linkedin') }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-[#C8A14F] hover:text-[#C8A14F] flex items-center justify-center transition-colors text-white" aria-label="LinkedIn">
+                            <i class="ri-linkedin-fill text-base"></i>
+                        </a>
+                    @endif
+                    @if (setting('youtube'))
+                        <a href="{{ setting('youtube') }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-red-500 hover:text-red-500 flex items-center justify-center transition-colors text-white" aria-label="YouTube">
+                            <i class="ri-youtube-line text-base"></i>
+                        </a>
+                    @endif
+                    @if (setting('whatsapp'))
+                        <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#121212] border border-[#27272a] hover:border-emerald-500 hover:text-emerald-400 flex items-center justify-center transition-colors text-emerald-400" aria-label="WhatsApp">
+                            <i class="ri-whatsapp-line text-base"></i>
+                        </a>
+                    @endif
                 </div>
             </div>
 
             <div>
                 <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-[#C8A14F] mb-3">Quick Navigation</h4>
                 <ul class="space-y-2 text-xs">
-                    <li><a href="#why-us" class="hover:text-[#C8A14F] transition-colors">Why Choose Us</a></li>
-                    <li><a href="#difference" class="hover:text-[#C8A14F] transition-colors">What Makes Us Different</a></li>
-                    <li><a href="#services" class="hover:text-[#C8A14F] transition-colors">Services</a></li>
-                    <li><a href="#mission" class="hover:text-[#C8A14F] transition-colors">Mission & Vision</a></li>
-                    <li><a href="#consultation" class="hover:text-[#C8A14F] transition-colors">Schedule Consultation</a></li>
+                    <li><a href="/about" class="hover:text-[#C8A14F] transition-colors">About Us</a></li>
+                    <li><a href="/services" class="hover:text-[#C8A14F] transition-colors">Services</a></li>
+                    <li><a href="/blog" class="hover:text-[#C8A14F] transition-colors">Latest Articles</a></li>
+                    <li><a href="/contact" class="hover:text-[#C8A14F] transition-colors">Schedule Consultation</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-[#C8A14F] mb-3">Address & Contact</h4>
                 <p class="text-xs text-[#a1a1aa] leading-relaxed mb-2">
-                    3400, CR 19-A, Mount Dora, FL 32757, U.S.
+                    {{ setting('address', '3400, CR 19-A, Mount Dora, FL 32757, U.S.') }}
                 </p>
                 <p class="text-xs text-white font-medium mb-1">
-                    Phone: <a href="tel:13527292727" class="text-[#C8A14F] hover:underline">+1 352 729 2727</a>
+                    Phone: <a href="{{ phone_url() }}" class="text-[#C8A14F] hover:underline">{{ setting('phone', '+1 352 729 2727') }}</a>
                 </p>
-                <p class="text-xs text-white font-medium">
-                    Email: <a href="mailto:info@angelshomehealthfl.com" class="text-[#C8A14F] hover:underline">info@angelshomehealthfl.com</a>
+                @if (setting('whatsapp'))
+                    <p class="text-xs text-white font-medium mb-1">
+                        WhatsApp: <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">{{ setting('whatsapp', '+1 352 729 2727') }}</a>
+                    </p>
+                @endif
+                <p class="text-xs text-white font-medium mb-1">
+                    Email: <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-[#C8A14F] hover:underline">{{ setting('email', 'info@angelshomehealthfl.com') }}</a>
                 </p>
+                @if (setting('working_hours'))
+                    <p class="text-[11px] text-[#71717a] mt-2">
+                        <i class="ri-time-line text-[#C8A14F] mr-1"></i>{{ setting('working_hours') }}
+                    </p>
+                @endif
             </div>
         </div>
 

@@ -10,22 +10,29 @@
             <div class="flex items-center gap-2 sm:gap-4 truncate">
                 <span class="inline-flex items-center gap-1.5 text-[#C8A14F] font-semibold truncate">
                     <i class="ri-map-pin-line text-xs sm:text-sm shrink-0"></i>
-                    <span class="truncate">Mt Dora, FL 32757</span>
+                    <span class="truncate">{{ setting('location', 'Mt Dora, FL 32757') }}</span>
                 </span>
                 <span class="hidden md:inline text-[#27272a]">|</span>
                 <span class="hidden md:inline text-[#8e8e93]">ACHC Accredited & Licensed Provider</span>
             </div>
 
-            <!-- Right Info (Phone & Email) -->
+            <!-- Right Info (Phone, WhatsApp & Email) -->
             <div class="flex items-center gap-3 sm:gap-5 text-[#cbd5e1] shrink-0">
-                <a href="tel:13527292727" class="hover:text-[#C8A14F] transition-colors flex items-center gap-1.5 font-semibold text-[#C8A14F] sm:text-[#cbd5e1]">
+                <a href="{{ phone_url() }}" class="hover:text-[#C8A14F] transition-colors flex items-center gap-1.5 font-semibold text-[#C8A14F] sm:text-[#cbd5e1]">
                     <i class="ri-phone-line text-xs sm:text-sm text-[#C8A14F]"></i>
-                    <span>+1 352 729 2727</span>
+                    <span>{{ setting('phone', '+1 352 729 2727') }}</span>
                 </a>
+                @if (setting('whatsapp'))
+                    <span class="hidden sm:inline text-[#27272a]">|</span>
+                    <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="hidden sm:flex hover:text-emerald-400 transition-colors items-center gap-1 text-emerald-400 font-medium">
+                        <i class="ri-whatsapp-line text-xs sm:text-sm"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                @endif
                 <span class="hidden sm:inline text-[#27272a]">|</span>
-                <a href="mailto:info@angelshomehealthfl.com" class="hidden sm:flex hover:text-[#C8A14F] transition-colors items-center gap-1.5">
+                <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="hidden sm:flex hover:text-[#C8A14F] transition-colors items-center gap-1.5">
                     <i class="ri-mail-line text-xs sm:text-sm text-[#C8A14F]"></i>
-                    <span>info@angelshomehealthfl.com</span>
+                    <span>{{ setting('email', 'info@angelshomehealthfl.com') }}</span>
                 </a>
             </div>
         </div>
@@ -202,14 +209,20 @@
 
         <!-- Bottom Contact Details & CTA Button -->
         <div class="pt-5 border-t border-[#27272a] space-y-4">
-            <div class="space-y-1.5 text-xs text-[#a1a1aa]">
-                <a href="tel:13527292727" class="flex items-center gap-2 text-[#C8A14F] font-bold">
+            <div class="space-y-2 text-xs text-[#a1a1aa]">
+                <a href="{{ phone_url() }}" class="flex items-center gap-2 text-[#C8A14F] font-bold">
                     <i class="ri-phone-fill"></i>
-                    <span>+1 352 729 2727</span>
+                    <span>{{ setting('phone', '+1 352 729 2727') }}</span>
                 </a>
+                @if (setting('whatsapp'))
+                    <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-emerald-400 font-bold">
+                        <i class="ri-whatsapp-fill"></i>
+                        <span>WhatsApp Chat</span>
+                    </a>
+                @endif
                 <div class="flex items-center gap-2 text-[11px]">
                     <i class="ri-map-pin-line text-[#C8A14F]"></i>
-                    <span>3400, CR 19-A, Mount Dora, FL</span>
+                    <span class="truncate">{{ setting('address', '3400, CR 19-A, Mount Dora, FL') }}</span>
                 </div>
             </div>
             <a href="/contact" @click="mobileOpen = false" class="block text-center bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold py-3.5 rounded-full uppercase tracking-wider text-xs shadow-xl transition-all">

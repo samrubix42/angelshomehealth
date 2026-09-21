@@ -131,8 +131,8 @@
                 <span>✦ PHYSICAL & OCCUPATIONAL THERAPY</span>
                 <span>✦ BEHAVIORAL HEALTHCARE</span>
                 <span>✦ CHRONIC DISEASE MANAGEMENT</span>
-                <span>✦ MOUNT DORA, FL & SURROUNDING AREAS</span>
-                <span>✦ CALL TODAY: +1 352 729 2727</span>
+                <span>✦ {{ strtoupper(setting('location', 'Mount Dora, FL & surrounding areas')) }}</span>
+                <span>✦ CALL TODAY: {{ setting('phone', '+1 352 729 2727') }}</span>
                 <span>✦ INDIVIDUALIZED CARE PLANS</span>
             </div>
             <div class="flex items-center gap-12" aria-hidden="true">
@@ -141,8 +141,8 @@
                 <span>✦ PHYSICAL & OCCUPATIONAL THERAPY</span>
                 <span>✦ BEHAVIORAL HEALTHCARE</span>
                 <span>✦ CHRONIC DISEASE MANAGEMENT</span>
-                <span>✦ MOUNT DORA, FL & SURROUNDING AREAS</span>
-                <span>✦ CALL TODAY: +1 352 729 2727</span>
+                <span>✦ {{ strtoupper(setting('location', 'Mount Dora, FL & surrounding areas')) }}</span>
+                <span>✦ CALL TODAY: {{ setting('phone', '+1 352 729 2727') }}</span>
                 <span>✦ INDIVIDUALIZED CARE PLANS</span>
             </div>
         </div>
@@ -422,11 +422,17 @@
                     </div>
 
                     <!-- CTA Buttons -->
-                    <div class="pt-3 flex flex-col sm:flex-row items-center gap-4">
-                        <a href="tel:13527292727" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
+                    <div class="pt-3 flex flex-wrap items-center gap-4">
+                        <a href="{{ phone_url() }}" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
                             <i class="ri-phone-fill text-sm"></i>
-                            <span>Call +1 352 729 2727</span>
+                            <span>Call {{ setting('phone', '+1 352 729 2727') }}</span>
                         </a>
+                        @if (setting('whatsapp'))
+                            <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold px-6 py-3 rounded-full text-xs tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
+                                <i class="ri-whatsapp-line text-sm"></i>
+                                <span>WhatsApp Us</span>
+                            </a>
+                        @endif
                         <a href="#consultation" class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all">
                             Request Free Consultation
                         </a>
@@ -990,7 +996,7 @@
                             </div>
                             <div>
                                 <span class="block text-xs text-[#a1a1aa] uppercase font-heading font-semibold">Direct Dispatch</span>
-                                <a href="tel:13527292727" class="text-sm text-[#C8A14F] font-bold hover:underline">+1 352 729 2727</a>
+                                <a href="{{ phone_url() }}" class="text-sm text-[#C8A14F] font-bold hover:underline">{{ setting('phone', '+1 352 729 2727') }}</a>
                             </div>
                         </div>
                     </div>

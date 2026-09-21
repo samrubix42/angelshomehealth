@@ -140,12 +140,17 @@
                         <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
                             Contact Angels Home Health of Florida today. We offer personalized nursing evaluations and insurance coverage verifications at no obligation.
                         </p>
-                    </div>
-                    <div class="lg:col-span-4 text-center sm:text-right">
-                        <a href="tel:13527292727" class="inline-flex items-center gap-2 bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-6 py-3.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl">
+                    <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-center lg:items-end justify-center gap-3">
+                        <a href="{{ phone_url() }}" class="inline-flex items-center gap-2 bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-6 py-3.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl">
                             <i class="ri-phone-fill text-base"></i>
-                            <span>Call +1 352 729 2727</span>
+                            <span>Call {{ setting('phone', '+1 352 729 2727') }}</span>
                         </a>
+                        @if (setting('whatsapp'))
+                            <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-semibold px-6 py-3 rounded-full text-xs uppercase tracking-wider transition-all shadow-md">
+                                <i class="ri-whatsapp-line text-base"></i>
+                                <span>WhatsApp Us</span>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::livewire('/admin/blogs', 'admin::blog.list')->name('admin.blogs.index');
     Route::livewire('/admin/blogs/create', 'admin::blog.add')->name('admin.blogs.create');
     Route::livewire('/admin/blogs/{blog}/edit', 'admin::blog.update')->name('admin.blogs.edit');
+    Route::livewire('/admin/settings', 'admin::setting')->name('admin.settings');
 
     Route::get('/logout', function () {
         Auth::logout();

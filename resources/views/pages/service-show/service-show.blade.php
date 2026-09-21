@@ -74,20 +74,26 @@
                 </div>
 
                 <!-- Right Quick Call Hero CTA Box -->
-                <div class="lg:col-span-4 bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] shadow-2xl space-y-5 text-center sm:text-left">
+                <div class="lg:col-span-4 bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] shadow-2xl space-y-4 text-center sm:text-left">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 rounded-2xl bg-[#C8A14F] text-[#000000] flex items-center justify-center font-bold text-xl shrink-0">
                             <i class="ri-phone-fill"></i>
                         </div>
                         <div>
                             <p class="text-xs text-[#a1a1aa] font-medium">Need Immediate Nursing Care?</p>
-                            <a href="tel:13527292727" class="font-heading font-extrabold text-xl sm:text-2xl text-[#C8A14F] hover:text-[#d8b260] transition-colors">
-                                +1 352 729 2727
+                            <a href="{{ phone_url() }}" class="font-heading font-extrabold text-xl sm:text-2xl text-[#C8A14F] hover:text-[#d8b260] transition-colors">
+                                {{ setting('phone', '+1 352 729 2727') }}
                             </a>
                         </div>
                     </div>
+                    @if (setting('whatsapp'))
+                        <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 font-heading font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all">
+                            <i class="ri-whatsapp-line text-base"></i>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                    @endif
                     <p class="text-xs text-[#71717a] leading-relaxed">
-                        Speak with our Mount Dora clinical coordinator today to schedule your no-obligation in-home assessment.
+                        Speak with our {{ setting('location', 'Mount Dora') }} clinical coordinator today to schedule your no-obligation in-home assessment.
                     </p>
                     <a href="#inquiry-form" class="block text-center bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold py-3.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-[1.02] shadow-lg">
                         Request Free In-Home Visit
@@ -270,10 +276,16 @@
                 Call our healthcare coordinators today. We handle all insurance verifications, physician communications, and initial nursing evaluations.
             </p>
             <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
-                <a href="tel:13527292727" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
+                <a href="{{ phone_url() }}" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
                     <i class="ri-phone-fill text-base"></i>
-                    <span>Call +1 352 729 2727</span>
+                    <span>Call {{ setting('phone', '+1 352 729 2727') }}</span>
                 </a>
+                @if (setting('whatsapp'))
+                    <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
+                        <i class="ri-whatsapp-line text-base"></i>
+                        <span>WhatsApp Chat</span>
+                    </a>
+                @endif
                 <a href="/contact" class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-wider transition-all">
                     Send Online Message
                 </a>
