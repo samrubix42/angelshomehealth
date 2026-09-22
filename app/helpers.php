@@ -18,7 +18,7 @@ if (! function_exists('whatsapp_url')) {
      */
     function whatsapp_url(?string $number = null, string $text = 'Hello Angels Home Health, I would like to inquire about home healthcare services.'): string
     {
-        $raw = $number ?: (setting('whatsapp_raw') ?: (setting('whatsapp') ?: (setting('phone_raw') ?: setting('phone', '13527292727'))));
+        $raw = $number ?: (setting('whatsapp') ?: (setting('phone') ?: (setting('whatsapp_raw') ?: setting('phone_raw', '13527292727'))));
         $cleanNumber = preg_replace('/[^0-9]/', '', (string) $raw);
 
         return 'https://wa.me/'.$cleanNumber.'?text='.urlencode($text);
@@ -31,8 +31,8 @@ if (! function_exists('phone_url')) {
      */
     function phone_url(?string $number = null): string
     {
-        $raw = $number ?: setting('phone_raw', setting('phone', '+13527292727'));
-        $cleanNumber = preg_replace('/[^0-9+]/', '', $raw);
+        $raw = $number ?: (setting('phone') ?: setting('phone_raw', '+13527292727'));
+        $cleanNumber = preg_replace('/[^0-9+]/', '', (string) $raw);
 
         return 'tel:'.$cleanNumber;
     }

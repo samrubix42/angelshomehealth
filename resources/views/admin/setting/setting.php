@@ -75,12 +75,12 @@ new #[Layout('layouts::admin')] #[Title('General Settings | Angels Home Health A
             'youtube' => 'nullable|string|max:255',
         ]);
 
-        // Auto format raw numbers if empty
-        if (empty($this->phone_raw)) {
-            $this->phone_raw = preg_replace('/[^0-9+]/', '', $this->phone);
-        }
-        if (empty($this->whatsapp_raw) && ! empty($this->whatsapp)) {
+        // Always recompute raw numbers from phone and whatsapp settings
+        $this->phone_raw = preg_replace('/[^0-9+]/', '', $this->phone);
+        if (! empty($this->whatsapp)) {
             $this->whatsapp_raw = preg_replace('/[^0-9]/', '', $this->whatsapp);
+        } else {
+            $this->whatsapp_raw = $this->phone_raw;
         }
 
         $fields = [
