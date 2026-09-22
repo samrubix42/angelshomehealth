@@ -39,7 +39,13 @@ new class extends Component
 
     public function services()
     {
-        return Service::where('is_active', true)->get();
+        $featured = Service::where('is_active', true)->where('is_featured', true)->orderBy('id')->get();
+
+        if ($featured->count() > 0) {
+            return $featured;
+        }
+
+        return Service::where('is_active', true)->orderBy('id')->get();
     }
 
     public function testimonials()

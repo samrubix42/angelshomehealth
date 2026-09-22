@@ -38,7 +38,7 @@
 
         <!-- Filter Buttons -->
         <div class="flex items-center gap-1 w-full sm:w-auto overflow-x-auto">
-            @foreach(['All', 'Active', 'Hidden'] as $filter)
+            @foreach(['All', 'Active', 'Featured', 'Hidden'] as $filter)
                 <button type="button" 
                         wire:click="$set('statusFilter', '{{ $filter }}')"
                         class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap {{ $statusFilter === $filter ? 'bg-zinc-900 text-zinc-50 shadow-xs' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200/70' }}">
@@ -56,7 +56,7 @@
                     <tr class="border-b border-zinc-200 text-xs font-medium text-zinc-500 bg-zinc-50/50">
                         <th class="py-3 px-4">Service Details</th>
                         <th class="py-3 px-4">URL Slug</th>
-                        <th class="py-3 px-4">SEO Metadata</th>
+                        <th class="py-3 px-4">Home Slider</th>
                         <th class="py-3 px-4">Status</th>
                         <th class="py-3 px-4 text-right">Actions</th>
                     </tr>
@@ -70,8 +70,11 @@
                                         <i class="ri-stethoscope-line text-zinc-700"></i>
                                     </div>
                                     <div class="space-y-0.5">
-                                        <h3 class="font-semibold text-sm text-zinc-900 leading-tight">
-                                            {{ $service->title }}
+                                        <h3 class="font-semibold text-sm text-zinc-900 leading-tight flex items-center gap-1.5">
+                                            <span>{{ $service->title }}</span>
+                                            @if($service->is_featured)
+                                                <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded border border-amber-200">Featured</span>
+                                            @endif
                                         </h3>
                                         <p class="text-[11px] text-zinc-500 line-clamp-2 leading-relaxed">
                                             {{ $service->short_description }}
@@ -86,14 +89,11 @@
                                 </span>
                             </td>
 
-                            <td class="py-4 px-4 text-zinc-500 whitespace-nowrap text-[11px]">
-                                @if($service->meta_title)
-                                    <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-medium inline-flex items-center gap-1">
-                                        <i class="ri-check-line"></i> Configured
-                                    </span>
-                                @else
-                                    <span class="text-zinc-400 font-normal">Default</span>
-                                @endif
+                            <td class="py-4 px-4 whitespace-nowrap">
+                                <button wire:click="toggleFeatured({{ $service->id }})" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium border transition-colors shrink-0 {{ $service->is_featured ? 'bg-amber-50 text-amber-800 border-amber-300 font-semibold' : 'bg-zinc-100 text-zinc-500 border-zinc-200 hover:bg-zinc-200' }}" title="Click to toggle home page featured status">
+                                    <i class="{{ $service->is_featured ? 'ri-star-fill text-amber-500' : 'ri-star-line text-zinc-400' }}"></i>
+                                    <span>{{ $service->is_featured ? 'Featured' : 'Standard' }}</span>
+                                </button>
                             </td>
 
                             <td class="py-4 px-4 whitespace-nowrap">

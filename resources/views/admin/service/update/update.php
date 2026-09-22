@@ -32,6 +32,8 @@ new #[Layout('layouts::admin')] #[Title('Edit Service | Admin Portal')] class ex
 
     public bool $is_active = true;
 
+    public bool $is_featured = false;
+
     public function mount(Service $service): void
     {
         $this->serviceId = $service->id;
@@ -44,6 +46,7 @@ new #[Layout('layouts::admin')] #[Title('Edit Service | Admin Portal')] class ex
         $this->meta_keywords = $service->meta_keywords ?? '';
         $this->image = $service->image ?? '';
         $this->is_active = (bool) $service->is_active;
+        $this->is_featured = (bool) $service->is_featured;
     }
 
     public function removeImageUpload(): void
@@ -69,6 +72,7 @@ new #[Layout('layouts::admin')] #[Title('Edit Service | Admin Portal')] class ex
             'image' => 'nullable|string|max:500',
             'imageUpload' => 'nullable|image|max:1024',
             'is_active' => 'boolean',
+            'is_featured' => 'boolean',
         ], [
             'imageUpload.max' => 'The image size must not exceed 1MB (1024 KB).',
             'imageUpload.image' => 'The file must be a valid image format.',

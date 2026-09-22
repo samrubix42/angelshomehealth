@@ -180,11 +180,15 @@
                 @endif
             </div>
 
-            <!-- Active Status Checkbox -->
-            <div class="pt-2">
+            <!-- Active & Featured Checkboxes -->
+            <div class="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <label class="flex items-center gap-2.5 cursor-pointer select-none">
                     <input type="checkbox" wire:model="is_active" class="w-4 h-4 rounded bg-white border-zinc-300 text-zinc-900 focus:ring-zinc-950">
                     <span class="text-xs font-medium text-zinc-700">Publish service immediately on website</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                    <input type="checkbox" wire:model="is_featured" class="w-4 h-4 rounded bg-white border-zinc-300 text-amber-600 focus:ring-amber-500">
+                    <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Feature on Home Page Slider</span>
                 </label>
             </div>
         </div>

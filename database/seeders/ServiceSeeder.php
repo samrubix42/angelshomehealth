@@ -25,6 +25,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'wound care, sterile dressing change, surgical wound healing, RN nursing care',
                 'image' => 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => true,
             ],
             [
                 'title' => 'Pulmonary Care',
@@ -36,6 +37,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'pulmonary care, COPD nursing, oxygen therapy, respiratory care',
                 'image' => 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => true,
             ],
             [
                 'title' => 'Orthopedic Care',
@@ -47,6 +49,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'orthopedic care, joint replacement rehab, knee surgery recovery, mobility physical therapy',
                 'image' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => true,
             ],
             [
                 'title' => 'Nutritional Guidance',
@@ -58,6 +61,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'nutritional guidance, senior diet plan, tube feeding home care, clinical diet support',
                 'image' => 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Medication Education',
@@ -69,6 +73,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'medication education, pill management, drug reconciliation, RN medication administration',
                 'image' => 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Fall Prevention',
@@ -80,6 +85,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'fall prevention, senior home safety, balance physical therapy, hazard audit',
                 'image' => 'https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Diabetic Education',
@@ -91,6 +97,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'diabetic education, glucose tracking, insulin instruction, diabetic foot care',
                 'image' => 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Chronic Disease Management',
@@ -102,6 +109,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'chronic disease management, CHF home care, COPD nursing, hypertension monitoring',
                 'image' => 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => true,
             ],
             [
                 'title' => 'Medical Social Work',
@@ -113,6 +121,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'medical social work, LCSW home health, eldercare planning, community resource assistance',
                 'image' => 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Cardiac Care',
@@ -124,6 +133,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'cardiac care, heart failure home nursing, CHF weight monitoring, blood pressure tracking',
                 'image' => 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => "Alzheimer's and Dementia Care",
@@ -135,6 +145,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'alzheimers care, dementia home support, memory care florida, senior cognitive care',
                 'image' => 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Comprehensive Health Assessments',
@@ -146,6 +157,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'health assessment, nursing evaluation, vital sign check, home health assessment',
                 'image' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Community Resource Assistance',
@@ -157,6 +169,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'community resource assistance, senior assistance florida, medicare guidance, elder resources',
                 'image' => 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Speech Therapy',
@@ -168,6 +181,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'speech therapy, SLP home care, dysphagia rehab, swallowing therapy',
                 'image' => 'https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Occupational Therapy',
@@ -179,6 +193,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'occupational therapy, ADL retraining, adaptive equipment, senior independence',
                 'image' => 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => false,
             ],
             [
                 'title' => 'Physical Therapy',
@@ -190,6 +205,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'physical therapy, PT home health, gait training, mobility rehabilitation',
                 'image' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => true,
             ],
             [
                 'title' => 'Skilled Nursing',
@@ -201,6 +217,7 @@ class ServiceSeeder extends Seeder
                 'meta_keywords' => 'skilled nursing, RN home health, IV therapy, clinical nursing care',
                 'image' => 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&w=800&auto=format&fit=crop',
                 'is_active' => true,
+                'is_featured' => true,
             ],
         ];
 

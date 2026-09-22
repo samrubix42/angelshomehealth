@@ -35,6 +35,7 @@ new #[Layout('layouts::admin')] #[Title('Services Management | Admin Portal')] c
                     ->orWhere('slug', 'like', '%'.$this->search.'%');
             })
             ->when($this->statusFilter === 'Active', fn ($q) => $q->where('is_active', true))
+            ->when($this->statusFilter === 'Featured', fn ($q) => $q->where('is_featured', true))
             ->when($this->statusFilter === 'Hidden', fn ($q) => $q->where('is_active', false))
             ->orderBy('id', 'desc')
             ->get();
@@ -49,6 +50,20 @@ new #[Layout('layouts::admin')] #[Title('Services Management | Admin Portal')] c
         $this->dispatch('toast-show', [
             'message' => "Service '{$service->title}' status updated.",
             'type' => 'info',
+            'position' => 'top-right',
+        ]);
+    }
+
+    public function toggleFeatured(int $id): void
+    {
+        $service = Service::findOrFail($id);
+        $service->is_featured = ! $service->is_featured;
+        $service->save();
+
+        $statusText = $service->is_featured ? 'featured on home page' : 'unfeatured from home page';
+        $this->dispatch('toast-show', [
+            'message' => "Service '{$service->title}' is now {$statusText}.",
+            'type' => 'success',
             'position' => 'top-right',
         ]);
     }

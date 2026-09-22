@@ -31,6 +31,8 @@ new #[Layout('layouts::admin')] #[Title('Add New Service | Admin Portal')] class
 
     public bool $is_active = true;
 
+    public bool $is_featured = false;
+
     public function updatedTitle($value): void
     {
 
@@ -61,6 +63,7 @@ new #[Layout('layouts::admin')] #[Title('Add New Service | Admin Portal')] class
             'image' => 'nullable|string|max:500',
             'imageUpload' => 'nullable|image|max:1024',
             'is_active' => 'boolean',
+            'is_featured' => 'boolean',
         ], [
             'imageUpload.max' => 'The image size must not exceed 1MB (1024 KB).',
             'imageUpload.image' => 'The file must be a valid image format.',
