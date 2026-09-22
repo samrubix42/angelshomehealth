@@ -104,6 +104,8 @@
 
     <x-public.footer.footer />
 
+    <livewire:public.consultation-modal />
+
     <!-- Floating Sticky WhatsApp Circular Icon Button -->
     <a href="{{ whatsapp_url() }}"
        target="_blank"

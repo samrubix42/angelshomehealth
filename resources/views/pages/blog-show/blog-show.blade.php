@@ -6,12 +6,12 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
             <!-- Breadcrumb Navigation -->
             <nav class="flex items-center gap-2 text-xs font-medium text-[#71717a] overflow-x-auto py-1">
-                <a href="/" class="hover:text-[#C8A14F] transition-colors flex items-center gap-1">
+                <a href="/" wire:navigate class="hover:text-[#C8A14F] transition-colors flex items-center gap-1">
                     <i class="ri-home-4-line text-sm"></i>
                     <span>Home</span>
                 </a>
                 <i class="ri-arrow-right-s-line text-xs text-[#3f3f46]"></i>
-                <a href="/blog" class="hover:text-[#C8A14F] transition-colors">
+                <a href="/blog" wire:navigate class="hover:text-[#C8A14F] transition-colors">
                     <span>Journal & Blog</span>
                 </a>
                 <i class="ri-arrow-right-s-line text-xs text-[#3f3f46]"></i>
@@ -107,7 +107,7 @@
                                 <span>Topics:</span>
                             </span>
                             @foreach($this->tags as $tag)
-                                <a href="/blog" class="text-xs font-semibold text-[#a1a1aa] hover:text-[#C8A14F] bg-[#121212] border border-[#27272a] hover:border-[#C8A14F]/40 px-3 py-1 rounded-full transition-colors">
+                                <a href="/blog" wire:navigate class="text-xs font-semibold text-[#a1a1aa] hover:text-[#C8A14F] bg-[#121212] border border-[#27272a] hover:border-[#C8A14F]/40 px-3 py-1 rounded-full transition-colors">
                                     #{{ $tag }}
                                 </a>
                             @endforeach
@@ -172,7 +172,7 @@
                         <span class="text-xs font-bold text-[#C8A14F] uppercase tracking-wider">Keep Reading</span>
                         <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-white">Related Health Insights</h2>
                     </div>
-                    <a href="/blog" class="text-xs font-bold text-[#C8A14F] hover:text-[#d8b260] flex items-center gap-1 transition-colors">
+                    <a href="/blog" wire:navigate class="text-xs font-bold text-[#C8A14F] hover:text-[#d8b260] flex items-center gap-1 transition-colors">
                         <span>View All Articles</span>
                         <i class="ri-arrow-right-line"></i>
                     </a>
@@ -194,7 +194,7 @@
                                         <span>{{ $rel->created_at->format('M d, Y') }}</span>
                                     </div>
                                     <h3 class="font-heading font-bold text-lg text-white group-hover:text-[#C8A14F] transition-colors leading-snug line-clamp-2">
-                                        <a href="/blog/{{ $rel->slug }}">
+                                        <a href="/blog/{{ $rel->slug }}" wire:navigate>
                                             {{ $rel->title }}
                                         </a>
                                     </h3>
@@ -202,7 +202,7 @@
                             </div>
 
                             <div class="px-6 pb-6 pt-2">
-                                <a href="/blog/{{ $rel->slug }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:text-[#d8b260] transition-colors">
+                                <a href="/blog/{{ $rel->slug }}" wire:navigate class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:text-[#d8b260] transition-colors">
                                     <span>Read Full Article</span>
                                     <i class="ri-arrow-right-line"></i>
                                 </a>

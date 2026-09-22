@@ -44,25 +44,25 @@
             <div class="flex items-center justify-between h-14 sm:h-16 lg:h-18">
                 
                 <!-- Brand Logo (Image ONLY) -->
-                <a href="/" class="flex items-center py-1 group">
+                <a href="/" wire:navigate class="flex items-center py-1 group">
                     <img src="/logo.png" alt="Angels Home Health Logo" class="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105">
                 </a>
 
                 <!-- Desktop Navigation Links -->
                 <nav class="hidden lg:flex items-center gap-8 text-sm font-heading font-medium text-[#a1a1aa]">
                     <!-- Home -->
-                    <a href="/" class="{{ request()->is('/') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors">
+                    <a href="/" wire:navigate class="{{ request()->is('/') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors">
                         Home
                     </a>
 
                     <!-- About Us Link -->
-                    <a href="/about" class="{{ request()->is('about*') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors">
+                    <a href="/about" wire:navigate class="{{ request()->is('about*') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors">
                         About Us
                     </a>
 
                     <!-- Services Dropdown ONLY (Text Only, No Icons) -->
                     <div class="relative" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
-                        <a href="/services" 
+                        <a href="/services" wire:navigate 
                            class="flex items-center gap-1.5 {{ request()->is('services*') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors py-2">
                             <span>Services</span>
                             <i class="ri-arrow-down-s-line text-base transition-transform duration-200" :class="servicesOpen ? 'rotate-180 text-[#C8A14F]' : ''"></i>
@@ -77,11 +77,11 @@
                              x-transition:leave-end="opacity-0 translate-y-2"
                              x-cloak
                              class="absolute left-0 mt-0 w-64 max-h-96 overflow-y-auto bg-[#0a0a0a] border border-[#27272a] rounded-2xl shadow-2xl p-2 z-50 space-y-1">
-                            <a href="/services" class="block px-4 py-2.5 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs font-bold text-[#C8A14F] border-b border-[#1f1f23] transition-colors">
+                            <a href="/services" wire:navigate class="block px-4 py-2.5 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs font-bold text-[#C8A14F] border-b border-[#1f1f23] transition-colors">
                                 All Services Overview
                             </a>
                             @foreach(\App\Models\Service::where('is_active', true)->orderBy('id')->get() as $navService)
-                                <a href="/services/{{ $navService->slug }}" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
+                                <a href="/services/{{ $navService->slug }}" wire:navigate class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
                                     {{ $navService->title }}
                                 </a>
                             @endforeach
@@ -89,21 +89,21 @@
                     </div>
 
                     <!-- Blog Link -->
-                    <a href="/blog" class="{{ request()->is('blog*') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors">
+                    <a href="/blog" wire:navigate class="{{ request()->is('blog*') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors">
                         Blog
                     </a>
 
                     <!-- Contact Link -->
-                    <a href="/contact" class="{{ request()->is('contact*') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors">
+                    <a href="/contact" wire:navigate class="{{ request()->is('contact*') ? 'text-[#C8A14F] font-semibold' : 'hover:text-[#C8A14F]' }} transition-colors">
                         Contact
                     </a>
                 </nav>
 
                 <!-- Header CTA Action -->
                 <div class="hidden sm:flex items-center gap-4">
-                    <a href="/contact" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-5 py-2 rounded-full text-xs transition-all transform hover:scale-105 uppercase tracking-wider shadow-lg">
+                    <button @click="$dispatch('open-consultation-modal')" type="button" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-5 py-2 rounded-full text-xs transition-all transform hover:scale-105 uppercase tracking-wider shadow-lg">
                         Schedule Consultation
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Mobile Menu Toggle Button -->
@@ -140,7 +140,7 @@
         
         <!-- Top Bar: Logo & Close Button -->
         <div class="flex items-center justify-between pb-6 border-b border-[#27272a]">
-            <a href="/" @click="mobileOpen = false" class="flex items-center">
+            <a href="/" wire:navigate @click="mobileOpen = false" class="flex items-center">
                 <img src="/logo.png" alt="Angels Home Health Logo" class="h-9 w-auto object-contain">
             </a>
             <button @click="mobileOpen = false" type="button" class="w-9 h-9 rounded-full bg-[#121212] border border-[#27272a] text-[#a1a1aa] hover:text-[#C8A14F] hover:border-[#C8A14F] flex items-center justify-center transition-all focus:outline-none" aria-label="Close menu">
@@ -153,14 +153,14 @@
             
             <!-- Home Link -->
             <div>
-                <a href="/" @click="mobileOpen = false" class="block font-heading font-bold text-xl text-[#C8A14F] transition-colors">
+                <a href="/" wire:navigate @click="mobileOpen = false" class="block font-heading font-bold text-xl text-[#C8A14F] transition-colors">
                     Home
                 </a>
             </div>
 
             <!-- About Us Link -->
             <div class="border-t border-[#1f1f23] pt-3.5">
-                <a href="/about" @click="mobileOpen = false" class="block font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
+                <a href="/about" wire:navigate @click="mobileOpen = false" class="block font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
                     About Us
                 </a>
             </div>
@@ -172,23 +172,23 @@
                     <i class="ri-arrow-down-s-line text-xl text-[#C8A14F] transition-transform duration-200" :class="mobileServicesOpen ? 'rotate-180' : ''"></i>
                 </button>
                 <div x-show="mobileServicesOpen" x-collapse class="pl-3 pt-3 space-y-2.5 font-medium text-xs text-[#a1a1aa] max-h-80 overflow-y-auto">
-                    <a href="/services" @click="mobileOpen = false" class="block text-[#C8A14F] font-bold py-1 border-b border-[#1f1f23]">All Services Overview</a>
+                    <a href="/services" wire:navigate @click="mobileOpen = false" class="block text-[#C8A14F] font-bold py-1 border-b border-[#1f1f23]">All Services Overview</a>
                     @foreach(\App\Models\Service::where('is_active', true)->orderBy('id')->get() as $navService)
-                        <a href="/services/{{ $navService->slug }}" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">{{ $navService->title }}</a>
+                        <a href="/services/{{ $navService->slug }}" wire:navigate @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">{{ $navService->title }}</a>
                     @endforeach
                 </div>
             </div>
 
             <!-- Blog Link -->
             <div class="border-t border-[#1f1f23] pt-3.5">
-                <a href="/blog" @click="mobileOpen = false" class="block font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
+                <a href="/blog" wire:navigate @click="mobileOpen = false" class="block font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
                     Blog
                 </a>
             </div>
 
             <!-- Contact Link -->
             <div class="border-t border-[#1f1f23] pt-3.5">
-                <a href="/contact" @click="mobileOpen = false" class="block font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
+                <a href="/contact" wire:navigate @click="mobileOpen = false" class="block font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
                     Contact
                 </a>
             </div>
@@ -213,9 +213,9 @@
                     <span class="truncate">{{ setting('address', '3400, CR 19-A, Mount Dora, FL') }}</span>
                 </div>
             </div>
-            <a href="/contact" @click="mobileOpen = false" class="block text-center bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold py-3.5 rounded-full uppercase tracking-wider text-xs shadow-xl transition-all">
+            <button @click="$dispatch('open-consultation-modal'); mobileOpen = false" type="button" class="w-full text-center bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold py-3.5 rounded-full uppercase tracking-wider text-xs shadow-xl transition-all">
                 Schedule Consultation
-            </a>
+            </button>
         </div>
 
     </div>

@@ -22,7 +22,6 @@ new class extends Component
 
     public bool $formSubmitted = false;
 
-  
     public function with(): array
     {
         return [

@@ -8,6 +8,6 @@ new class extends Component
 
     public function toggleMobileMenu(): void
     {
-        $this->mobileMenuOpen = !$this->mobileMenuOpen;
+        $this->mobileMenuOpen = ! $this->mobileMenuOpen;
     }
 };

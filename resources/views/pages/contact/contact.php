@@ -49,4 +49,3 @@ new #[Layout('layouts::app')] #[Title('Contact Us | Angels Home Health of Florid
         $this->formSubmitted = true;
     }
 };
-

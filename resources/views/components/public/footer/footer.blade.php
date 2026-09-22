@@ -47,10 +47,10 @@
             <div>
                 <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-[#C8A14F] mb-3">Quick Navigation</h4>
                 <ul class="space-y-2 text-xs">
-                    <li><a href="/about" class="hover:text-[#C8A14F] transition-colors">About Us</a></li>
-                    <li><a href="/services" class="hover:text-[#C8A14F] transition-colors">Services</a></li>
-                    <li><a href="/blog" class="hover:text-[#C8A14F] transition-colors">Latest Articles</a></li>
-                    <li><a href="/contact" class="hover:text-[#C8A14F] transition-colors">Schedule Consultation</a></li>
+                    <li><a href="/about" wire:navigate class="hover:text-[#C8A14F] transition-colors">About Us</a></li>
+                    <li><a href="/services" wire:navigate class="hover:text-[#C8A14F] transition-colors">Services</a></li>
+                    <li><a href="/blog" wire:navigate class="hover:text-[#C8A14F] transition-colors">Latest Articles</a></li>
+                    <li><button @click="$dispatch('open-consultation-modal')" type="button" class="hover:text-[#C8A14F] transition-colors text-left focus:outline-none">Schedule Consultation</button></li>
                 </ul>
             </div>
 

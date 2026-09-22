@@ -14,4 +14,3 @@ new #[Layout('layouts::app')] #[Title('Our Services | Angels Home Health of Flor
         return Service::where('is_active', true)->orderBy('id')->get();
     }
 };
-

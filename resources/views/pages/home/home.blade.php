@@ -330,7 +330,7 @@
                                     </div>
                                 </div>
                                 <div class="px-6 pb-6 pt-2">
-                                    <a href="/services/{{ $service->slug }}" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                    <a href="/services/{{ $service->slug }}" wire:navigate class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
                                         <span>Learn More</span>
                                         <i class="ri-arrow-right-line"></i>
                                     </a>
@@ -449,9 +449,9 @@
                                 <span>WhatsApp Us</span>
                             </a>
                         @endif
-                        <a href="#consultation" class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all">
+                        <button @click="$dispatch('open-consultation-modal')" type="button" class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all">
                             Request Free Consultation
-                        </a>
+                        </button>
                     </div>
                 </div>
 

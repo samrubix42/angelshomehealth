@@ -22,9 +22,9 @@
                     </p>
 
                     <div class="pt-2 flex flex-wrap items-center gap-4">
-                        <a href="/contact" class="w-full sm:w-auto bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-widest text-center transition-all transform hover:scale-105 shadow-xl">
+                        <button @click="$dispatch('open-consultation-modal')" type="button" class="w-full sm:w-auto bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-widest text-center transition-all transform hover:scale-105 shadow-xl">
                             Request Free Consultation
-                        </a>
+                        </button>
                         <a href="{{ phone_url() }}" class="w-full sm:w-auto bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-8 py-4 rounded-full text-xs uppercase tracking-widest text-center transition-all flex items-center justify-center gap-2">
                             <i class="ri-phone-fill text-[#C8A14F]"></i>
                             <span>{{ setting('phone', '+1 352 729 2727') }}</span>
@@ -271,9 +271,9 @@
                 Speak directly with our registered nursing coordinator in Mount Dora today.
             </p>
             <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
-                <a href="/contact" class="w-full sm:w-auto bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-xs uppercase tracking-widest transition-all transform hover:scale-105 shadow-xl">
+                <button @click="$dispatch('open-consultation-modal')" type="button" class="w-full sm:w-auto bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-xs uppercase tracking-widest transition-all transform hover:scale-105 shadow-xl">
                     Schedule Free Consultation
-                </a>
+                </button>
                 <a href="{{ phone_url() }}" class="w-full sm:w-auto bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
                     <i class="ri-phone-fill text-[#C8A14F]"></i>
                     <span>{{ setting('phone', '+1 352 729 2727') }}</span>

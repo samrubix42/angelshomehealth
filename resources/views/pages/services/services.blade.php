@@ -43,7 +43,7 @@
 
                             <div class="p-6 sm:p-7 text-center space-y-3">
                                 <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors leading-snug">
-                                    <a href="/services/{{ $service->slug }}">
+                                    <a href="/services/{{ $service->slug }}" wire:navigate>
                                         {{ $service->title }}
                                     </a>
                                 </h3>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="p-6 pt-0 text-center">
-                            <a href="/services/{{ $service->slug }}" class="inline-flex items-center justify-center bg-gradient-to-r from-[#C8A14F] to-[#e5be6b] hover:from-[#d8b260] hover:to-[#f0c878] text-[#000000] font-heading font-bold px-8 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto">
+                            <a href="/services/{{ $service->slug }}" wire:navigate class="inline-flex items-center justify-center bg-gradient-to-r from-[#C8A14F] to-[#e5be6b] hover:from-[#d8b260] hover:to-[#f0c878] text-[#000000] font-heading font-bold px-8 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto">
                                 Read More
                             </a>
                         </div>
@@ -78,9 +78,9 @@
             <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Need a Customized In-Home Medical Plan?</h2>
             <p class="text-sm sm:text-base text-[#a1a1aa]">Our nursing team will assess your unique requirements and create a personalized plan.</p>
             <div class="pt-2 flex justify-center gap-4">
-                <a href="/contact" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-8 py-3.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl">
+                <button @click="$dispatch('open-consultation-modal')" type="button" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-8 py-3.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl">
                     Schedule Free Consultation
-                </a>
+                </button>
             </div>
         </div>
     </section>

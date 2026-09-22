@@ -8,8 +8,11 @@ use Livewire\Component;
 new #[Layout('layouts::auth')] #[Title('Admin Login | Angels Home Health of Florida')] class extends Component
 {
     public string $email = 'admin@angelshomehealth.com';
+
     public string $password = '';
+
     public bool $remember = true;
+
     public string $errorMessage = '';
 
     public function fillDemoCredentials(): void
@@ -30,7 +33,7 @@ new #[Layout('layouts::auth')] #[Title('Admin Login | Angels Home Health of Flor
             session()->regenerate();
             $this->redirect('/admin');
         } else {
-            if ($this->email === 'admin@angelshomehealth.com' && ($this->password === 'admin123' || !empty($this->password))) {
+            if ($this->email === 'admin@angelshomehealth.com' && ($this->password === 'admin123' || ! empty($this->password))) {
                 $this->redirect('/admin');
             } else {
                 $this->errorMessage = 'Invalid administrative credentials. Please check your email and password.';

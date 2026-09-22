@@ -6,12 +6,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
             <!-- Breadcrumbs -->
             <nav class="flex items-center gap-2 text-xs font-medium text-[#71717a] overflow-x-auto py-1">
-                <a href="/" class="hover:text-[#C8A14F] transition-colors flex items-center gap-1">
+                <a href="/" wire:navigate class="hover:text-[#C8A14F] transition-colors flex items-center gap-1">
                     <i class="ri-home-4-line text-sm"></i>
                     <span>Home</span>
                 </a>
                 <i class="ri-arrow-right-s-line text-xs text-[#3f3f46]"></i>
-                <a href="/services" class="hover:text-[#C8A14F] transition-colors">
+                <a href="/services" wire:navigate class="hover:text-[#C8A14F] transition-colors">
                     <span>Services</span>
                 </a>
                 <i class="ri-arrow-right-s-line text-xs text-[#3f3f46]"></i>
@@ -194,7 +194,7 @@
 
                             <div class="space-y-2 text-xs">
                                 @foreach($this->otherServices as $other)
-                                    <a href="/services/{{ $other->slug }}" class="flex items-center justify-between p-3 rounded-xl border bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30 transition-colors">
+                                    <a href="/services/{{ $other->slug }}" wire:navigate class="flex items-center justify-between p-3 rounded-xl border bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30 transition-colors">
                                         <span>{{ $other->title }}</span>
                                         <i class="ri-arrow-right-s-line"></i>
                                     </a>
@@ -243,7 +243,7 @@
                         <span>WhatsApp Chat</span>
                     </a>
                 @endif
-                <a href="/contact" class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-wider transition-all">
+                <a href="/contact" wire:navigate class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] font-heading font-bold px-8 py-4 rounded-full text-xs uppercase tracking-wider transition-all">
                     Send Online Message
                 </a>
             </div>

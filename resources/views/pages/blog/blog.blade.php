@@ -72,7 +72,7 @@
                             </div>
 
                             <h2 class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white hover:text-[#C8A14F] transition-colors leading-tight">
-                                <a href="/blog/{{ $this->featuredBlog->slug }}">
+                                <a href="/blog/{{ $this->featuredBlog->slug }}" wire:navigate>
                                     {{ $this->featuredBlog->title }}
                                 </a>
                             </h2>
@@ -89,7 +89,7 @@
                                     <span class="text-xs text-[#d4d4d8] font-semibold">By Medical Clinical Team</span>
                                 </div>
 
-                                <a href="/blog/{{ $this->featuredBlog->slug }}" class="inline-flex items-center gap-2 bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg">
+                                <a href="/blog/{{ $this->featuredBlog->slug }}" wire:navigate class="inline-flex items-center gap-2 bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg">
                                     <span>Read Article</span>
                                     <i class="ri-arrow-right-line"></i>
                                 </a>
@@ -145,7 +145,7 @@
                                     <span>{{ $this->getReadTime($blog->description) }}</span>
                                 </div>
                                 <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors leading-snug">
-                                    <a href="/blog/{{ $blog->slug }}">
+                                    <a href="/blog/{{ $blog->slug }}" wire:navigate>
                                         {{ $blog->title }}
                                     </a>
                                 </h3>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="px-6 pb-6 pt-2 border-t border-[#1f1f23] flex items-center justify-between mt-4">
                             <span class="text-xs text-[#71717a]">By Clinical Care Team</span>
-                            <a href="/blog/{{ $blog->slug }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
+                            <a href="/blog/{{ $blog->slug }}" wire:navigate class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
                                 <span>Read</span>
                                 <i class="ri-arrow-right-line"></i>
                             </a>
