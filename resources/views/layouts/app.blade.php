@@ -102,6 +102,8 @@
         @yield('content', $slot ?? '')
     </main>
 
+    <x-public.footer.footer />
+
     <!-- Floating Sticky WhatsApp Circular Icon Button -->
     <a href="{{ whatsapp_url() }}"
        target="_blank"
