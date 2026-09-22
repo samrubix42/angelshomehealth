@@ -239,7 +239,7 @@
                     <p class="text-xs text-[#d4d4d8] leading-relaxed">
                         {{ setting('address', '3400, CR 19-A, Mount Dora, FL 32757') }}. Serving Lake County & Statewide Florida.
                     </p>
-                    <a href="https://maps.google.com/?q={{ urlencode(setting('address', '3400 CR 19-A, Mount Dora, FL 32757')) }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
+                    <a href="{{ setting('map_url', setting('google_map_url', 'https://maps.google.com/?q=' . urlencode(setting('address', '3400 CR 19-A, Mount Dora, FL 32757')))) }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
                         <span>Open in Google Maps</span>
                         <i class="ri-external-link-line"></i>
                     </a>
@@ -302,7 +302,7 @@
                         <i class="ri-add-line text-xl text-[#C8A14F] transition-transform duration-200" :class="activeAccordion === 4 ? 'rotate-45' : ''"></i>
                     </button>
                     <div x-show="activeAccordion === 4" x-collapse class="px-6 pb-6 text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        We accept Medicare, major private health insurances, long-term care insurance, and private pay plans. Call our billing team at +1 352 729 2727 to verify your insurance coverage immediately.
+                        We accept Medicare, major private health insurances, long-term care insurance, and private pay plans. Call our billing team at {{ setting('phone', '+1 352 729 2727') }} to verify your insurance coverage immediately.
                     </div>
                 </div>
 
