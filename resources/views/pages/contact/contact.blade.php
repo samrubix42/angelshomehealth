@@ -47,7 +47,7 @@
             <div class="grid lg:grid-cols-12 gap-12">
                 
                 <!-- LEFT COLUMN: Contact Form Card -->
-                <div class="lg:col-span-7 bg-[#0a0a0a] p-8 sm:p-10 rounded-3xl border border-[#27272a] shadow-2xl relative">
+                <div class="lg:col-span-7 bg-[#0a0a0a] p-6 sm:p-10 rounded-3xl border border-[#27272a] shadow-2xl relative">
                     <div class="mb-8 space-y-2">
                         <span class="text-xs font-bold text-[#C8A14F] uppercase tracking-widest">Care Assessment</span>
                         <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-white">Schedule Your Free Consultation</h2>

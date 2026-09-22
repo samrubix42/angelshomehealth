@@ -232,39 +232,57 @@
         </div>
     </section>
 
-    <!-- 4.5. OUR IN-HOME HEALTH SERVICES SECTION (AUTO-SLIDING CAROUSEL) -->
+    <!-- 4.5. OUR IN-HOME HEALTH SERVICES SECTION (AUTO-SLIDING 1-BY-1 CAROUSEL) -->
     <section id="services" 
              x-data="{ 
                  shown: false,
                  serviceSlide: 0, 
-                 totalServiceSlides: {{ max(1, (int) ceil($services->count() / 3)) }}, 
+                 totalServices: {{ $services->count() }}, 
                  serviceTimer: null,
+                 stepPercent() {
+                     if (window.innerWidth >= 1024) return 33.333333;
+                     if (window.innerWidth >= 768) return 50;
+                     return 100;
+                 },
+                 maxSlide() {
+                     if (window.innerWidth >= 1024) return Math.max(0, this.totalServices - 3);
+                     if (window.innerWidth >= 768) return Math.max(0, this.totalServices - 2);
+                     return Math.max(0, this.totalServices - 1);
+                 },
                  startAutoSlide() {
-                     if (this.totalServiceSlides <= 1) return;
+                     if (this.totalServices <= 1) return;
                      this.serviceTimer = setInterval(() => {
-                         this.serviceSlide = (this.serviceSlide + 1) % this.totalServiceSlides;
-                     }, 7000);
+                         this.next();
+                     }, 6000);
                  },
                  stopAutoSlide() {
                      if (this.serviceTimer) clearInterval(this.serviceTimer);
                  },
                  goTo(index) {
-                     this.serviceSlide = index;
+                     this.serviceSlide = Math.min(index, this.maxSlide());
                      this.stopAutoSlide();
                      this.startAutoSlide();
                  },
                  next() {
-                     this.serviceSlide = (this.serviceSlide + 1) % this.totalServiceSlides;
+                     if (this.serviceSlide >= this.maxSlide()) {
+                         this.serviceSlide = 0;
+                     } else {
+                         this.serviceSlide++;
+                     }
                      this.stopAutoSlide();
                      this.startAutoSlide();
                  },
                  prev() {
-                     this.serviceSlide = (this.serviceSlide - 1 + this.totalServiceSlides) % this.totalServiceSlides;
+                     if (this.serviceSlide <= 0) {
+                         this.serviceSlide = this.maxSlide();
+                     } else {
+                         this.serviceSlide--;
+                     }
                      this.stopAutoSlide();
                      this.startAutoSlide();
                  }
              }"
-             x-init="startAutoSlide(); const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             x-init="startAutoSlide(); const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el); window.addEventListener('resize', () => { if (serviceSlide > maxSlide()) serviceSlide = maxSlide(); });"
              @mouseenter="stopAutoSlide()"
              @mouseleave="startAutoSlide()"
              class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden transition-all duration-1000 transform"
@@ -283,43 +301,41 @@
                 </p>
             </div>
 
-            <!-- Dynamic Services Slider Track -->
+            <!-- Dynamic Services Slider Track (1-by-1 Responsive Track) -->
             <div class="overflow-hidden w-full">
-                <div class="flex transition-transform duration-700 ease-in-out"
-                     :style="'transform: translateX(-' + (serviceSlide * 100) + '%)'">
+                <div class="flex transition-transform duration-700 ease-in-out -mx-3"
+                     :style="'transform: translateX(-' + (serviceSlide * stepPercent()) + '%)'">
                     
-                    @foreach ($services->chunk(3) as $chunk)
-                        <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1">
-                            @foreach ($chunk as $service)
-                                <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5">
-                                    <div>
-                                        <div class="relative h-52 w-full overflow-hidden bg-[#000000]">
-                                            <img src="{{ $service->image ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800' }}" 
-                                                 alt="{{ $service->title }}" 
-                                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800';">
-                                            <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
-                                            <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                                Clinical Service
-                                            </span>
-                                        </div>
-                                        <div class="p-6 sm:p-7 space-y-4">
-                                            <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
-                                                {{ $service->title }}
-                                            </h3>
-                                            <p class="text-xs text-[#a1a1aa] leading-relaxed line-clamp-3">
-                                                {{ $service->short_description }}
-                                            </p>
-                                        </div>
+                    @foreach ($services as $service)
+                        <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-3">
+                            <div class="bg-[#121212] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 overflow-hidden group flex flex-col justify-between shadow-2xl hover:shadow-[0_10px_30px_rgba(200,161,79,0.15)] transform hover:-translate-y-1.5 h-full">
+                                <div>
+                                    <div class="relative h-52 w-full overflow-hidden bg-[#000000]">
+                                        <img src="{{ $service->image ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800' }}" 
+                                             alt="{{ $service->title }}" 
+                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800';">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent"></div>
+                                        <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                            Clinical Service
+                                        </span>
                                     </div>
-                                    <div class="px-6 pb-6 pt-2">
-                                        <a href="/services/{{ $service->slug }}" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
-                                            <span>Learn More</span>
-                                            <i class="ri-arrow-right-line"></i>
-                                        </a>
+                                    <div class="p-6 sm:p-7 space-y-4">
+                                        <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors">
+                                            {{ $service->title }}
+                                        </h3>
+                                        <p class="text-xs text-[#a1a1aa] leading-relaxed line-clamp-3">
+                                            {{ $service->short_description }}
+                                        </p>
                                     </div>
                                 </div>
-                            @endforeach
+                                <div class="px-6 pb-6 pt-2">
+                                    <a href="/services/{{ $service->slug }}" class="w-full py-3 bg-[#000000] hover:bg-[#C8A14F] text-[#C8A14F] hover:text-[#000000] border border-[#C8A14F]/40 rounded-full text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                                        <span>Learn More</span>
+                                        <i class="ri-arrow-right-line"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
 
@@ -327,18 +343,18 @@
             </div>
 
             <!-- Slider Controls (Rounded Pill Indicators + Arrows) -->
-            @if ($services->count() > 3)
+            @if ($services->count() > 1)
                 <div class="flex items-center justify-center gap-4 mt-12">
                     <button type="button" @click="prev()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Previous services">
                         <i class="ri-arrow-left-s-line text-xl"></i>
                     </button>
                     <div class="flex items-center gap-2">
-                        <template x-for="i in totalServiceSlides" :key="i">
+                        <template x-for="i in (maxSlide() + 1)" :key="i">
                             <button type="button" 
                                     @click="goTo(i - 1)" 
                                     :class="serviceSlide === (i - 1) ? 'w-8 bg-[#C8A14F]' : 'w-2.5 bg-[#27272a] hover:bg-[#C8A14F]/50'" 
                                     class="h-2.5 rounded-full transition-all duration-300" 
-                                    :aria-label="'Go to service set ' + i"></button>
+                                    :aria-label="'Go to service slide ' + i"></button>
                         </template>
                     </div>
                     <button type="button" @click="next()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Next services">
@@ -781,39 +797,57 @@
         </div>
     </section>
 
-    <!-- 8.4. AUTO-SLIDING TESTIMONIALS SECTION (3 CARDS AT A TIME) -->
+    <!-- 8.4. AUTO-SLIDING TESTIMONIALS SECTION (RESPONSIVE 1-BY-1 CAROUSEL SLIDER) -->
     <section id="testimonials" 
              x-data="{ 
                  shown: false,
                  activeSlide: 0, 
-                 totalSlides: {{ max(1, (int) ceil($testimonials->count() / 3)) }}, 
+                 totalTestimonials: {{ $testimonials->count() }}, 
                  timer: null,
+                 stepPercent() {
+                     if (window.innerWidth >= 1024) return 33.333333;
+                     if (window.innerWidth >= 768) return 50;
+                     return 100;
+                 },
+                 maxSlide() {
+                     if (window.innerWidth >= 1024) return Math.max(0, this.totalTestimonials - 3);
+                     if (window.innerWidth >= 768) return Math.max(0, this.totalTestimonials - 2);
+                     return Math.max(0, this.totalTestimonials - 1);
+                 },
                  startAutoSlide() {
-                     if (this.totalSlides <= 1) return;
+                     if (this.totalTestimonials <= 1) return;
                      this.timer = setInterval(() => {
-                         this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
+                         this.next();
                      }, 6000);
                  },
                  stopAutoSlide() {
                      if (this.timer) clearInterval(this.timer);
                  },
                  goTo(index) {
-                     this.activeSlide = index;
+                     this.activeSlide = Math.min(index, this.maxSlide());
                      this.stopAutoSlide();
                      this.startAutoSlide();
                  },
                  next() {
-                     this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
+                     if (this.activeSlide >= this.maxSlide()) {
+                         this.activeSlide = 0;
+                     } else {
+                         this.activeSlide++;
+                     }
                      this.stopAutoSlide();
                      this.startAutoSlide();
                  },
                  prev() {
-                     this.activeSlide = (this.activeSlide - 1 + this.totalSlides) % this.totalSlides;
+                     if (this.activeSlide <= 0) {
+                         this.activeSlide = this.maxSlide();
+                     } else {
+                         this.activeSlide--;
+                     }
                      this.stopAutoSlide();
                      this.startAutoSlide();
                  }
              }"
-             x-init="startAutoSlide(); const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
+             x-init="startAutoSlide(); const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el); window.addEventListener('resize', () => { if (activeSlide > maxSlide()) activeSlide = maxSlide(); });"
              @mouseenter="stopAutoSlide()"
              @mouseleave="startAutoSlide()"
              class="py-20 md:py-28 bg-[#0a0a0a] border-b border-[#27272a] relative overflow-hidden transition-all duration-1000 transform"
@@ -829,34 +863,32 @@
                 </p>
             </div>
 
-            <!-- Continuous Horizontal Carousel Slider Track -->
+            <!-- Continuous Horizontal Carousel Slider Track (1-by-1 Responsive Track) -->
             <div class="overflow-hidden w-full">
-                <div class="flex transition-transform duration-700 ease-in-out"
-                     :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
+                <div class="flex transition-transform duration-700 ease-in-out -mx-3"
+                     :style="'transform: translateX(-' + (activeSlide * stepPercent()) + '%)'">
                     
-                    @foreach ($testimonials->chunk(3) as $chunk)
-                        <div class="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-1">
-                            @foreach ($chunk as $testimonial)
-                                <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl">
-                                    <div class="space-y-4">
-                                        <div class="flex items-center justify-between">
-                                            <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
-                                                @for ($i = 1; $i <= 5; $i++)
-                                                    <i class="ri-star-fill {{ $i <= $testimonial->rating ? 'text-[#C8A14F]' : 'text-zinc-600' }}"></i>
-                                                @endfor
-                                            </div>
-                                            <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
+                    @foreach ($testimonials as $testimonial)
+                        <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-3">
+                            <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl h-full">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-1 text-[#C8A14F] text-sm">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <i class="ri-star-fill {{ $i <= $testimonial->rating ? 'text-[#C8A14F]' : 'text-zinc-600' }}"></i>
+                                            @endfor
                                         </div>
-                                        <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
-                                            "{{ $testimonial->review }}"
-                                        </blockquote>
+                                        <i class="ri-double-quotes-l text-3xl text-[#C8A14F]/30"></i>
                                     </div>
-                                    <div class="pt-4 border-t border-[#27272a]">
-                                        <h4 class="font-heading font-bold text-white text-base">{{ $testimonial->name }}</h4>
-                                        <span class="text-xs text-[#C8A14F] font-semibold">{{ $testimonial->designation }}</span>
-                                    </div>
+                                    <blockquote class="text-[#cbd5e1] text-sm leading-relaxed font-medium">
+                                        "{{ $testimonial->review }}"
+                                    </blockquote>
                                 </div>
-                            @endforeach
+                                <div class="pt-4 border-t border-[#27272a]">
+                                    <h4 class="font-heading font-bold text-white text-base">{{ $testimonial->name }}</h4>
+                                    <span class="text-xs text-[#C8A14F] font-semibold">{{ $testimonial->designation }}</span>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
 
@@ -864,18 +896,18 @@
             </div>
 
             <!-- Slider Controls (Rounded Pill Indicators + Arrows) -->
-            @if ($testimonials->count() > 3)
+            @if ($testimonials->count() > 1)
                 <div class="flex items-center justify-center gap-4 mt-10">
                     <button type="button" @click="prev()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Previous testimonials">
                         <i class="ri-arrow-left-s-line text-xl"></i>
                     </button>
                     <div class="flex items-center gap-2">
-                        <template x-for="i in totalSlides" :key="i">
+                        <template x-for="i in (maxSlide() + 1)" :key="i">
                             <button type="button" 
                                     @click="goTo(i - 1)" 
                                     :class="activeSlide === (i - 1) ? 'w-8 bg-[#C8A14F]' : 'w-2.5 bg-[#27272a] hover:bg-[#C8A14F]/50'" 
                                     class="h-2.5 rounded-full transition-all duration-300" 
-                                    :aria-label="'Go to testimonial set ' + i"></button>
+                                    :aria-label="'Go to testimonial slide ' + i"></button>
                         </template>
                     </div>
                     <button type="button" @click="next()" class="w-10 h-10 rounded-full bg-[#000000] text-white hover:bg-[#C8A14F] hover:text-[#000000] border border-[#27272a] flex items-center justify-center transition-all" aria-label="Next testimonials">

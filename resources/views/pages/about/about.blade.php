@@ -236,7 +236,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Mission Box -->
-                <div class="bg-[#0a0a0a] p-10 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/40 transition-all space-y-4 relative overflow-hidden group shadow-2xl">
+                <div class="bg-[#0a0a0a] p-6 sm:p-10 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/40 transition-all space-y-4 relative overflow-hidden group shadow-2xl">
                     <div class="w-14 h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black transition-all">
                         <i class="ri-compass-3-fill text-2xl"></i>
                     </div>
@@ -247,7 +247,7 @@
                 </div>
 
                 <!-- Vision Box -->
-                <div class="bg-[#0a0a0a] p-10 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/40 transition-all space-y-4 relative overflow-hidden group shadow-2xl">
+                <div class="bg-[#0a0a0a] p-6 sm:p-10 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/40 transition-all space-y-4 relative overflow-hidden group shadow-2xl">
                     <div class="w-14 h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black transition-all">
                         <i class="ri-eye-line text-2xl"></i>
                     </div>

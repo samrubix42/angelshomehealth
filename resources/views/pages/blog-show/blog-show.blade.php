@@ -91,7 +91,7 @@
             </div>
 
             <!-- TINYMCE CONTENT CONTAINER -->
-            <div class="bg-[#0a0a0a] p-8 sm:p-12 rounded-3xl border border-[#27272a] shadow-xl">
+            <div class="bg-[#0a0a0a] p-6 sm:p-12 rounded-3xl border border-[#27272a] shadow-xl">
                 <div class="tinymce-content">
                     {!! $this->blog->description !!}
                 </div>

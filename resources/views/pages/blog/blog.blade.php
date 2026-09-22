@@ -62,7 +62,7 @@
                             </span>
                         </div>
 
-                        <div class="lg:col-span-6 p-8 sm:p-10 space-y-4">
+                        <div class="lg:col-span-6 p-6 sm:p-10 space-y-4">
                             <div class="flex items-center gap-3 text-xs text-[#71717a]">
                                 <span class="text-[#C8A14F] font-semibold">{{ $this->featuredBlog->category?->title ?? 'Health Insights' }}</span>
                                 <span>•</span>
