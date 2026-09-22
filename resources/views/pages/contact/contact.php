@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Contact;
+use App\Models\Service;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -13,11 +15,17 @@ new #[Layout('layouts::app')] #[Title('Contact Us | Angels Home Health of Florid
 
     public string $email = '';
 
-    public string $service = 'Skilled Nursing & Rehabilitation';
+    public string $service = 'Wound Care';
 
     public string $notes = '';
 
     public bool $formSubmitted = false;
+
+    #[Computed]
+    public function services()
+    {
+        return Service::where('is_active', true)->orderBy('id')->get();
+    }
 
     public function submitContact(): void
     {
@@ -41,3 +49,4 @@ new #[Layout('layouts::app')] #[Title('Contact Us | Angels Home Health of Florid
         $this->formSubmitted = true;
     }
 };
+

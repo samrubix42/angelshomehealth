@@ -15,7 +15,7 @@
                     <span>Services</span>
                 </a>
                 <i class="ri-arrow-right-s-line text-xs text-[#3f3f46]"></i>
-                <span class="text-[#C8A14F] font-semibold truncate">{{ $this->serviceData['title'] }}</span>
+                <span class="text-[#C8A14F] font-semibold truncate">{{ $this->service->title }}</span>
             </nav>
 
             <div class="grid lg:grid-cols-12 gap-8 items-center">
@@ -23,20 +23,20 @@
                 <div class="lg:col-span-8 space-y-4">
                     <div class="flex flex-wrap items-center gap-2.5">
                         <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest">
-                            {{ $this->serviceData['category'] }}
+                            Angels Healthcare Service
                         </span>
                         <span class="text-xs font-semibold text-white bg-[#121212] border border-[#27272a] px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
                             <i class="ri-verified-badge-line text-[#C8A14F]"></i>
-                            <span>{{ $this->serviceData['badge'] }}</span>
+                            <span>RN & Clinical Care Supervised</span>
                         </span>
                     </div>
 
                     <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
-                        {{ $this->serviceData['title'] }}
+                        {{ $this->service->title }}
                     </h1>
 
                     <p class="text-base sm:text-lg text-[#a1a1aa] font-medium leading-relaxed max-w-3xl">
-                        {{ $this->serviceData['subtitle'] }}
+                        {{ $this->service->short_description }}
                     </p>
 
                     <!-- Quick Facts Bar -->
@@ -47,7 +47,7 @@
                             </div>
                             <div>
                                 <p class="text-[10px] text-[#71717a] font-bold uppercase tracking-wider">Insurance</p>
-                                <p class="text-xs font-semibold text-white truncate">{{ $this->serviceData['coverage'] }}</p>
+                                <p class="text-xs font-semibold text-white truncate">Medicare & Private Pay</p>
                             </div>
                         </div>
 
@@ -57,7 +57,7 @@
                             </div>
                             <div>
                                 <p class="text-[10px] text-[#71717a] font-bold uppercase tracking-wider">Availability</p>
-                                <p class="text-xs font-semibold text-white truncate">{{ $this->serviceData['availability'] }}</p>
+                                <p class="text-xs font-semibold text-white truncate">24/7 On-Call Support</p>
                             </div>
                         </div>
 
@@ -67,7 +67,7 @@
                             </div>
                             <div>
                                 <p class="text-[10px] text-[#71717a] font-bold uppercase tracking-wider">Duration</p>
-                                <p class="text-xs font-semibold text-white truncate">{{ $this->serviceData['duration'] }}</p>
+                                <p class="text-xs font-semibold text-white truncate">Customized Care Plan</p>
                             </div>
                         </div>
                     </div>
@@ -103,61 +103,30 @@
         </div>
     </section>
 
-    <!-- 2. MAIN CONTENT AREA (TINYMCE RICH TEXT COMPATIBLE) + SIDEBAR -->
+    <!-- 2. MAIN CONTENT AREA + SIDEBAR -->
     <section class="py-16 sm:py-20 bg-[#000000]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
 
-                <!-- LEFT MAIN COLUMN: TINYMCE CONTENT CONTAINER -->
+                <!-- LEFT MAIN COLUMN: CONTENT CONTAINER -->
                 <div class="lg:col-span-8 space-y-12">
                     
                     <!-- Service Featured Image -->
-                    @if(!empty($this->serviceData['image']))
-                        <div class="rounded-3xl overflow-hidden border border-[#27272a] shadow-2xl h-72 sm:h-96 relative group">
-                            <img src="{{ $this->serviceData['image'] }}" alt="{{ $this->serviceData['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent opacity-80"></div>
-                            <span class="absolute bottom-6 left-6 bg-[#000000]/90 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full flex items-center gap-2">
-                                <i class="ri-map-pin-2-line"></i>
-                                <span>Serving Lake, Orange, Seminoe & Volusia Counties</span>
-                            </span>
-                        </div>
-                    @endif
-
-                    <!-- TINYMCE HTML RICH TEXT CONTAINER -->
-                    <div class="bg-[#0a0a0a] p-8 sm:p-12 rounded-3xl border border-[#27272a] shadow-xl">
-                        <div class="tinymce-content">
-                            {!! $this->serviceData['tinymce_content'] !!}
-                        </div>
+                    <div class="rounded-3xl overflow-hidden border border-[#27272a] shadow-2xl h-72 sm:h-96 relative group">
+                        <img src="{{ $this->service->image ?? asset('images/service_wound_nursing.jpg') }}" alt="{{ $this->service->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute bottom-6 left-6 bg-[#000000]/90 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full flex items-center gap-2">
+                            <i class="ri-map-pin-2-line"></i>
+                            <span>Serving Lake, Orange, Seminoe & Volusia Counties</span>
+                        </span>
                     </div>
 
-                    <!-- FAQS SECTION -->
-                    @if(!empty($this->serviceData['faqs']))
-                        <div class="bg-[#0a0a0a] p-8 sm:p-10 rounded-3xl border border-[#27272a] space-y-6">
-                            <div class="flex items-center gap-3 border-b border-[#1f1f23] pb-4">
-                                <div class="w-9 h-9 rounded-xl bg-[#C8A14F]/15 text-[#C8A14F] flex items-center justify-center font-bold text-lg">
-                                    <i class="ri-question-line"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-heading font-bold text-xl text-white">Frequently Asked Questions</h3>
-                                    <p class="text-xs text-[#71717a]">Common inquiries regarding {{ $this->serviceData['title'] }}</p>
-                                </div>
-                            </div>
-
-                            <div class="space-y-4">
-                                @foreach($this->serviceData['faqs'] as $index => $faq)
-                                    <div x-data="{ open: {{ $index === 0 ? 'true' : 'false' }} }" class="bg-[#121212] border border-[#27272a] rounded-2xl overflow-hidden transition-colors">
-                                        <button @click="open = !open" type="button" class="w-full text-left p-5 flex items-center justify-between gap-4 font-heading font-bold text-sm sm:text-base text-white hover:text-[#C8A14F] transition-colors focus:outline-none">
-                                            <span>{{ $faq['q'] }}</span>
-                                            <i class="ri-add-line text-lg text-[#C8A14F] transition-transform duration-200" :class="open ? 'rotate-45' : ''"></i>
-                                        </button>
-                                        <div x-show="open" x-collapse class="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#a1a1aa] leading-relaxed border-t border-[#1f1f23]/50">
-                                            {{ $faq['a'] }}
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                    <!-- HTML RICH TEXT CONTAINER -->
+                    <div class="bg-[#0a0a0a] p-8 sm:p-12 rounded-3xl border border-[#27272a] shadow-xl">
+                        <div class="tinymce-content">
+                            {!! $this->service->description !!}
                         </div>
-                    @endif
+                    </div>
 
                 </div>
 
@@ -176,7 +145,10 @@
                             <div class="bg-[#C8A14F]/15 border border-[#C8A14F]/40 p-5 rounded-2xl text-center space-y-2">
                                 <i class="ri-checkbox-circle-fill text-3xl text-[#C8A14F]"></i>
                                 <h4 class="font-heading font-bold text-sm text-white">Request Submitted!</h4>
-                                <p class="text-xs text-[#d4d4d8]">Thank you, {{ $name }}. Our clinical care manager will contact you at {{ $phone }} shortly.</p>
+                                <p class="text-xs text-[#d4d4d8]">Thank you, {{ $submittedName }}. Our clinical care manager will contact you at {{ $submittedPhone }} shortly.</p>
+                                <button type="button" wire:click="$set('formSubmitted', false)" class="text-[11px] text-[#C8A14F] hover:underline font-semibold mt-2 inline-block">
+                                    Submit Another Inquiry
+                                </button>
                             </div>
                         @else
                             <form wire:submit.prevent="submitInquiry" class="space-y-4">
@@ -203,48 +175,33 @@
                                     <textarea wire:model="notes" rows="3" placeholder="Tell us about the patient's condition or requirements..." class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors"></textarea>
                                 </div>
 
-                                <button type="submit" class="w-full bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2">
-                                    <span>Schedule Visit Now</span>
-                                    <i class="ri-arrow-right-line"></i>
+                                <button type="submit" wire:loading.attr="disabled" class="w-full bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-50">
+                                    <span wire:loading.remove wire:target="submitInquiry">Schedule Visit Now</span>
+                                    <span wire:loading wire:target="submitInquiry">Submitting...</span>
+                                    <i wire:loading.remove wire:target="submitInquiry" class="ri-arrow-right-line"></i>
                                 </button>
                             </form>
                         @endif
                     </div>
 
                     <!-- Other Services Navigation -->
-                    <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] space-y-4">
-                        <h4 class="font-heading font-bold text-sm text-white border-b border-[#1f1f23] pb-3 flex items-center gap-2">
-                            <i class="ri-menu-add-line text-[#C8A14F]"></i>
-                            <span>All Home Care Services</span>
-                        </h4>
+                    @if(count($this->otherServices) > 0)
+                        <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] space-y-4">
+                            <h4 class="font-heading font-bold text-sm text-white border-b border-[#1f1f23] pb-3 flex items-center gap-2">
+                                <i class="ri-menu-add-line text-[#C8A14F]"></i>
+                                <span>Other Home Care Services</span>
+                            </h4>
 
-                        <div class="space-y-2 text-xs">
-                            <a href="/services/skilled-nursing" class="flex items-center justify-between p-3 rounded-xl border {{ $slug === 'skilled-nursing' ? 'bg-[#C8A14F]/10 border-[#C8A14F]/40 text-[#C8A14F] font-bold' : 'bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30' }} transition-colors">
-                                <span>Skilled Nursing & Rehab</span>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="/services/physical-therapy" class="flex items-center justify-between p-3 rounded-xl border {{ $slug === 'physical-therapy' ? 'bg-[#C8A14F]/10 border-[#C8A14F]/40 text-[#C8A14F] font-bold' : 'bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30' }} transition-colors">
-                                <span>Physical & Occupational Therapy</span>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="/services/behavioral-health" class="flex items-center justify-between p-3 rounded-xl border {{ $slug === 'behavioral-health' ? 'bg-[#C8A14F]/10 border-[#C8A14F]/40 text-[#C8A14F] font-bold' : 'bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30' }} transition-colors">
-                                <span>Behavioral Health Services</span>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="/services/chronic-disease-management" class="flex items-center justify-between p-3 rounded-xl border {{ $slug === 'chronic-disease-management' ? 'bg-[#C8A14F]/10 border-[#C8A14F]/40 text-[#C8A14F] font-bold' : 'bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30' }} transition-colors">
-                                <span>Chronic Disease Management</span>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="/services/memory-care" class="flex items-center justify-between p-3 rounded-xl border {{ $slug === 'memory-care' ? 'bg-[#C8A14F]/10 border-[#C8A14F]/40 text-[#C8A14F] font-bold' : 'bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30' }} transition-colors">
-                                <span>Alzheimer's & Memory Care</span>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="/services/personal-care" class="flex items-center justify-between p-3 rounded-xl border {{ $slug === 'personal-care' ? 'bg-[#C8A14F]/10 border-[#C8A14F]/40 text-[#C8A14F] font-bold' : 'bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30' }} transition-colors">
-                                <span>Personal Care Assistance</span>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
+                            <div class="space-y-2 text-xs">
+                                @foreach($this->otherServices as $other)
+                                    <a href="/services/{{ $other->slug }}" class="flex items-center justify-between p-3 rounded-xl border bg-[#121212] border-[#27272a] text-[#a1a1aa] hover:text-white hover:border-[#C8A14F]/30 transition-colors">
+                                        <span>{{ $other->title }}</span>
+                                        <i class="ri-arrow-right-s-line"></i>
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <!-- ACHC Accreditation Badge Box -->
                     <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] flex items-center gap-4">

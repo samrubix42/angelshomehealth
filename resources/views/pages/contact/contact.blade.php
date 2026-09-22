@@ -94,11 +94,9 @@
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-[#d4d4d8] mb-2">Service Required *</label>
                                 <select wire:model="service" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] focus:ring-1 focus:ring-[#C8A14F] rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none transition-colors">
-                                    <option value="Skilled Nursing & Rehabilitation">Skilled Nursing & Rehabilitation</option>
-                                    <option value="Physical & Occupational Therapy">Physical & Occupational Therapy</option>
-                                    <option value="Behavioral Health Services">Behavioral Health Services</option>
-                                    <option value="Chronic Disease Management">Chronic Disease Management</option>
-                                    <option value="Alzheimer's & Dementia Care">Alzheimer's & Dementia Care</option>
+                                    @foreach($this->services as $s)
+                                        <option value="{{ $s->title }}">{{ $s->title }}</option>
+                                    @endforeach
                                     <option value="General Inquiry / Other">General Inquiry / Other</option>
                                 </select>
                             </div>

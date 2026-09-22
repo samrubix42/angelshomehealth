@@ -1,4 +1,4 @@
-<div class="bg-[#000000] text-white">
+<div class="bg-[#000000] text-white selection:bg-[#C8A14F] selection:text-black">
     <!-- HERO SECTION FOR SERVICES PAGE -->
     <section class="relative bg-[#050505] border-b border-[#27272a] py-16 sm:py-24 overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,161,79,0.12)_0,transparent_60%)] pointer-events-none"></div>
@@ -17,163 +17,56 @@
         </div>
     </section>
 
-    <!-- ALL 6 DETAILED SERVICES GRID SECTION -->
+    <!-- ALL DYNAMIC SERVICES GRID SECTION -->
     <section class="py-16 sm:py-20 bg-[#000000]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             
-            <!-- Service 1: Skilled Nursing & Rehabilitation (#skilled-nursing) -->
-            <div id="skilled-nursing" class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0a0a0a] p-8 sm:p-10 rounded-3xl border border-[#27272a]">
-                <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-[#C8A14F]/30 h-64 sm:h-80">
-                    <img src="{{ asset('images/service_wound_nursing.jpg') }}" alt="Skilled Nursing Care" class="w-full h-full object-cover">
+            <div class="text-center sm:text-left border-b border-[#27272a] pb-6 flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <span class="text-xs font-bold text-[#C8A14F] uppercase tracking-wider">Our Specialized Offerings</span>
+                    <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-white">Healthcare & Nursing Services</h2>
                 </div>
-                <div class="lg:col-span-7 space-y-4">
-                    <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">
-                        Medical Clinical Care
-                    </span>
-                    <h2 class="font-heading font-bold text-2xl sm:text-3xl text-white">Skilled Nursing & Rehabilitation</h2>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        Professional wound care, IV therapy, surgical recovery, post-acute monitoring, and complex medication management administered by experienced Registered Nurses (RNs) and Licensed Practical Nurses (LPNs).
-                    </p>
-                    <ul class="grid sm:grid-cols-2 gap-2 text-xs text-[#d4d4d8] pt-2">
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Wound & Surgical Care</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>IV Therapy & Injections</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Medication Administration</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Post-Hospital Recovery</span></li>
-                    </ul>
-                    <div class="pt-2 flex flex-wrap gap-3">
-                        <a href="/services/skilled-nursing" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>View Full Service Details</span>
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
-                            <span>Request Skilled Care</span>
-                        </a>
-                    </div>
-                </div>
+                <span class="text-xs text-[#71717a] font-medium">Showing {{ count($this->services) }} Services</span>
             </div>
 
-            <!-- Service 2: Physical & Occupational Therapy (#therapy) -->
-            <div id="therapy" class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0a0a0a] p-8 sm:p-10 rounded-3xl border border-[#27272a]">
-                <div class="lg:col-span-7 space-y-4 lg:order-1 order-2">
-                    <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">
-                        Rehabilitation & Mobility
-                    </span>
-                    <h2 class="font-heading font-bold text-2xl sm:text-3xl text-white">Physical & Occupational Therapy</h2>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        In-home physical therapy to restore mobility, balance, strength, and fall prevention, alongside occupational therapy for daily living activities, adaptive equipment training, and home safety assessments.
-                    </p>
-                    <ul class="grid sm:grid-cols-2 gap-2 text-xs text-[#d4d4d8] pt-2">
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Gait & Balance Training</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Fall Prevention Programs</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Stroke & Joint Rehab</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Occupational Living Skills</span></li>
-                    </ul>
-                    <div class="pt-2 flex flex-wrap gap-3">
-                        <a href="/services/physical-therapy" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>View Full Service Details</span>
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
-                            <span>Request Therapy</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-[#C8A14F]/30 h-64 sm:h-80 lg:order-2 order-1">
-                    <img src="{{ asset('images/service_physical_therapy.jpg') }}" alt="Physical Therapy Support" class="w-full h-full object-cover">
-                </div>
-            </div>
+            <!-- 3-Column Services Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @forelse($this->services as $service)
+                    <article class="bg-[#0a0a0a] rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 overflow-hidden transition-all duration-300 group flex flex-col justify-between shadow-2xl hover:-translate-y-1.5">
+                        <div>
+                            <div class="relative h-60 overflow-hidden">
+                                <img src="{{ $service->image ?? asset('images/service_wound_nursing.jpg') }}" alt="{{ $service->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <span class="absolute top-4 left-4 bg-[#000000]/80 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                    Angels Care
+                                </span>
+                            </div>
 
-            <!-- Service 3: Behavioral Health Services (#behavioral) -->
-            <div id="behavioral" class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0a0a0a] p-8 sm:p-10 rounded-3xl border border-[#27272a]">
-                <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-[#C8A14F]/30 h-64 sm:h-80">
-                    <img src="{{ asset('images/service_cardiac_monitoring.jpg') }}" alt="Behavioral Health Care" class="w-full h-full object-cover">
-                </div>
-                <div class="lg:col-span-7 space-y-4">
-                    <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">
-                        Mental Wellness
-                    </span>
-                    <h2 class="font-heading font-bold text-2xl sm:text-3xl text-white">Behavioral Health Services</h2>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        Specialized psychiatric nursing care, anxiety and depression management, emotional support, and behavioral wellness monitoring tailored to seniors and individuals recovering at home.
-                    </p>
-                    <ul class="grid sm:grid-cols-2 gap-2 text-xs text-[#d4d4d8] pt-2">
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Psychiatric Nursing Assessments</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Depression & Anxiety Care</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Medication Adherence Support</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Copoint Family Counseling</span></li>
-                    </ul>
-                    <div class="pt-2 flex flex-wrap gap-3">
-                        <a href="/services/behavioral-health" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>View Full Service Details</span>
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
-                            <span>Request Behavioral Care</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                            <div class="p-6 sm:p-7 text-center space-y-3">
+                                <h3 class="font-heading font-bold text-xl text-white group-hover:text-[#C8A14F] transition-colors leading-snug">
+                                    <a href="/services/{{ $service->slug }}">
+                                        {{ $service->title }}
+                                    </a>
+                                </h3>
 
-            <!-- Service 4: Chronic Disease Management (#chronic) -->
-            <div id="chronic" class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0a0a0a] p-8 sm:p-10 rounded-3xl border border-[#27272a]">
-                <div class="lg:col-span-7 space-y-4 lg:order-1 order-2">
-                    <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">
-                        Long-Term Disease Supervision
-                    </span>
-                    <h2 class="font-heading font-bold text-2xl sm:text-3xl text-white">Chronic Disease Management</h2>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        Ongoing clinical monitoring for diabetes, congestive heart failure (CHF), COPD, hypertension, and kidney disease. We help reduce hospital readmissions with proactive care.
-                    </p>
-                    <ul class="grid sm:grid-cols-2 gap-2 text-xs text-[#d4d4d8] pt-2">
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Diabetic Blood Glucose Control</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Cardiovascular & CHF Vital Tracking</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>COPD Oxygen Supervision</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Hospital Readmission Prevention</span></li>
-                    </ul>
-                    <div class="pt-2 flex flex-wrap gap-3">
-                        <a href="/services/chronic-disease-management" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>View Full Service Details</span>
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
-                            <span>Request Disease Management</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-[#C8A14F]/30 h-64 sm:h-80 lg:order-2 order-1">
-                    <img src="{{ asset('images/service_occupational_daily.jpg') }}" alt="Chronic Care Support" class="w-full h-full object-cover">
-                </div>
-            </div>
+                                <p class="text-xs text-[#a1a1aa] leading-relaxed line-clamp-3 font-medium">
+                                    {{ $service->short_description }}
+                                </p>
+                            </div>
+                        </div>
 
-            <!-- Service 5: Alzheimer's & Dementia Care (#memory) -->
-            <div id="memory" class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0a0a0a] p-8 sm:p-10 rounded-3xl border border-[#27272a]">
-                <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-[#C8A14F]/30 h-64 sm:h-80">
-                    <img src="{{ asset('images/service_memory_dementia.jpg') }}" alt="Memory Care Support" class="w-full h-full object-cover">
-                </div>
-                <div class="lg:col-span-7 space-y-4">
-                    <span class="text-[10px] font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3 py-1 rounded-full uppercase tracking-wider">
-                        Specialized Memory Care
-                    </span>
-                    <h2 class="font-heading font-bold text-2xl sm:text-3xl text-white">Alzheimer’s & Dementia Care</h2>
-                    <p class="text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        Patient, structured cognitive engagement, memory support games, healthy meal planning, and safe daily routine assistance tailored to memory care needs.
-                    </p>
-                    <ul class="grid sm:grid-cols-2 gap-2 text-xs text-[#d4d4d8] pt-2">
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Cognitive & Memory Exercises</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Safe Wandering Prevention</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Parkinson's & Dementia Support</span></li>
-                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-[#C8A14F]"></i><span>Respite Support for Families</span></li>
-                    </ul>
-                    <div class="pt-2 flex flex-wrap gap-3">
-                        <a href="/services/memory-care" class="inline-flex items-center gap-2 bg-[#C8A14F] text-[#000000] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-[#d8b260] transition-colors">
-                            <span>View Full Service Details</span>
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                        <a href="/contact" class="inline-flex items-center gap-2 bg-[#121212] text-white border border-[#27272a] font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:border-[#C8A14F]/50 transition-colors">
-                            <span>Request Memory Care</span>
-                        </a>
+                        <div class="p-6 pt-0 text-center">
+                            <a href="/services/{{ $service->slug }}" class="inline-flex items-center justify-center bg-gradient-to-r from-[#C8A14F] to-[#e5be6b] hover:from-[#d8b260] hover:to-[#f0c878] text-[#000000] font-heading font-bold px-8 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto">
+                                Read More
+                            </a>
+                        </div>
+                    </article>
+                @empty
+                    <div class="col-span-full py-16 text-center space-y-4 bg-[#0a0a0a] rounded-3xl border border-[#27272a] p-8">
+                        <i class="ri-heart-pulse-line text-4xl text-[#C8A14F]"></i>
+                        <h4 class="font-heading font-bold text-lg text-white">No Services Available</h4>
+                        <p class="text-xs text-[#a1a1aa]">Services will be listed here shortly.</p>
                     </div>
-                </div>
+                @endforelse
             </div>
 
         </div>

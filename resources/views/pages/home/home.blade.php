@@ -1037,12 +1037,9 @@
                                     <div>
                                         <label class="block text-xs font-heading font-semibold uppercase text-[#a1a1aa] mb-1.5">Requested Service</label>
                                         <select wire:model="service" class="w-full bg-[#000000] border border-[#27272a] rounded-full px-5 py-3 text-sm text-white focus:outline-none focus:border-[#C8A14F]">
-                                            <option value="Personal Care & Hygiene">Personal Care & Hygiene</option>
-                                            <option value="Skilled Nursing">Skilled Nursing</option>
-                                            <option value="Physical Therapy">Physical Therapy</option>
-                                            <option value="Behavioral Health">Behavioral Health</option>
-                                            <option value="Chronic Disease Management">Chronic Disease Management</option>
-                                            <option value="Companionship & Housekeeping">Companionship & Housekeeping</option>
+                                            @foreach($services as $s)
+                                                <option value="{{ $s->title }}">{{ $s->title }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

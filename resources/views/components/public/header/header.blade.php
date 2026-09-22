@@ -76,25 +76,15 @@
                              x-transition:leave-start="opacity-100 translate-y-0"
                              x-transition:leave-end="opacity-0 translate-y-2"
                              x-cloak
-                             class="absolute left-0 mt-0 w-64 bg-[#0a0a0a] border border-[#27272a] rounded-2xl shadow-2xl p-2 z-50 space-y-1">
+                             class="absolute left-0 mt-0 w-64 max-h-96 overflow-y-auto bg-[#0a0a0a] border border-[#27272a] rounded-2xl shadow-2xl p-2 z-50 space-y-1">
                             <a href="/services" class="block px-4 py-2.5 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs font-bold text-[#C8A14F] border-b border-[#1f1f23] transition-colors">
                                 All Services Overview
                             </a>
-                            <a href="/services/skilled-nursing" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
-                                Skilled Nursing & Rehab
-                            </a>
-                            <a href="/services/physical-therapy" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
-                                Physical & Occupational Therapy
-                            </a>
-                            <a href="/services/behavioral-health" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
-                                Behavioral Health Services
-                            </a>
-                            <a href="/services/chronic-disease-management" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
-                                Chronic Disease Management
-                            </a>
-                            <a href="/services/memory-care" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
-                                Alzheimer's & Memory Care
-                            </a>
+                            @foreach(\App\Models\Service::where('is_active', true)->orderBy('id')->get() as $navService)
+                                <a href="/services/{{ $navService->slug }}" class="block px-4 py-2 rounded-xl hover:bg-[#121212] hover:text-[#C8A14F] text-xs text-[#d4d4d8] transition-colors">
+                                    {{ $navService->title }}
+                                </a>
+                            @endforeach
                         </div>
                     </div>
 
@@ -181,13 +171,11 @@
                     <span>Services</span>
                     <i class="ri-arrow-down-s-line text-xl text-[#C8A14F] transition-transform duration-200" :class="mobileServicesOpen ? 'rotate-180' : ''"></i>
                 </button>
-                <div x-show="mobileServicesOpen" x-collapse class="pl-3 pt-3 space-y-2.5 font-medium text-xs text-[#a1a1aa]">
+                <div x-show="mobileServicesOpen" x-collapse class="pl-3 pt-3 space-y-2.5 font-medium text-xs text-[#a1a1aa] max-h-80 overflow-y-auto">
                     <a href="/services" @click="mobileOpen = false" class="block text-[#C8A14F] font-bold py-1 border-b border-[#1f1f23]">All Services Overview</a>
-                    <a href="/services/skilled-nursing" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Skilled Nursing & Rehab</a>
-                    <a href="/services/physical-therapy" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Physical & Occupational Therapy</a>
-                    <a href="/services/behavioral-health" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Behavioral Health Services</a>
-                    <a href="/services/chronic-disease-management" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">Chronic Disease Management</a>
-                    <a href="/services/memory-care" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1">Alzheimer's & Memory Care</a>
+                    @foreach(\App\Models\Service::where('is_active', true)->orderBy('id')->get() as $navService)
+                        <a href="/services/{{ $navService->slug }}" @click="mobileOpen = false" class="block hover:text-[#C8A14F] py-1 border-b border-[#1f1f23]">{{ $navService->title }}</a>
+                    @endforeach
                 </div>
             </div>
 

@@ -102,7 +102,16 @@
         @yield('content', $slot ?? '')
     </main>
 
-    <livewire:public.footer />
+    <!-- Floating Sticky WhatsApp Circular Icon Button -->
+    <a href="{{ whatsapp_url() }}"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 border border-emerald-400/40 group"
+       title="Chat on WhatsApp"
+       aria-label="Chat on WhatsApp">
+        <i class="ri-whatsapp-fill text-3xl text-white"></i>
+        <span class="absolute -inset-0.5 rounded-full bg-emerald-500 opacity-75 animate-ping pointer-events-none -z-10"></span>
+    </a>
 
     @livewireScripts
 </body>
