@@ -38,39 +38,6 @@
                     <p class="text-base sm:text-lg text-[#a1a1aa] font-medium leading-relaxed max-w-3xl">
                         {{ $this->service->short_description }}
                     </p>
-
-                    <!-- Quick Facts Bar -->
-                    <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-[#1f1f23]">
-                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3 rounded-2xl border border-[#27272a]">
-                            <div class="w-9 h-9 rounded-xl bg-[#C8A14F]/15 text-[#C8A14F] flex items-center justify-center shrink-0">
-                                <i class="ri-shield-check-line text-lg"></i>
-                            </div>
-                            <div>
-                                <p class="text-[10px] text-[#71717a] font-bold uppercase tracking-wider">Insurance</p>
-                                <p class="text-xs font-semibold text-white truncate">Medicare & Private Pay</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3 rounded-2xl border border-[#27272a]">
-                            <div class="w-9 h-9 rounded-xl bg-[#C8A14F]/15 text-[#C8A14F] flex items-center justify-center shrink-0">
-                                <i class="ri-time-line text-lg"></i>
-                            </div>
-                            <div>
-                                <p class="text-[10px] text-[#71717a] font-bold uppercase tracking-wider">Availability</p>
-                                <p class="text-xs font-semibold text-white truncate">24/7 On-Call Support</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3 rounded-2xl border border-[#27272a]">
-                            <div class="w-9 h-9 rounded-xl bg-[#C8A14F]/15 text-[#C8A14F] flex items-center justify-center shrink-0">
-                                <i class="ri-hospital-line text-lg"></i>
-                            </div>
-                            <div>
-                                <p class="text-[10px] text-[#71717a] font-bold uppercase tracking-wider">Duration</p>
-                                <p class="text-xs font-semibold text-white truncate">Customized Care Plan</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Right Quick Call Hero CTA Box -->
