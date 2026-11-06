@@ -480,13 +480,13 @@
                      :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
                     <div class="space-y-3">
                         <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
-                            Our Core Pillars of Excellence
+                            ✦ WHAT MAKES US DIFFERENT
                         </span>
                         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-                            What Makes Us Different?
+                            Our Core Pillars of Excellence
                         </h2>
                         <p class="text-[#a1a1aa] text-sm sm:text-base leading-relaxed font-medium">
-                            At Angels Home Health of Florida, we elevate standard home health care into a compassionate, clinical partnership tailored to your family.
+                            At Angels Home Health of Florida, we elevate standard home care into a compassionate, clinical partnership tailored to your family’s unique needs.
                         </p>
                     </div>
 
@@ -503,7 +503,7 @@
                                     Led by Medical Expertise
                                 </h3>
                                 <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
-                                    Decades of clinical insight ensuring personalized, physician-guided care plans for every patient.
+                                    Grounded in clinical excellence and decades of hands-on experience, our care plans are strictly physician-guided to ensure the highest standard of medical safety, accuracy, and recovery.
                                 </p>
                             </div>
                         </div>
@@ -518,7 +518,7 @@
                                     Comprehensive In-Home Services
                                 </h3>
                                 <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
-                                    Full spectrum of skilled nursing, physical therapy, behavioral health, and chronic disease management.
+                                    From advanced skilled nursing and physical rehabilitation to specialized chronic disease and behavioral health management, we bring a full spectrum of hospital-level healthcare directly to your door.
                                 </p>
                             </div>
                         </div>
@@ -533,7 +533,7 @@
                                     Patient-Centered Approach
                                 </h3>
                                 <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
-                                    Treating every patient like family with dignity, respect, and customized care that fosters healing.
+                                    We treat every patient like our own family. Your comfort, dignity, and personal routines remain at the forefront of every care decision we make, fostering a more natural and peaceful healing environment.
                                 </p>
                             </div>
                         </div>
@@ -548,7 +548,7 @@
                                     Statewide Reach, Local Touch
                                 </h3>
                                 <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
-                                    Based in Mount Dora with accessible, community-focused care provided across Florida.
+                                    Proudly based in Mount Dora, we have the resources to provide accessible care across Florida while maintaining the warmth, responsiveness, and familiarity of a locally rooted, community-focused team.
                                 </p>
                             </div>
                         </div>
@@ -563,7 +563,7 @@
                                     Commitment to Continuity
                                 </h3>
                                 <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium mt-0.5">
-                                    Dedicated care teams and clear communication ensuring patients and families feel fully supported.
+                                    Healing requires consistency. We prioritize seamless, ongoing communication between our dedicated caregivers, your family, and your primary physicians so you are fully supported and informed every step of the way.
                                 </p>
                             </div>
                         </div>
