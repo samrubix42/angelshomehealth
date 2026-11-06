@@ -62,6 +62,9 @@
                 <p class="text-xs text-white font-medium mb-1">
                     Phone: <a href="{{ phone_url() }}" class="text-[#C8A14F] hover:underline">{{ setting('phone', '+1 352 729 2727') }}</a>
                 </p>
+                <p class="text-xs text-white font-medium mb-1">
+                    Fax: <a href="tel:{{ preg_replace('/[^0-9]/', '', setting('fax', '352-729-2732')) }}" class="text-[#C8A14F] hover:underline">{{ setting('fax', '352-729-2732') }}</a>
+                </p>
                 @if (setting('whatsapp'))
                     <p class="text-xs text-white font-medium mb-1">
                         WhatsApp: <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">{{ setting('whatsapp', '+1 352 729 2727') }}</a>

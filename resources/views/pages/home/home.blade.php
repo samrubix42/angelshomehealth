@@ -707,11 +707,14 @@
              :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
+                    ✦ YOUR PATH TO CARE
+                </span>
                 <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
                     How In-Home Care Works
                 </h2>
                 <p class="text-[#a1a1aa] text-base sm:text-lg leading-relaxed font-medium">
-                    Starting care for your loved one is seamless and straightforward. We guide you through every step with personal attention and clinical clarity.
+                    Starting care should bring relief, not stress. We guide your family through every step with clinical clarity, absolute transparency, and personal attention.
                 </p>
             </div>
 
@@ -722,9 +725,9 @@
                         <span class="w-10 h-10 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-sm">01</span>
                         <i class="ri-phone-find-line text-2xl text-[#a1a1aa] group-hover:text-[#C8A14F] transition-colors"></i>
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Free Consultation</h3>
-                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                        Speak with our care coordinators to discuss your family's needs, schedule, and specific health requirements.
+                    <h3 class="font-heading font-bold text-xl text-white">Initial Health Assessment</h3>
+                    <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                        Speak directly with our care coordinators to discuss your family's unique situation. We take the time to understand your schedule, health challenges, and specialized medical requirements.
                     </p>
                 </div>
 
@@ -734,9 +737,9 @@
                         <span class="w-10 h-10 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-sm">02</span>
                         <i class="ri-file-user-line text-2xl text-[#a1a1aa] group-hover:text-[#C8A14F] transition-colors"></i>
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Customized Plan</h3>
-                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                        We design a tailored care plan centered around doctor orders, personal goals, and comfort preferences.
+                    <h3 class="font-heading font-bold text-xl text-white">Personalized Care Plan</h3>
+                    <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                        Working seamlessly with your primary physicians, we design a tailored, doctor-approved strategy. Every plan is centered on clear recovery goals, safety protocols, and your loved one's daily comfort.
                     </p>
                 </div>
 
@@ -746,9 +749,9 @@
                         <span class="w-10 h-10 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-sm">03</span>
                         <i class="ri-user-heart-fill text-2xl text-[#a1a1aa] group-hover:text-[#C8A14F] transition-colors"></i>
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Caregiver Match</h3>
-                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                        We pair your loved one with a compassionate, highly trained nurse or caregiver best suited to their personality and condition.
+                    <h3 class="font-heading font-bold text-xl text-white">Expert Caregiver Match</h3>
+                    <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                        We don't just send anyone to your home. We pair you with highly trained nurses, therapists, or caregivers whose clinical expertise and warm personalities perfectly align with your specific needs.
                     </p>
                 </div>
 
@@ -758,9 +761,9 @@
                         <span class="w-10 h-10 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-sm">04</span>
                         <i class="ri-shield-check-line text-2xl text-[#a1a1aa] group-hover:text-[#C8A14F] transition-colors"></i>
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Ongoing Support</h3>
-                    <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                        Continuous care evaluation, regular check-ins, and ongoing updates to ensure ongoing safety and peace of mind.
+                    <h3 class="font-heading font-bold text-xl text-white">Continuous Care & Communication</h3>
+                    <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                        Health is dynamic, and so is our support. We provide continuous clinical evaluations, regular updates to family members, and ongoing adjustments to ensure lasting peace of mind and safety.
                     </p>
                 </div>
             </div>
@@ -784,7 +787,7 @@
                         <h2 class="font-heading font-extrabold text-3xl text-white">Our Mission</h2>
                     </div>
                     <p class="text-[#cbd5e1] text-base sm:text-lg leading-relaxed font-medium">
-                        Angels Home Health of Florida delivers compassionate, personalized care across the state. We provide skilled nursing, physical therapy, behavioral health, and chronic disease management in the comfort of your home. Our mission is to enhance lives with dignity, respect, and exceptional in-home healthcare services.
+                        To deliver exceptional, hospital-level medical care directly to the comfort of your home. By providing expert skilled nursing, specialized therapies, and proactive disease management, we strive to enhance the daily lives of our patients—prioritizing their dignity, independence, and peace of mind above all else.
                     </p>
                 </div>
 
@@ -797,7 +800,7 @@
                         <h2 class="font-heading font-extrabold text-3xl text-white">Our Vision</h2>
                     </div>
                     <p class="text-[#cbd5e1] text-base sm:text-lg leading-relaxed font-medium">
-                        Angels Home Health of Florida envisions a future where every individual receives high-quality, compassionate care at home. We aim to redefine home health services by fostering independence, dignity, and wellness. Our vision is to be Florida’s most trusted provider of personalized, patient-centered healthcare solutions.
+                        To redefine the standard of home healthcare in Central Florida and beyond. We envision a community where every individual has immediate access to compassionate, top-tier medical support without leaving home, establishing Angels Home Health as the state’s most trusted partner in patient-centered recovery and wellness.
                     </p>
                 </div>
             </div>
@@ -934,11 +937,14 @@
              :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
+                    ✦ GOT QUESTIONS? WE HAVE ANSWERS
+                </span>
                 <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
                     Frequently Asked Questions
                 </h2>
                 <p class="text-[#a1a1aa] text-base sm:text-lg leading-relaxed font-medium">
-                    Find clear answers to common questions about our in-home health care services, scheduling, and insurance coverage.
+                    Get clear, straightforward answers about our medical services, caregiver qualifications, and how to start care for your loved one.
                 </p>
             </div>
 
@@ -950,7 +956,7 @@
                         <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 0 ? 'ri-subtract-line' : 'ri-add-line'"></i>
                     </button>
                     <div x-show="activeFaq === 0" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
-                        We are proudly headquartered in Mount Dora, FL, and serve patients across Lake County, Central Florida, and throughout the state with certified in-home clinical care.
+                        While we are proudly based in Mount Dora, our dedicated network of nurses and therapists serves patients across Central Florida, including the greater Orlando area and surrounding communities. We combine the resources of a statewide provider with the warmth and responsiveness of a local care team.
                     </div>
                 </div>
 
@@ -961,7 +967,7 @@
                         <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 1 ? 'ri-subtract-line' : 'ri-add-line'"></i>
                     </button>
                     <div x-show="activeFaq === 1" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
-                        We provide skilled nursing, physical therapy, behavioral health, personal daily assistance, medication management, chronic disease care, and light housekeeping.
+                        We offer a comprehensive suite of in-home medical and therapeutic services. This includes Skilled Nursing (wound care, cardiac and pulmonary care), Rehabilitation Therapies (physical, occupational, and speech therapy), Disease Management (diabetes, Alzheimer's, and Parkinson's support), and Medical Social Work. Our goal is to handle all complex health needs under one roof.
                     </div>
                 </div>
 
@@ -972,18 +978,18 @@
                         <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 2 ? 'ri-subtract-line' : 'ri-add-line'"></i>
                     </button>
                     <div x-show="activeFaq === 2" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
-                        Care can usually begin within 24 to 48 hours following an initial assessment and consultation with our nursing team.
+                        We understand that health transitions—especially hospital discharges—happen quickly. Once we receive a physician’s order or complete our initial health assessment, we can typically match you with a caregiver and begin services within 24 to 48 hours. We prioritize prompt, seamless transitions to ensure there is no gap in care.
                     </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
                 <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-all" :class="activeFaq === 3 ? 'border-[#C8A14F]/60' : ''">
                     <button type="button" @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-6 text-left flex items-center justify-between gap-4 font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
-                        <span>Are your caregivers licensed and background checked?</span>
+                        <span>Are your caregivers licensed and background-checked?</span>
                         <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 3 ? 'ri-subtract-line' : 'ri-add-line'"></i>
                     </button>
                     <div x-show="activeFaq === 3" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
-                        Yes. All caregivers and nurses undergo rigorous background screening, license verification, and specialized clinical training to deliver exceptional patient care.
+                        Absolutely. Your safety and peace of mind are our top priorities. Every member of our clinical team—from our Registered Nurses (RNs) to our physical therapists and home health aides—is fully licensed, insured, and thoroughly vetted. We conduct rigorous national background checks, verify credentials, and require ongoing clinical training.
                     </div>
                 </div>
 
@@ -994,7 +1000,7 @@
                         <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 4 ? 'ri-subtract-line' : 'ri-add-line'"></i>
                     </button>
                     <div x-show="activeFaq === 4" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
-                        Absolutely. We continuously review care progress and update care plans in real-time according to changing health requirements and family preferences.
+                        Yes. We know that health is dynamic. A patient recovering from surgery may need intensive daily therapy at first, but only weekly check-ins as they heal. Conversely, chronic conditions may eventually require more hands-on support. Our care coordinators continuously evaluate your loved one's progress and communicate with their doctor to scale services up or down as needed.
                     </div>
                 </div>
             </div>

@@ -130,6 +130,42 @@
                         </div>
                     </div>
 
+                    <!-- Fax Card -->
+                    <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex items-start gap-4 group shadow-xl">
+                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all">
+                            <i class="ri-printer-line"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Fax Us</h4>
+                            <p class="text-xs text-[#a1a1aa] mt-0.5">Medical Records & Physician Orders</p>
+                            <a href="tel:{{ preg_replace('/[^0-9]/', '', setting('fax', '352-729-2732')) }}" class="text-lg font-bold text-[#C8A14F] hover:underline block mt-1">{{ setting('fax', '352-729-2732') }}</a>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex items-start gap-4 group shadow-xl">
+                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Email Now</h4>
+                            <p class="text-xs text-[#a1a1aa] mt-0.5">General & Medical Inquiries</p>
+                            <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-sm sm:text-base font-semibold text-[#C8A14F] hover:underline block mt-1">{{ setting('email', 'info@angelshomehealthfl.com') }}</a>
+                        </div>
+                    </div>
+
+                    <!-- Visit Now Card -->
+                    <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex items-start gap-4 group shadow-xl">
+                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all">
+                            <i class="ri-map-pin-2-fill"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Visit Now</h4>
+                            <p class="text-xs text-[#a1a1aa] mt-0.5">{{ setting('location', 'Mount Dora, Florida Headquarters') }}</p>
+                            <p class="text-sm text-white mt-1 leading-relaxed font-medium">{{ setting('address', '3400, CR 19-A, Mt Dora, FL 32757, U. S.') }}</p>
+                        </div>
+                    </div>
+
                     <!-- WhatsApp Card -->
                     @if (setting('whatsapp'))
                         <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] hover:border-emerald-500/60 transition-all duration-300 flex items-start gap-4 group shadow-xl">
@@ -146,46 +182,7 @@
                         </div>
                     @endif
 
-                    <!-- Email Card -->
-                    <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex items-start gap-4 group shadow-xl">
-                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all">
-                            <i class="ri-mail-line"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Send Us An Email</h4>
-                            <p class="text-xs text-[#a1a1aa] mt-0.5">General & Medical Inquiries</p>
-                            <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-sm font-semibold text-[#C8A14F] hover:underline block mt-1">{{ setting('email', 'info@angelshomehealthfl.com') }}</a>
-                        </div>
-                    </div>
 
-                    <!-- Address Card -->
-                    <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex items-start gap-4 group shadow-xl">
-                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all">
-                            <i class="ri-map-pin-2-fill"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Office Location</h4>
-                            <p class="text-xs text-[#a1a1aa] mt-0.5">{{ setting('location', 'Mount Dora, Florida Headquarters') }}</p>
-                            <p class="text-sm text-white mt-1 leading-relaxed font-medium">{{ setting('address', '3400, CR 19-A, Mount Dora, FL 32757, U.S.') }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Hours & Licensure Card -->
-                    <div class="bg-[#0a0a0a] p-6 sm:p-7 rounded-3xl border border-[#27272a] space-y-3 shadow-xl">
-                        <h4 class="font-heading font-bold text-base text-white flex items-center gap-2">
-                            <i class="ri-shield-check-fill text-[#C8A14F]"></i>
-                            <span>ACHC Accredited & Registered</span>
-                        </h4>
-                        <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                            Angels Home Health of Florida is an ACHC Accredited & Florida Registered Home Health Agency providing care across Mount Dora and surrounding counties.
-                        </p>
-                        @if (setting('working_hours'))
-                            <p class="text-xs text-[#C8A14F] font-semibold flex items-center gap-1.5 pt-1 border-t border-[#1f1f23]">
-                                <i class="ri-time-line"></i>
-                                <span>{{ setting('working_hours') }}</span>
-                            </p>
-                        @endif
-                    </div>
 
                 </div>
 
@@ -204,45 +201,18 @@
                     Visit Our Headquarters
                 </h2>
                 <p class="text-sm text-[#a1a1aa]">
-                    {{ setting('address', '3400, CR 19-A, Mount Dora, FL 32757, United States') }}
+                    {{ setting('address', '3400, CR 19-A, Mt Dora, FL 32757, U. S.') }}
                 </p>
             </div>
 
             <!-- Map Card Container -->
-            <div class="relative rounded-3xl overflow-hidden border-2 border-[#C8A14F]/40 shadow-[0_0_40px_rgba(200,161,79,0.15)] bg-[#0a0a0a]">
-                @if (str_contains(setting('google_map', ''), '<iframe'))
-                    <div class="w-full h-80 sm:h-[420px] [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0 filter grayscale invert contrast-125 opacity-90 hover:opacity-100 transition-opacity">
+            <div class="rounded-3xl overflow-hidden border-2 border-[#C8A14F]/40 shadow-[0_0_40px_rgba(200,161,79,0.15)] bg-[#0a0a0a]">
+                <div class="w-full h-80 sm:h-[480px] [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0">
+                    @if (str_contains(setting('google_map', ''), '<iframe'))
                         {!! setting('google_map') !!}
-                    </div>
-                @else
-                    <iframe 
-                        src="{{ setting('google_map', 'https://maps.google.com/maps?q=3400%20CR%2019-A,%20Mount%20Dora,%20FL%2032757&t=&z=14&ie=UTF8&iwloc=&output=embed') }}" 
-                        class="w-full h-80 sm:h-[420px] border-0 filter grayscale invert contrast-125 opacity-90 hover:opacity-100 transition-opacity" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Angels Home Health Location Map">
-                    </iframe>
-                @endif
-                
-                <!-- Map Overlay Badge Card -->
-                <div class="absolute bottom-6 left-6 right-6 sm:right-auto bg-[#000000]/90 backdrop-blur-md p-5 rounded-2xl border border-[#27272a] max-w-md shadow-2xl space-y-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-[#C8A14F]/20 text-[#C8A14F] flex items-center justify-center text-xl shrink-0">
-                            <i class="ri-map-pin-fill"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-heading font-bold text-sm text-white">Angels Home Health of Florida</h4>
-                            <p class="text-xs text-[#a1a1aa]">{{ setting('location', 'Mount Dora Headquarters') }}</p>
-                        </div>
-                    </div>
-                    <p class="text-xs text-[#d4d4d8] leading-relaxed">
-                        {{ setting('address', '3400, CR 19-A, Mount Dora, FL 32757') }}. Serving Lake County & Statewide Florida.
-                    </p>
-                    <a href="{{ setting('map_url', setting('google_map_url', 'https://maps.google.com/?q=' . urlencode(setting('address', '3400 CR 19-A, Mount Dora, FL 32757')))) }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-[#C8A14F] hover:underline uppercase tracking-wider">
-                        <span>Open in Google Maps</span>
-                        <i class="ri-external-link-line"></i>
-                    </a>
+                    @else
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.018079277115!2d-81.6788339!3d28.8085351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7a3a616e31e15%3A0xf9e4d888116a92df!2sAngels%20Home%20Care!5e0!3m2!1sen!2sin!4v1793974083029!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    @endif
                 </div>
             </div>
         </div>
