@@ -106,16 +106,35 @@
 
     <livewire:public.consultation-modal />
 
-    <!-- Floating Sticky WhatsApp Circular Icon Button -->
-    <a href="{{ whatsapp_url() }}"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 border border-emerald-400/40 group"
-       title="Chat on WhatsApp"
-       aria-label="Chat on WhatsApp">
-        <i class="ri-whatsapp-fill text-3xl text-white"></i>
-        <span class="absolute -inset-0.5 rounded-full bg-emerald-500 opacity-75 animate-ping pointer-events-none -z-10"></span>
-    </a>
+    <!-- Floating Fixed CTAs: Call (First) + WhatsApp (Below) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+        <!-- 1. Call Button (First) -->
+        <a href="{{ phone_url() }}"
+           class="relative w-14 h-14 rounded-full bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] flex items-center justify-center shadow-[0_4px_25px_rgba(200,161,79,0.55)] transition-all transform hover:scale-110 border-2 border-[#ffffff]/25 group"
+           title="Call Us Directly: {{ setting('phone', '+1 352 729 2727') }}"
+           aria-label="Call Angels Home Health">
+            <i class="ri-phone-fill text-2xl text-black"></i>
+            <span class="absolute -inset-1 rounded-full bg-[#C8A14F] opacity-40 animate-ping pointer-events-none -z-10"></span>
+            <!-- Tooltip -->
+            <span class="absolute right-16 bg-[#0a0a0a] text-white text-xs font-heading font-bold px-3 py-1.5 rounded-xl border border-[#C8A14F]/40 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-2xl hidden sm:block">
+                Call {{ setting('phone', '+1 352 729 2727') }}
+            </span>
+        </a>
+
+        <!-- 2. WhatsApp Button (Below) -->
+        <a href="{{ whatsapp_url() }}"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="relative w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-[0_4px_25px_rgba(16,185,129,0.55)] transition-all transform hover:scale-110 border-2 border-[#ffffff]/25 group"
+           title="Chat on WhatsApp"
+           aria-label="Chat on WhatsApp">
+            <i class="ri-whatsapp-fill text-3xl text-white"></i>
+            <!-- Tooltip -->
+            <span class="absolute right-16 bg-[#0a0a0a] text-white text-xs font-heading font-bold px-3 py-1.5 rounded-xl border border-emerald-500/40 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-2xl hidden sm:block">
+                Chat on WhatsApp
+            </span>
+        </a>
+    </div>
 
     @livewireScripts
 </body>

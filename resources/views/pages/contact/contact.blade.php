@@ -24,10 +24,10 @@
     <!-- 2. UPPER SECTION: DIRECT CONTACT INFO CARDS -->
     <section class="py-12 bg-[#050505] border-b border-[#27272a]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
                 
                 <!-- Phone Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                <div class="bg-[#0a0a0a] p-5 sm:p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
                     <div class="w-full flex flex-col items-center">
                         <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-phone-fill"></i>
@@ -36,12 +36,12 @@
                         <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">24/7 Phone Support Available</p>
                     </div>
                     <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
-                        <a href="{{ phone_url() }}" class="text-sm font-bold text-[#C8A14F] hover:underline block truncate">{{ setting('phone', '+1 352 729 2727') }}</a>
+                        <a href="{{ phone_url() }}" class="text-sm font-bold text-[#C8A14F] hover:underline block">{{ setting('phone', '+1 352 729 2727') }}</a>
                     </div>
                 </div>
 
                 <!-- Fax Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                <div class="bg-[#0a0a0a] p-5 sm:p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
                     <div class="w-full flex flex-col items-center">
                         <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-printer-line"></i>
@@ -50,12 +50,12 @@
                         <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">Medical Records & Physician Orders</p>
                     </div>
                     <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
-                        <a href="tel:{{ preg_replace('/[^0-9]/', '', setting('fax', '352-729-2732')) }}" class="text-sm font-bold text-[#C8A14F] hover:underline block truncate">{{ setting('fax', '352-729-2732') }}</a>
+                        <a href="tel:{{ preg_replace('/[^0-9]/', '', setting('fax', '352-729-2732')) }}" class="text-sm font-bold text-[#C8A14F] hover:underline block">{{ setting('fax', '352-729-2732') }}</a>
                     </div>
                 </div>
 
                 <!-- Email Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                <div class="bg-[#0a0a0a] p-5 sm:p-6 px-3.5 sm:px-5 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
                     <div class="w-full flex flex-col items-center">
                         <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-mail-line"></i>
@@ -64,12 +64,14 @@
                         <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">General & Medical Inquiries</p>
                     </div>
                     <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
-                        <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-xs sm:text-sm font-semibold text-[#C8A14F] hover:underline block truncate">{{ setting('email', 'info@angelshomehealthfl.com') }}</a>
+                        <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-[12px] sm:text-xs xl:text-[13px] font-semibold text-[#C8A14F] hover:underline block break-all leading-normal" title="{{ setting('email', 'info@angelshomehealthfl.com') }}">
+                            {{ setting('email', 'info@angelshomehealthfl.com') }}
+                        </a>
                     </div>
                 </div>
 
                 <!-- Visit Now Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                <div class="bg-[#0a0a0a] p-5 sm:p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
                     <div class="w-full flex flex-col items-center">
                         <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-map-pin-2-fill"></i>
@@ -85,7 +87,7 @@
                 </div>
 
                 <!-- WhatsApp Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-emerald-500/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                <div class="bg-[#0a0a0a] p-5 sm:p-6 rounded-3xl border border-[#27272a] hover:border-emerald-500/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
                     <div class="w-full flex flex-col items-center">
                         <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-whatsapp-fill"></i>
@@ -94,7 +96,7 @@
                         <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">Instant Medical & Assessment Inquiries</p>
                     </div>
                     <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
-                        <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-emerald-400 hover:underline block truncate">
+                        <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-emerald-400 hover:underline block">
                             +1 (352) 729-2727 &rarr;
                         </a>
                     </div>
