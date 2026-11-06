@@ -67,12 +67,16 @@
                             @endif
                             <div class="pt-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
                                 @if($slide->btn_1)
-                                    <a href="{{ $slide->btn_1_url ?: '#consultation' }}" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all transform hover:scale-105 shadow-xl">
+                                    <a href="{{ $slide->btn_1_url ?: '#consultation' }}" 
+                                       @if(!$slide->btn_1_url || $slide->btn_1_url === '#consultation') @click.prevent="$dispatch('open-consultation-modal')" @endif
+                                       class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all transform hover:scale-105 shadow-xl">
                                         {{ $slide->btn_1 }}
                                     </a>
                                 @endif
                                 @if($slide->btn_2)
-                                    <a href="{{ $slide->btn_2_url ?: '#services' }}" class="bg-[#000000]/80 hover:bg-[#121212] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all backdrop-blur-sm">
+                                    <a href="{{ $slide->btn_2_url ?: '#services' }}" 
+                                       @if($slide->btn_2_url === '#consultation') @click.prevent="$dispatch('open-consultation-modal')" @endif
+                                       class="bg-[#000000]/80 hover:bg-[#121212] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all backdrop-blur-sm">
                                         {{ $slide->btn_2 }}
                                     </a>
                                 @endif
@@ -82,9 +86,21 @@
                 </div>
             @empty
                 <div class="absolute inset-0 flex items-center justify-center text-center p-6 bg-zinc-950">
-                    <div class="space-y-3">
-                        <h2 class="text-3xl font-bold text-white">Welcome to Angels Home Health</h2>
-                        <p class="text-zinc-400 max-w-md mx-auto text-sm">Full-spectrum compassionate clinical home healthcare in Mount Dora, FL.</p>
+                    <div class="space-y-6 max-w-4xl mx-auto">
+                        <h1 class="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight drop-shadow-lg">
+                            Expert Medical Care in the Comfort of Home
+                        </h1>
+                        <p class="text-[#f8fafc] text-base sm:text-xl leading-relaxed max-w-2xl mx-auto font-medium drop-shadow-md">
+                            Angels Home Health of Florida brings trusted skilled nursing, physical therapy, and chronic disease management directly to your doorstep in Mount Dora, Orlando, and surrounding communities.
+                        </p>
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <button @click="$dispatch('open-consultation-modal')" type="button" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all transform hover:scale-105 shadow-xl">
+                                Schedule a Free Assessment
+                            </button>
+                            <a href="#services" class="bg-[#000000]/80 hover:bg-[#121212] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-9 py-4 rounded-full text-sm tracking-wider uppercase text-center transition-all backdrop-blur-sm">
+                                Explore Our Services
+                            </a>
+                        </div>
                     </div>
                 </div>
             @endforelse
@@ -127,22 +143,22 @@
         <div class="animate-marquee whitespace-nowrap flex items-center gap-12 text-xs font-heading font-bold uppercase tracking-widest text-[#C8A14F]">
             <div class="flex items-center gap-12">
                 <span>✦ SKILLED NURSING & REHABILITATION</span>
-                <span>✦ 24/7 IN-HOME CARE SUPPORT</span>
+                <span>✦ COMPREHENSIVE IN-HOME MEDICAL CARE</span>
                 <span>✦ PHYSICAL & OCCUPATIONAL THERAPY</span>
-                <span>✦ BEHAVIORAL HEALTHCARE</span>
                 <span>✦ CHRONIC DISEASE MANAGEMENT</span>
-                <span>✦ {{ strtoupper(setting('location', 'Mount Dora, FL & surrounding areas')) }}</span>
-                <span>✦ CALL TODAY: {{ setting('phone', '+1 352 729 2727') }}</span>
+                <span>✦ MOUNT DORA, ORLANDO & SURROUNDING COMMUNITIES</span>
+                <span>✦ CALL TODAY: {{ setting('phone', '+1 (352) 729-2727') }}</span>
+                <span>✦ MON - FRI: 8:00 AM - 4:30 PM (24/7 ON-CALL)</span>
                 <span>✦ INDIVIDUALIZED CARE PLANS</span>
             </div>
             <div class="flex items-center gap-12" aria-hidden="true">
                 <span>✦ SKILLED NURSING & REHABILITATION</span>
-                <span>✦ 24/7 IN-HOME CARE SUPPORT</span>
+                <span>✦ COMPREHENSIVE IN-HOME MEDICAL CARE</span>
                 <span>✦ PHYSICAL & OCCUPATIONAL THERAPY</span>
-                <span>✦ BEHAVIORAL HEALTHCARE</span>
                 <span>✦ CHRONIC DISEASE MANAGEMENT</span>
-                <span>✦ {{ strtoupper(setting('location', 'Mount Dora, FL & surrounding areas')) }}</span>
-                <span>✦ CALL TODAY: {{ setting('phone', '+1 352 729 2727') }}</span>
+                <span>✦ MOUNT DORA, ORLANDO & SURROUNDING COMMUNITIES</span>
+                <span>✦ CALL TODAY: {{ setting('phone', '+1 (352) 729-2727') }}</span>
+                <span>✦ MON - FRI: 8:00 AM - 4:30 PM (24/7 ON-CALL)</span>
                 <span>✦ INDIVIDUALIZED CARE PLANS</span>
             </div>
         </div>
@@ -366,7 +382,7 @@
         </div>
     </section>
 
-    <!-- 4.6. HOME HEALTH CARE YOU CAN TRUST (ABOUT / TRUST SECTION WITH LEFT IMAGE as1.jpg) -->
+    <!-- 4.6. INTRODUCTION / ABOUT US SECTION -->
     <section id="about-trust" 
              x-data="{ shown: false }" 
              x-init="const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { shown = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el);"
@@ -390,66 +406,57 @@
                      :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
                     <div class="space-y-3">
                         <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
-                            Dedicated In-Home Provider
+                            ✦ WELCOME TO ANGELS HOME HEALTH
                         </span>
                         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
-                            Home Health Care You Can Trust
+                            Redefining Home Health in Central Florida
                         </h2>
-                        <p class="text-sm sm:text-base text-[#C8A14F] font-heading font-semibold leading-relaxed">
-                            Dedicated home health care provider in Mount Dora, Florida & Around
-                        </p>
                     </div>
 
                     <div class="space-y-3.5 text-[#a1a1aa] text-sm sm:text-base leading-relaxed font-medium">
                         <p>
-                            <strong class="text-white">Angels Home Health of Florida</strong> is a dedicated home health care provider based in Mount Dora, Florida.
+                            At Angels Home Health, we bridge the gap between clinical excellence and the warmth of family. We understand that healing happens best where you feel most comfortable at home. Led by a team of experienced medical professionals, our mission is to deliver hospital-level care without the hospital environment.
                         </p>
                         <p>
-                            Our mission is to deliver comprehensive, compassionate care throughout Florida. We offer a full spectrum of services, including <span class="text-white font-semibold">Skilled Nursing</span>, <span class="text-white font-semibold">Physical Therapy</span>, <span class="text-white font-semibold">Behavioral Health</span>, and <span class="text-white font-semibold">Chronic Disease Management</span>, right in the comfort of your home.
+                            Whether you are recovering from a recent surgery, managing a chronic illness like diabetes, or seeking specialized therapies, we are committed to improving your quality of life. We treat every patient with the exact same compassion, respect, and dedication we would demand for our own loved ones.
                         </p>
                     </div>
 
                     <!-- Clean Service Bullet Points Grid -->
-                    <div class="grid grid-cols-2 gap-2.5 sm:gap-3.5 pt-1">
-                        <div class="flex items-center gap-2.5 sm:gap-3 bg-[#0a0a0a] p-2.5 sm:p-3.5 rounded-xl border border-[#27272a]">
-                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-xs sm:text-sm">
-                                <i class="ri-heart-pulse-fill"></i>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3 rounded-xl border border-[#27272a]">
+                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                                <i class="ri-checkbox-circle-fill"></i>
                             </div>
-                            <span class="text-[11px] sm:text-sm font-semibold text-white leading-tight">Skilled Nursing & Care</span>
+                            <span class="text-xs sm:text-sm font-semibold text-white leading-tight">Medicare Certified & Fully Licensed</span>
                         </div>
-                        <div class="flex items-center gap-2.5 sm:gap-3 bg-[#0a0a0a] p-2.5 sm:p-3.5 rounded-xl border border-[#27272a]">
-                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-xs sm:text-sm">
-                                <i class="ri-user-follow-fill"></i>
+                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3 rounded-xl border border-[#27272a]">
+                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                                <i class="ri-checkbox-circle-fill"></i>
                             </div>
-                            <span class="text-[11px] sm:text-sm font-semibold text-white leading-tight">Physical Therapy</span>
+                            <span class="text-xs sm:text-sm font-semibold text-white leading-tight">Highly Trained, Compassionate Caregivers</span>
                         </div>
-                        <div class="flex items-center gap-2.5 sm:gap-3 bg-[#0a0a0a] p-2.5 sm:p-3.5 rounded-xl border border-[#27272a]">
-                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-xs sm:text-sm">
-                                <i class="ri-brain-line"></i>
+                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3 rounded-xl border border-[#27272a]">
+                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                                <i class="ri-checkbox-circle-fill"></i>
                             </div>
-                            <span class="text-[11px] sm:text-sm font-semibold text-white leading-tight">Behavioral Health</span>
+                            <span class="text-xs sm:text-sm font-semibold text-white leading-tight">Comprehensive In-Home Medical Support</span>
                         </div>
-                        <div class="flex items-center gap-2.5 sm:gap-3 bg-[#0a0a0a] p-2.5 sm:p-3.5 rounded-xl border border-[#27272a]">
-                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-xs sm:text-sm">
-                                <i class="ri-stethoscope-fill"></i>
+                        <div class="flex items-center gap-3 bg-[#0a0a0a] p-3 rounded-xl border border-[#27272a]">
+                            <div class="w-7 h-7 rounded-full bg-[#121212] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] shrink-0 text-sm">
+                                <i class="ri-checkbox-circle-fill"></i>
                             </div>
-                            <span class="text-[11px] sm:text-sm font-semibold text-white leading-tight">Chronic Disease Care</span>
+                            <span class="text-xs sm:text-sm font-semibold text-white leading-tight">Serving Mount Dora, Orlando & Surrounding Areas</span>
                         </div>
                     </div>
 
                     <!-- CTA Buttons -->
                     <div class="pt-3 flex flex-wrap items-center gap-4">
-                        <a href="{{ phone_url() }}" class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
-                            <i class="ri-phone-fill text-sm"></i>
-                            <span>Call {{ setting('phone', '+1 352 729 2727') }}</span>
+                        <a href="/about" wire:navigate class="bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold px-8 py-3.5 rounded-full text-xs tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl inline-flex items-center gap-2">
+                            <span>Learn More About Us</span>
+                            <i class="ri-arrow-right-line"></i>
                         </a>
-                        @if (setting('whatsapp'))
-                            <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold px-6 py-3 rounded-full text-xs tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl flex items-center gap-2">
-                                <i class="ri-whatsapp-line text-sm"></i>
-                                <span>WhatsApp Us</span>
-                            </a>
-                        @endif
-                        <button @click="$dispatch('open-consultation-modal')" type="button" class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-7 py-3 rounded-full text-xs tracking-wider uppercase transition-all">
+                        <button @click="$dispatch('open-consultation-modal')" type="button" class="bg-[#121212] hover:bg-[#1a1a1a] text-white border border-[#27272a] hover:border-[#C8A14F] font-heading font-semibold px-7 py-3.5 rounded-full text-xs tracking-wider uppercase transition-all">
                             Request Free Consultation
                         </button>
                     </div>
@@ -588,10 +595,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
-                    Why Choose Us?
+                    Why Families Trust Angels Home Health
                 </h2>
                 <p class="text-[#a1a1aa] text-base sm:text-lg leading-relaxed font-medium">
-                    We provide compassionate, personalized care that ensures your loved ones receive the support they deserve with experienced caregivers, flexible scheduling, and complete peace of mind.
+                    Choosing a home health provider is a major decision. We provide clinical excellence combined with compassionate, personalized support to give your family complete peace of mind.
                 </p>
             </div>
 
@@ -604,10 +611,10 @@
                     <div class="bg-[#121212] p-6 sm:p-7 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all space-y-2.5">
                         <div class="flex items-center gap-3">
                             <span class="w-8 h-8 rounded-full bg-[#000000] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-xs">01</span>
-                            <h3 class="font-heading font-bold text-lg text-white">Personalized Care Plans</h3>
+                            <h3 class="font-heading font-bold text-lg text-white">Patient-Centered Approach</h3>
                         </div>
-                        <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                            We design customized care plans that meet the unique needs of each individual, ensuring comfort, dignity, and independence.
+                        <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                            We don't just treat conditions; we care for people. Your dignity, comfort, and personal preferences dictate every aspect of our care plan.
                         </p>
                     </div>
 
@@ -615,10 +622,10 @@
                     <div class="bg-[#121212] p-6 sm:p-7 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all space-y-2.5">
                         <div class="flex items-center gap-3">
                             <span class="w-8 h-8 rounded-full bg-[#000000] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-xs">02</span>
-                            <h3 class="font-heading font-bold text-lg text-white">Highly Trained Caregivers</h3>
+                            <h3 class="font-heading font-bold text-lg text-white">Led by Medical Expertise</h3>
                         </div>
-                        <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                            Our caregivers are not only skilled but also compassionate, providing respectful and empathetic care that feels like family.
+                        <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                            Our care is grounded in clinical excellence. With decades of hands-on experience, our team ensures the highest standards of safety and medical best practices.
                         </p>
                     </div>
 
@@ -628,8 +635,8 @@
                             <span class="w-8 h-8 rounded-full bg-[#000000] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-xs">03</span>
                             <h3 class="font-heading font-bold text-lg text-white">Comprehensive Services</h3>
                         </div>
-                        <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                            From daily personal care to specialized medical support, we offer a full range of services to keep your loved ones safe.
+                        <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                            From physical therapy and wound care to chronic disease management, all your in-home medical and support needs are expertly met under one roof.
                         </p>
                     </div>
                 </div>
@@ -658,10 +665,10 @@
                     <div class="bg-[#121212] p-6 sm:p-7 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all space-y-2.5">
                         <div class="flex items-center gap-3">
                             <span class="w-8 h-8 rounded-full bg-[#000000] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-xs">04</span>
-                            <h3 class="font-heading font-bold text-lg text-white">Flexible Care Options</h3>
+                            <h3 class="font-heading font-bold text-lg text-white">Flexible & Reliable Care</h3>
                         </div>
-                        <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                            Whether you need temporary assistance or 24-hour care, our flexible scheduling ensures we’re there when you need us most.
+                        <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                            Health needs change rapidly. Whether you need temporary post-operative assistance or long-term daily management, we adjust our schedule to fit yours.
                         </p>
                     </div>
 
@@ -671,8 +678,8 @@
                             <span class="w-8 h-8 rounded-full bg-[#000000] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-xs">05</span>
                             <h3 class="font-heading font-bold text-lg text-white">Complex Medical Support</h3>
                         </div>
-                        <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                            Our team has experience in providing care for Alzheimer’s, Parkinson’s, post-surgery recovery, and other complex health conditions.
+                        <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                            Our highly trained clinicians specialize in navigating Alzheimer’s, Parkinson’s, stroke recovery, and coordinating care after a hospital discharge.
                         </p>
                     </div>
 
@@ -680,10 +687,10 @@
                     <div class="bg-[#121212] p-6 sm:p-7 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all space-y-2.5">
                         <div class="flex items-center gap-3">
                             <span class="w-8 h-8 rounded-full bg-[#000000] border border-[#C8A14F]/50 flex items-center justify-center text-[#C8A14F] font-bold text-xs">06</span>
-                            <h3 class="font-heading font-bold text-lg text-white">Emotional & Social Support</h3>
+                            <h3 class="font-heading font-bold text-lg text-white">Continuity & Communication</h3>
                         </div>
-                        <p class="text-xs text-[#a1a1aa] leading-relaxed">
-                            We go beyond physical care by offering companionship, encouraging social activities, and providing emotional support to promote mental well-being.
+                        <p class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
+                            We prioritize consistent communication with you, your family, and your primary physicians so everyone is fully aligned on your health journey.
                         </p>
                     </div>
                 </div>

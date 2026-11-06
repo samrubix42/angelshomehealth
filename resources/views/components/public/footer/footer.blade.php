@@ -7,7 +7,7 @@
                     <img src="/logo.png" alt="Angels Home Health Logo" class="h-20 sm:h-24 w-auto object-contain">
                 </div>
                 <p class="text-xs text-[#a1a1aa] max-w-sm leading-relaxed">
-                    Angels Home Health of Florida is a dedicated home health care provider based in Mount Dora, Florida. Delivering skilled nursing, physical therapy, behavioral health, and chronic care in the comfort of home.
+                    Angels Home Health of Florida is a dedicated home health care provider based in Mount Dora. Our mission is to enhance lives with dignity, respect, and exceptional in-home healthcare services across our community.
                 </p>
                 <!-- Social Media Links -->
                 <div class="flex items-center gap-3 pt-2">
@@ -70,11 +70,14 @@
                 <p class="text-xs text-white font-medium mb-1">
                     Email: <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-[#C8A14F] hover:underline">{{ setting('email', 'info@angelshomehealthfl.com') }}</a>
                 </p>
-                @if (setting('working_hours'))
-                    <p class="text-[11px] text-[#71717a] mt-2">
-                        <i class="ri-time-line text-[#C8A14F] mr-1"></i>{{ setting('working_hours') }}
-                    </p>
-                @endif
+                <div class="mt-3 pt-3 border-t border-[#27272a]/70">
+                    <span class="text-[11px] font-bold text-[#C8A14F] uppercase tracking-wider block mb-1 flex items-center gap-1">
+                        <i class="ri-time-line"></i>
+                        <span>Hours of Operation</span>
+                    </span>
+                    <p class="text-xs text-white leading-relaxed font-medium">Monday – Friday: 8:00 AM - 4:30 PM</p>
+                    <p class="text-[11px] text-[#71717a] mt-0.5">Saturday & Sunday: Closed / On-Call for Emergencies</p>
+                </div>
             </div>
         </div>
 
