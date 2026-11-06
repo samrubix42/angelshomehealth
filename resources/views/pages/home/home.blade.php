@@ -880,14 +880,17 @@
                     
                     @foreach ($testimonials as $testimonial)
                         @php
-                            $cleanedName = trim(preg_replace('/^(Dr\.|Mr\.|Mrs\.|Ms\.)\s+/i', '', $testimonial->name));
-                            $nameParts = array_values(array_filter(preg_split('/[\s&]+/', $cleanedName)));
-                            if (count($nameParts) >= 2) {
-                                $firstInitial = strtoupper(mb_substr($nameParts[0], 0, 1));
-                                $lastInitial = strtoupper(mb_substr(end($nameParts), 0, 1));
-                                $initials = "{$firstInitial}. {$lastInitial}.";
-                            } elseif (count($nameParts) === 1 && strlen($nameParts[0]) > 0) {
-                                $initials = strtoupper(mb_substr($nameParts[0], 0, 1)) . '.';
+                            $rawName = preg_replace('/^(Dr\.|Mr\.|Mrs\.|Ms\.)\s+/i', '', trim($testimonial->name));
+                            $cleaned = trim(preg_replace('/[^A-Za-z\s]/', ' ', $rawName));
+                            $words = array_values(array_filter(explode(' ', $cleaned)));
+                            
+                            if (count($words) >= 2) {
+                                $first = strtoupper($words[0][0]);
+                                $last = strtoupper(end($words)[0]);
+                                $initials = "{$first}. {$last}.";
+                            } elseif (count($words) === 1 && strlen($words[0]) > 0) {
+                                $first = strtoupper($words[0][0]);
+                                $initials = "{$first}.";
                             } else {
                                 $initials = $testimonial->name;
                             }
@@ -907,18 +910,11 @@
                                         "{{ $testimonial->review }}"
                                     </blockquote>
                                 </div>
-                                <div class="pt-4 border-t border-[#27272a] flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-full bg-[#C8A14F]/15 border border-[#C8A14F]/40 text-[#C8A14F] font-heading font-extrabold text-xs flex items-center justify-center shrink-0 tracking-wider">
-                                            {{ $initials }}
-                                        </div>
-                                        <div>
-                                            <h4 class="font-heading font-bold text-white text-base tracking-wider">{{ $initials }}</h4>
-                                            @if (!empty($testimonial->designation))
-                                                <span class="text-xs text-[#a1a1aa] font-medium block">{{ $testimonial->designation }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                <div class="pt-4 border-t border-[#27272a]">
+                                    <h4 class="font-heading font-bold text-white text-base tracking-wider">{{ $initials }}</h4>
+                                    @if (!empty($testimonial->designation))
+                                        <span class="text-xs text-[#C8A14F] font-semibold mt-0.5 block">{{ $testimonial->designation }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
