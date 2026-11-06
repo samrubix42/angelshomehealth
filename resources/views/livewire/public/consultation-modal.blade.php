@@ -69,7 +69,7 @@
                                 <label class="block text-xs font-bold text-[#d4d4d8] uppercase tracking-wider mb-1.5">Full Name *</label>
                                 <input type="text" 
                                        wire:model="name" 
-                                       placeholder="John Doe" 
+                                       placeholder="Enter your full name" 
                                        class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] focus:ring-1 focus:ring-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
                                 @error('name') <span class="text-[10px] text-red-400 mt-1 block font-medium">{{ $message }}</span> @enderror
                             </div>
@@ -80,7 +80,7 @@
                                     <label class="block text-xs font-bold text-[#d4d4d8] uppercase tracking-wider mb-1.5">Phone Number *</label>
                                     <input type="tel" 
                                            wire:model="phone" 
-                                           placeholder="+1 (352) 000-0000" 
+                                           placeholder="Enter your phone number" 
                                            class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] focus:ring-1 focus:ring-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
                                     @error('phone') <span class="text-[10px] text-red-400 mt-1 block font-medium">{{ $message }}</span> @enderror
                                 </div>
@@ -89,7 +89,7 @@
                                     <label class="block text-xs font-bold text-[#d4d4d8] uppercase tracking-wider mb-1.5">Email Address *</label>
                                     <input type="email" 
                                            wire:model="email" 
-                                           placeholder="john@example.com" 
+                                           placeholder="Enter your email address" 
                                            class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] focus:ring-1 focus:ring-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
                                     @error('email') <span class="text-[10px] text-red-400 mt-1 block font-medium">{{ $message }}</span> @enderror
                                 </div>
@@ -112,7 +112,7 @@
                                 <label class="block text-xs font-bold text-[#d4d4d8] uppercase tracking-wider mb-1.5">Care Needs / Special Notes</label>
                                 <textarea wire:model="notes" 
                                           rows="3" 
-                                          placeholder="Tell us about the patient's condition, schedule, or specific requirements..." 
+                                          placeholder="Describe the patient's condition, schedule, or specific requirements..." 
                                           class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] focus:ring-1 focus:ring-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors"></textarea>
                             </div>
 

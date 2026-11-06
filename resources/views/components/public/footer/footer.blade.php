@@ -86,7 +86,7 @@
 
         <div class="border-t border-[#27272a] pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#71717a] gap-4">
             <p>&copy; {{ date('Y') }} Angels Home Health of Florida. All rights reserved.</p>
-            <p>Mount Dora, Florida · ACHC Accredited & Florida Registered</p>
+            <p>Powered by <a href="https://techonika.com" target="_blank" rel="noopener noreferrer" class="text-[#C8A14F] hover:underline">Techonika</a></p>
         </div>
     </div>
 </footer>

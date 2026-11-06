@@ -115,19 +115,7 @@
                     </div>
                 @endif
 
-                <!-- Author Bio Box -->
-                <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5 bg-[#121212] p-6 rounded-2xl border border-[#27272a]">
-                    <div class="w-14 h-14 rounded-2xl bg-[#C8A14F]/20 border border-[#C8A14F]/50 text-[#C8A14F] font-extrabold text-xl flex items-center justify-center shrink-0">
-                        RN
-                    </div>
-                    <div class="space-y-1 text-center sm:text-left">
-                        <h4 class="font-heading font-bold text-base text-white">Written by Angels Clinical Care Team</h4>
-                        <p class="text-xs text-[#C8A14F] font-semibold">RN & Post-Acute Clinical Specialist</p>
-                        <p class="text-xs text-[#a1a1aa] leading-relaxed pt-1">
-                            Our clinical team consists of licensed Registered Nurses (RNs), physical therapists, and certified care managers dedicated to raising the standard of home healthcare across Florida.
-                        </p>
-                    </div>
-                </div>
+              
             </div>
 
             <!-- FREE CONSULTATION CTA BANNER -->

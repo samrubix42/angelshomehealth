@@ -25,10 +25,7 @@
                         <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest">
                             Angels Healthcare Service
                         </span>
-                        <span class="text-xs font-semibold text-white bg-[#121212] border border-[#27272a] px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
-                            <i class="ri-verified-badge-line text-[#C8A14F]"></i>
-                            <span>RN & Clinical Care Supervised</span>
-                        </span>
+                     
                     </div>
 
                     <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
@@ -63,7 +60,7 @@
                         Speak with our {{ setting('location', 'Mount Dora') }} clinical coordinator today to schedule your no-obligation in-home assessment.
                     </p>
                     <a href="#inquiry-form" class="block text-center bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold py-3.5 rounded-full text-xs uppercase tracking-wider transition-all transform hover:scale-[1.02] shadow-lg">
-                        Request Free In-Home Visit
+                        Request  In-Home Visit
                     </a>
                 </div>
             </div>
@@ -80,12 +77,8 @@
                     
                     <!-- Service Featured Image -->
                     <div class="rounded-3xl overflow-hidden border border-[#27272a] shadow-2xl h-72 sm:h-96 relative group">
-                        <img src="{{ $this->service->image ?? asset('images/service_wound_nursing.jpg') }}" alt="{{ $this->service->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent opacity-80"></div>
-                        <span class="absolute bottom-6 left-6 bg-[#000000]/90 backdrop-blur-md text-[#C8A14F] border border-[#C8A14F]/40 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full flex items-center gap-2">
-                            <i class="ri-map-pin-2-line"></i>
-                            <span>Serving Lake, Orange, Seminoe & Volusia Counties</span>
-                        </span>
+                        <img src="{{ $this->service->image ? asset($this->service->image) : asset('images/services/wound-care.webp') }}" alt="{{ $this->service->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                       
                     </div>
 
                     <!-- HTML RICH TEXT CONTAINER -->
@@ -103,7 +96,7 @@
                     <!-- Quick Consultation Form Card -->
                     <div id="inquiry-form" class="bg-[#0a0a0a] p-7 rounded-3xl border border-[#27272a] shadow-2xl space-y-5">
                         <div class="border-b border-[#1f1f23] pb-4 space-y-1">
-                            <span class="text-[10px] font-bold text-[#C8A14F] uppercase tracking-wider">Free Home Visit</span>
+                            <span class="text-[10px] font-bold text-[#C8A14F] uppercase tracking-wider"> Home Visit</span>
                             <h3 class="font-heading font-bold text-xl text-white">Request Consultation</h3>
                             <p class="text-xs text-[#71717a]">Get a personalized care evaluation from our RN team.</p>
                         </div>
@@ -121,25 +114,25 @@
                             <form wire:submit.prevent="submitInquiry" class="space-y-4">
                                 <div>
                                     <label class="block text-xs font-semibold text-[#d4d4d8] mb-1.5">Full Name *</label>
-                                    <input type="text" wire:model="name" placeholder="John Doe" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
+                                    <input type="text" wire:model="name" placeholder="Enter your full name" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
                                     @error('name') <span class="text-[10px] text-red-400 mt-1 block">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-semibold text-[#d4d4d8] mb-1.5">Phone Number *</label>
-                                    <input type="tel" wire:model="phone" placeholder="+1 (352) 000-0000" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
+                                    <input type="tel" wire:model="phone" placeholder="Enter your phone number" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
                                     @error('phone') <span class="text-[10px] text-red-400 mt-1 block">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-semibold text-[#d4d4d8] mb-1.5">Email Address *</label>
-                                    <input type="email" wire:model="email" placeholder="john@example.com" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
+                                    <input type="email" wire:model="email" placeholder="Enter your email address" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
                                     @error('email') <span class="text-[10px] text-red-400 mt-1 block">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-semibold text-[#d4d4d8] mb-1.5">Care Needs / Notes</label>
-                                    <textarea wire:model="notes" rows="3" placeholder="Tell us about the patient's condition or requirements..." class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors"></textarea>
+                                    <textarea wire:model="notes" rows="3" placeholder="Describe the patient's condition or care needs..." class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors"></textarea>
                                 </div>
 
                                 <button type="submit" wire:loading.attr="disabled" class="w-full bg-[#C8A14F] hover:bg-[#d8b260] text-[#000000] font-heading font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-50">
@@ -170,16 +163,7 @@
                         </div>
                     @endif
 
-                    <!-- ACHC Accreditation Badge Box -->
-                    <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-[#C8A14F]/10 border border-[#C8A14F]/30 text-[#C8A14F] flex items-center justify-center font-bold text-2xl shrink-0">
-                            <i class="ri-award-line"></i>
-                        </div>
-                        <div class="space-y-0.5">
-                            <h5 class="font-heading font-bold text-xs text-white">ACHC Accredited Provider</h5>
-                            <p class="text-[11px] text-[#71717a] leading-tight">State of Florida Licensed Home Health Agency HHA-299994849.</p>
-                        </div>
-                    </div>
+                    
 
                 </div>
 
