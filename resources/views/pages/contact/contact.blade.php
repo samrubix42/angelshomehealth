@@ -27,57 +27,57 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
                 
                 <!-- Phone Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col justify-between group shadow-xl">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all mb-4">
+                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                    <div class="w-full flex flex-col items-center">
+                        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-phone-fill"></i>
                         </div>
                         <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Call Us Directly</h4>
-                        <p class="text-xs text-[#a1a1aa] mt-1">24/7 Phone Support Available</p>
+                        <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">24/7 Phone Support Available</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-[#1f1f23]">
+                    <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
                         <a href="{{ phone_url() }}" class="text-sm font-bold text-[#C8A14F] hover:underline block truncate">{{ setting('phone', '+1 352 729 2727') }}</a>
                     </div>
                 </div>
 
                 <!-- Fax Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col justify-between group shadow-xl">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all mb-4">
+                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                    <div class="w-full flex flex-col items-center">
+                        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-printer-line"></i>
                         </div>
                         <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Fax Us</h4>
-                        <p class="text-xs text-[#a1a1aa] mt-1">Medical Records & Physician Orders</p>
+                        <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">Medical Records & Physician Orders</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-[#1f1f23]">
+                    <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
                         <a href="tel:{{ preg_replace('/[^0-9]/', '', setting('fax', '352-729-2732')) }}" class="text-sm font-bold text-[#C8A14F] hover:underline block truncate">{{ setting('fax', '352-729-2732') }}</a>
                     </div>
                 </div>
 
                 <!-- Email Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col justify-between group shadow-xl">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all mb-4">
+                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                    <div class="w-full flex flex-col items-center">
+                        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-mail-line"></i>
                         </div>
                         <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Email Now</h4>
-                        <p class="text-xs text-[#a1a1aa] mt-1">General & Medical Inquiries</p>
+                        <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">General & Medical Inquiries</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-[#1f1f23]">
-                        <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-sm font-semibold text-[#C8A14F] hover:underline block truncate">{{ setting('email', 'info@angelshomehealthfl.com') }}</a>
+                    <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
+                        <a href="mailto:{{ setting('email', 'info@angelshomehealthfl.com') }}" class="text-xs sm:text-sm font-semibold text-[#C8A14F] hover:underline block truncate">{{ setting('email', 'info@angelshomehealthfl.com') }}</a>
                     </div>
                 </div>
 
                 <!-- Visit Now Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col justify-between group shadow-xl">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-xl transition-all mb-4">
+                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-[#C8A14F]/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                    <div class="w-full flex flex-col items-center">
+                        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-[#C8A14F]/40 flex items-center justify-center text-[#C8A14F] group-hover:bg-[#C8A14F] group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-map-pin-2-fill"></i>
                         </div>
                         <h4 class="font-heading font-bold text-base text-white group-hover:text-[#C8A14F] transition-colors">Visit Now</h4>
-                        <p class="text-xs text-[#a1a1aa] mt-1">Mount Dora, FL & Surrounding Areas</p>
+                        <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">Mount Dora, FL & Surrounding Areas</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-[#1f1f23]">
+                    <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
                         <a href="https://maps.google.com/?q=3400%2C+CR+19-A%2C+Mt+Dora%2C+FL+32757%2C+U.+S." target="_blank" rel="noopener noreferrer" class="text-xs text-white hover:text-[#C8A14F] transition-colors leading-relaxed block font-medium">
                             {{ setting('address', '3400, CR 19-A, Mt Dora, FL 32757, U. S.') }}
                         </a>
@@ -85,15 +85,15 @@
                 </div>
 
                 <!-- WhatsApp Card -->
-                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-emerald-500/60 transition-all duration-300 flex flex-col justify-between group shadow-xl">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-[#121212] border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black shrink-0 text-xl transition-all mb-4">
+                <div class="bg-[#0a0a0a] p-6 rounded-3xl border border-[#27272a] hover:border-emerald-500/60 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-xl">
+                    <div class="w-full flex flex-col items-center">
+                        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#121212] border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black shrink-0 text-2xl transition-all mx-auto mb-4">
                             <i class="ri-whatsapp-fill"></i>
                         </div>
                         <h4 class="font-heading font-bold text-base text-white group-hover:text-emerald-400 transition-colors">Chat on WhatsApp</h4>
-                        <p class="text-xs text-[#a1a1aa] mt-1">Instant Medical & Assessment Inquiries</p>
+                        <p class="text-xs text-[#a1a1aa] mt-1.5 leading-relaxed">Instant Medical & Assessment Inquiries</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-[#1f1f23]">
+                    <div class="mt-5 pt-3 border-t border-[#1f1f23] w-full text-center">
                         <a href="{{ whatsapp_url() }}" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-emerald-400 hover:underline block truncate">
                             +1 (352) 729-2727 &rarr;
                         </a>
@@ -107,12 +107,12 @@
     <!-- 3. MAP (LEFT) & CONTACT FORM (RIGHT) SECTION -->
     <section class="py-16 sm:py-20 bg-[#000000] border-b border-[#27272a]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                 
                 <!-- LEFT COLUMN: Embedded Google Map -->
-                <div class="lg:col-span-6 flex flex-col h-full">
-                    <div class="rounded-3xl overflow-hidden border border-[#27272a] hover:border-[#C8A14F]/40 shadow-2xl bg-[#0a0a0a] h-full min-h-[460px] sm:min-h-[580px] flex flex-col transition-colors">
-                        <div class="w-full h-full min-h-[460px] sm:min-h-[580px] flex-1 [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:min-h-[460px] sm:[&>iframe]:min-h-[580px] [&>iframe]:border-0">
+                <div class="lg:col-span-6">
+                    <div class="rounded-3xl overflow-hidden border border-[#27272a] hover:border-[#C8A14F]/40 shadow-2xl bg-[#0a0a0a] h-[340px] sm:h-[400px] lg:h-[420px] transition-colors">
+                        <div class="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0">
                             @if (str_contains(setting('google_map', ''), '<iframe'))
                                 {!! setting('google_map') !!}
                             @else
@@ -197,64 +197,77 @@
         </div>
     </section>
 
-    <!-- 4. FREQUENTLY ASKED CONTACT QUESTIONS (INTERACTIVE ACCORDION) -->
-    <section class="py-20 bg-[#000000] relative overflow-hidden">
+    <!-- 4. FREQUENTLY ASKED QUESTIONS (ACCORDION SECTION) -->
+    <section class="py-20 md:py-28 bg-[#000000] border-t border-[#27272a] relative overflow-hidden"
+             x-data="{ activeFaq: 0 }">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-14 space-y-3">
-                <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-4 py-1.5 rounded-full uppercase tracking-widest inline-block">
-                    Frequently Asked Questions
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-[#C8A14F] bg-[#C8A14F]/10 border border-[#C8A14F]/30 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
+                    ✦ GOT QUESTIONS? WE HAVE ANSWERS
                 </span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-                    Questions About In-Home Care?
+                <h2 class="font-heading font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
+                    Frequently Asked Questions
                 </h2>
+                <p class="text-[#a1a1aa] text-base sm:text-lg leading-relaxed font-medium">
+                    Get clear, straightforward answers about our medical services, caregiver qualifications, and how to start care for your loved one.
+                </p>
             </div>
 
-            <div x-data="{ activeAccordion: 1 }" class="space-y-4">
-                
-                <!-- FAQ 1 -->
-                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-colors">
-                    <button @click="activeAccordion = activeAccordion === 1 ? 0 : 1" type="button" class="w-full p-6 text-left font-heading font-bold text-base text-white flex items-center justify-between focus:outline-none">
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-all" :class="activeFaq === 0 ? 'border-[#C8A14F]/60' : ''">
+                    <button type="button" @click="activeFaq = activeFaq === 0 ? null : 0" class="w-full p-6 text-left flex items-center justify-between gap-4 font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
+                        <span>What geographic areas in Florida do you serve?</span>
+                        <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 0 ? 'ri-subtract-line' : 'ri-add-line'"></i>
+                    </button>
+                    <div x-show="activeFaq === 0" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
+                        While we are proudly based in Mount Dora, our dedicated network of nurses and therapists serves patients across Central Florida, including the greater Orlando area and surrounding communities. We combine the resources of a statewide provider with the warmth and responsiveness of a local care team.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-all" :class="activeFaq === 1 ? 'border-[#C8A14F]/60' : ''">
+                    <button type="button" @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full p-6 text-left flex items-center justify-between gap-4 font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
+                        <span>What types of home health care services do you offer?</span>
+                        <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 1 ? 'ri-subtract-line' : 'ri-add-line'"></i>
+                    </button>
+                    <div x-show="activeFaq === 1" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
+                        We offer a comprehensive suite of in-home medical and therapeutic services. This includes Skilled Nursing (wound care, cardiac and pulmonary care), Rehabilitation Therapies (physical, occupational, and speech therapy), Disease Management (diabetes, Alzheimer's, and Parkinson's support), and Medical Social Work. Our goal is to handle all complex health needs under one roof.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-all" :class="activeFaq === 2 ? 'border-[#C8A14F]/60' : ''">
+                    <button type="button" @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full p-6 text-left flex items-center justify-between gap-4 font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
                         <span>How quickly can in-home care services begin?</span>
-                        <i class="ri-add-line text-xl text-[#C8A14F] transition-transform duration-200" :class="activeAccordion === 1 ? 'rotate-45' : ''"></i>
+                        <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 2 ? 'ri-subtract-line' : 'ri-add-line'"></i>
                     </button>
-                    <div x-show="activeAccordion === 1" x-collapse class="px-6 pb-6 text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        We can typically perform an initial nursing assessment within 24 to 48 hours of your inquiry. For urgent post-hospital discharge situations, expedited same-day assessments are available.
+                    <div x-show="activeFaq === 2" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
+                        We understand that health transitions—especially hospital discharges—happen quickly. Once we receive a physician’s order or complete our initial health assessment, we can typically match you with a caregiver and begin services within 24 to 48 hours. We prioritize prompt, seamless transitions to ensure there is no gap in care.
                     </div>
                 </div>
 
-                <!-- FAQ 2 -->
-                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-colors">
-                    <button @click="activeAccordion = activeAccordion === 2 ? 0 : 2" type="button" class="w-full p-6 text-left font-heading font-bold text-base text-white flex items-center justify-between focus:outline-none">
-                        <span>Do I need a physician’s referral for skilled nursing care?</span>
-                        <i class="ri-add-line text-xl text-[#C8A14F] transition-transform duration-200" :class="activeAccordion === 2 ? 'rotate-45' : ''"></i>
+                <!-- FAQ Item 4 -->
+                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-all" :class="activeFaq === 3 ? 'border-[#C8A14F]/60' : ''">
+                    <button type="button" @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-6 text-left flex items-center justify-between gap-4 font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
+                        <span>Are your caregivers licensed and background-checked?</span>
+                        <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 3 ? 'ri-subtract-line' : 'ri-add-line'"></i>
                     </button>
-                    <div x-show="activeAccordion === 2" x-collapse class="px-6 pb-6 text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        For medical skilled nursing, physical therapy, and clinical treatments covered by insurance, a physician's prescription or order is required. Our clinical team works directly with your doctor to obtain all necessary orders.
+                    <div x-show="activeFaq === 3" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
+                        Absolutely. Your safety and peace of mind are our top priorities. Every member of our clinical team—from our Registered Nurses (RNs) to our physical therapists and home health aides—is fully licensed, insured, and thoroughly vetted. We conduct rigorous national background checks, verify credentials, and require ongoing clinical training.
                     </div>
                 </div>
 
-                <!-- FAQ 3 -->
-                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-colors">
-                    <button @click="activeAccordion = activeAccordion === 3 ? 0 : 3" type="button" class="w-full p-6 text-left font-heading font-bold text-base text-white flex items-center justify-between focus:outline-none">
-                        <span>What geographic areas in Florida do you cover?</span>
-                        <i class="ri-add-line text-xl text-[#C8A14F] transition-transform duration-200" :class="activeAccordion === 3 ? 'rotate-45' : ''"></i>
+                <!-- FAQ Item 5 -->
+                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-all" :class="activeFaq === 4 ? 'border-[#C8A14F]/60' : ''">
+                    <button type="button" @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full p-6 text-left flex items-center justify-between gap-4 font-heading font-bold text-lg text-white hover:text-[#C8A14F] transition-colors">
+                        <span>Can care plans be adjusted as my family's needs change?</span>
+                        <i class="text-xl text-[#C8A14F] transition-transform duration-300" :class="activeFaq === 4 ? 'ri-subtract-line' : 'ri-add-line'"></i>
                     </button>
-                    <div x-show="activeAccordion === 3" x-collapse class="px-6 pb-6 text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        Our headquarters are located in Mount Dora, Florida, serving Lake County, Orange County, Seminole County, Marion County, and extending across Central and Statewide Florida.
+                    <div x-show="activeFaq === 4" x-collapse class="px-6 pb-6 text-sm text-[#a1a1aa] leading-relaxed font-medium border-t border-[#27272a]/60 pt-4">
+                        Yes. We know that health is dynamic. A patient recovering from surgery may need intensive daily therapy at first, but only weekly check-ins as they heal. Conversely, chronic conditions may eventually require more hands-on support. Our care coordinators continuously evaluate your loved one's progress and communicate with their doctor to scale services up or down as needed.
                     </div>
                 </div>
-
-                <!-- FAQ 4 -->
-                <div class="bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden transition-colors">
-                    <button @click="activeAccordion = activeAccordion === 4 ? 0 : 4" type="button" class="w-full p-6 text-left font-heading font-bold text-base text-white flex items-center justify-between focus:outline-none">
-                        <span>What insurance or payment plans do you accept?</span>
-                        <i class="ri-add-line text-xl text-[#C8A14F] transition-transform duration-200" :class="activeAccordion === 4 ? 'rotate-45' : ''"></i>
-                    </button>
-                    <div x-show="activeAccordion === 4" x-collapse class="px-6 pb-6 text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-medium">
-                        We accept Medicare, major private health insurances, long-term care insurance, and private pay plans. Call our billing team at {{ setting('phone', '+1 352 729 2727') }} to verify your insurance coverage immediately.
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
