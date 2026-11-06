@@ -6,6 +6,7 @@
                 <div class="inline-block mb-2">
                     <img src="/logo.png" alt="Angels Home Health Logo" class="h-20 sm:h-24 w-auto object-contain">
                 </div>
+                <p class="text-sm text-[#a1a1aa] max-w-sm leading-relaxed">LIC.: HHA 299996555</p>
                 <p class="text-xs text-[#a1a1aa] max-w-sm leading-relaxed">
                     Angels Home Health of Florida is a dedicated home health care provider based in Mount Dora. Our mission is to enhance lives with dignity, respect, and exceptional in-home healthcare services across our community.
                 </p>

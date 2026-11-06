@@ -51,6 +51,11 @@
                     <p class="text-[11px] text-zinc-500 truncate">admin@angelshomehealth.com</p>
                 </div>
 
+                <a href="/admin/settings#security" class="flex items-center gap-2 px-3 py-2 rounded-lg text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 transition-colors">
+                    <i class="ri-lock-password-line text-amber-500"></i>
+                    <span>Change Password</span>
+                </a>
+
                 <a href="/" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 transition-colors">
                     <i class="ri-home-3-line text-zinc-400"></i>
                     <span>Public Website</span>

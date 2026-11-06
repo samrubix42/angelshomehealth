@@ -307,4 +307,100 @@
 
     </form>
 
+    <!-- CARD: ADMINISTRATOR ACCOUNT & PASSWORD SECURITY -->
+    <div id="security" class="bg-white rounded-2xl border border-zinc-200 shadow-xs overflow-hidden scroll-mt-20">
+        <div class="px-6 py-4 border-b border-zinc-100 bg-zinc-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center text-sm shadow-xs">
+                    <i class="ri-shield-keyhole-line text-amber-400"></i>
+                </div>
+                <div>
+                    <h2 class="font-bold text-sm text-zinc-900">Administrator Security & Password</h2>
+                    <p class="text-[11px] text-zinc-500">Update your admin login password to keep portal access secure.</p>
+                </div>
+            </div>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-zinc-600 bg-zinc-100 px-3 py-1 rounded-md border border-zinc-200 w-fit">
+                <i class="ri-user-line text-xs text-zinc-400"></i>
+                <span>{{ auth()->user()->email ?? 'admin@angelshomehealth.com' }}</span>
+            </span>
+        </div>
+
+        <form wire:submit.prevent="updatePassword" class="p-6 space-y-5" x-data="{ showCurrent: false, showNew: false, showConfirm: false }">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <!-- Current Password -->
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-700 mb-1">Current Password *</label>
+                    <div class="relative">
+                        <i class="ri-lock-line absolute left-3 top-2.5 text-zinc-400 text-sm"></i>
+                        <input x-bind:type="showCurrent ? 'text' : 'password'" 
+                               wire:model="current_password" 
+                               autocomplete="current-password"
+                               placeholder="Enter current password" 
+                               class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg pl-9 pr-9 py-2 text-xs text-zinc-900 transition-all">
+                        <button type="button" @click="showCurrent = !showCurrent" class="absolute right-3 top-2.5 text-zinc-400 hover:text-zinc-600 transition-colors" aria-label="Toggle current password">
+                            <i x-bind:class="showCurrent ? 'ri-eye-off-line' : 'ri-eye-line'" class="text-xs"></i>
+                        </button>
+                    </div>
+                    @error('current_password') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                </div>
+
+                <!-- New Password -->
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-700 mb-1">New Password *</label>
+                    <div class="relative">
+                        <i class="ri-lock-password-line absolute left-3 top-2.5 text-zinc-400 text-sm"></i>
+                        <input x-bind:type="showNew ? 'text' : 'password'" 
+                               wire:model="new_password" 
+                               autocomplete="new-password"
+                               placeholder="Min. 8 characters" 
+                               class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg pl-9 pr-9 py-2 text-xs text-zinc-900 transition-all">
+                        <button type="button" @click="showNew = !showNew" class="absolute right-3 top-2.5 text-zinc-400 hover:text-zinc-600 transition-colors" aria-label="Toggle new password">
+                            <i x-bind:class="showNew ? 'ri-eye-off-line' : 'ri-eye-line'" class="text-xs"></i>
+                        </button>
+                    </div>
+                    @error('new_password') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                </div>
+
+                <!-- Confirm New Password -->
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-700 mb-1">Confirm New Password *</label>
+                    <div class="relative">
+                        <i class="ri-checkbox-circle-line absolute left-3 top-2.5 text-zinc-400 text-sm"></i>
+                        <input x-bind:type="showConfirm ? 'text' : 'password'" 
+                               wire:model="new_password_confirmation" 
+                               autocomplete="new-password"
+                               placeholder="Repeat new password" 
+                               class="w-full bg-white border border-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 rounded-lg pl-9 pr-9 py-2 text-xs text-zinc-900 transition-all">
+                        <button type="button" @click="showConfirm = !showConfirm" class="absolute right-3 top-2.5 text-zinc-400 hover:text-zinc-600 transition-colors" aria-label="Toggle confirm password">
+                            <i x-bind:class="showConfirm ? 'ri-eye-off-line' : 'ri-eye-line'" class="text-xs"></i>
+                        </button>
+                    </div>
+                    @error('new_password_confirmation') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
+                </div>
+
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-zinc-100">
+                <p class="text-[11px] text-zinc-500 flex items-center gap-1.5">
+                    <i class="ri-information-line text-zinc-400"></i>
+                    <span>Passwords must be at least 8 characters long and securely encrypted.</span>
+                </p>
+
+                <button type="submit" 
+                        wire:loading.attr="disabled"
+                        class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-5 py-2.5 rounded-lg text-xs transition-all shadow-xs flex items-center justify-center gap-2 shrink-0">
+                    <span wire:loading.remove wire:target="updatePassword" class="flex items-center gap-1.5">
+                        <i class="ri-key-line text-xs"></i>
+                        <span>Update Password</span>
+                    </span>
+                    <span wire:loading wire:target="updatePassword" class="flex items-center gap-1.5">
+                        <i class="ri-loader-4-line animate-spin text-xs"></i>
+                        <span>Updating Password...</span>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+
 </div>

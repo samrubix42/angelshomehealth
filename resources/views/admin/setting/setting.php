@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Setting;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -37,6 +38,13 @@ new #[Layout('layouts::admin')] #[Title('General Settings | Angels Home Health A
     public string $twitter = '';
 
     public string $youtube = '';
+
+    // Administrator Security & Password Update
+    public string $current_password = '';
+
+    public string $new_password = '';
+
+    public string $new_password_confirmation = '';
 
     public function mount(): void
     {
@@ -106,6 +114,33 @@ new #[Layout('layouts::admin')] #[Title('General Settings | Angels Home Health A
 
         $this->dispatch('toast-show', [
             'message' => 'Website settings saved successfully!',
+            'type' => 'success',
+            'position' => 'top-right',
+        ]);
+    }
+
+    public function updatePassword(): void
+    {
+        $this->validate([
+            'current_password' => ['required', 'current_password'],
+            'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'current_password.required' => 'Please enter your current administrator password.',
+            'current_password.current_password' => 'The provided current password does not match our records.',
+            'new_password.required' => 'Please enter a new password.',
+            'new_password.min' => 'The new password must be at least 8 characters.',
+            'new_password.confirmed' => 'The new password confirmation does not match.',
+        ]);
+
+        $user = auth()->user();
+        $user->update([
+            'password' => Hash::make($this->new_password),
+        ]);
+
+        $this->reset(['current_password', 'new_password', 'new_password_confirmation']);
+
+        $this->dispatch('toast-show', [
+            'message' => 'Administrator password updated successfully! Please use your new password next time you sign in.',
             'type' => 'success',
             'position' => 'top-right',
         ]);

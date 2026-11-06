@@ -7,23 +7,18 @@ use Livewire\Component;
 
 new #[Layout('layouts::auth')] #[Title('Admin Login | Angels Home Health of Florida')] class extends Component
 {
-    public string $email = 'admin@angelshomehealth.com';
+    public string $email = '';
 
     public string $password = '';
 
-    public bool $remember = true;
+    public bool $remember = false;
 
     public string $errorMessage = '';
 
-    public function fillDemoCredentials(): void
-    {
-        $this->email = 'admin@angelshomehealth.com';
-        $this->password = 'admin123';
-        $this->errorMessage = '';
-    }
-
     public function login(): void
     {
+        $this->errorMessage = '';
+
         $this->validate([
             'email' => 'required|email',
             'password' => 'required|min:4',
@@ -33,11 +28,8 @@ new #[Layout('layouts::auth')] #[Title('Admin Login | Angels Home Health of Flor
             session()->regenerate();
             $this->redirect('/admin');
         } else {
-            if ($this->email === 'admin@angelshomehealth.com' && ($this->password === 'admin123' || ! empty($this->password))) {
-                $this->redirect('/admin');
-            } else {
-                $this->errorMessage = 'Invalid administrative credentials. Please check your email and password.';
-            }
+            $this->errorMessage = 'Invalid administrative credentials. Please check your email and password.';
         }
     }
 };
+

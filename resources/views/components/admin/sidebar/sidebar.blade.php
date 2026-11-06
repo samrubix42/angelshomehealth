@@ -101,7 +101,7 @@
         </button>
 
         <div class="flex items-center justify-between p-2 rounded-lg bg-white border border-zinc-200 shadow-xs" x-show="!sidebarCollapsed" x-cloak>
-            <div class="flex items-center gap-2.5 min-w-0">
+            <a href="/admin/settings#security" class="flex items-center gap-2.5 min-w-0 hover:opacity-80 transition-opacity" title="Account Security & Change Password">
                 <div class="w-8 h-8 rounded-md bg-zinc-900 text-white font-semibold text-xs flex items-center justify-center shrink-0 border border-zinc-800">
                     AD
                 </div>
@@ -109,7 +109,7 @@
                     <p class="text-xs font-semibold text-zinc-900 truncate">Administrator</p>
                     <p class="text-[10px] text-zinc-500 truncate">admin@angelshomehealth.com</p>
                 </div>
-            </div>
+            </a>
 
             <button wire:click="logout" type="button" class="p-1.5 text-zinc-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors" title="Log Out">
                 <i class="ri-logout-box-r-line text-base"></i>

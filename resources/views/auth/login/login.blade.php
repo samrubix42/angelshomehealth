@@ -28,26 +28,6 @@
         <!-- MINIMAL LOGIN CARD -->
         <div class="bg-[#0a0a0a] p-7 sm:p-9 rounded-3xl border border-[#27272a]/80 shadow-2xl space-y-5 relative">
             
-            <!-- Quick Demo Credentials Box -->
-            <div class="bg-[#121212] p-3 rounded-2xl border border-[#C8A14F]/30 flex items-center justify-between gap-3">
-                <div class="flex items-center gap-2.5 min-w-0">
-                    <div class="w-8 h-8 rounded-xl bg-[#C8A14F]/15 text-[#C8A14F] flex items-center justify-center font-bold text-sm shrink-0 border border-[#C8A14F]/30">
-                        <i class="ri-key-2-line"></i>
-                    </div>
-                    <div class="min-w-0 text-left">
-                        <p class="text-[11px] font-bold text-white truncate">Demo Credentials</p>
-                        <p class="text-[10px] text-[#a1a1aa] truncate">admin@angelshomehealth.com</p>
-                    </div>
-                </div>
-
-                <button type="button" 
-                        wire:click="fillDemoCredentials" 
-                        class="bg-[#C8A14F]/15 hover:bg-[#C8A14F] text-[#C8A14F] hover:text-black border border-[#C8A14F]/40 px-3 py-1.5 rounded-xl text-[11px] font-bold transition-all shrink-0 flex items-center gap-1">
-                    <i class="ri-magic-line text-xs"></i>
-                    <span>Auto-fill</span>
-                </button>
-            </div>
-
             @if($errorMessage)
                 <div class="bg-red-500/10 border border-red-500/30 p-3.5 rounded-2xl text-xs text-red-400 flex items-center gap-2.5">
                     <i class="ri-error-warning-fill text-base shrink-0"></i>
@@ -55,7 +35,7 @@
                 </div>
             @endif
 
-            <form wire:submit.prevent="login" class="space-y-4" x-data="{ showPassword: false }">
+            <form wire:submit.prevent="login" autocomplete="off" class="space-y-4" x-data="{ showPassword: false }">
                 
                 <!-- Email -->
                 <div>
@@ -66,7 +46,8 @@
                         <i class="ri-mail-line absolute left-3.5 top-3.5 text-[#71717a] text-sm"></i>
                         <input type="email" 
                                wire:model="email" 
-                               placeholder="admin@angelshomehealth.com" 
+                               autocomplete="off"
+                               placeholder="Enter your admin email" 
                                class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] focus:ring-1 focus:ring-[#C8A14F] rounded-2xl pl-10 pr-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-all">
                     </div>
                     @error('email') <span class="text-[10px] text-red-400 mt-1 block">{{ $message }}</span> @enderror
@@ -76,13 +57,13 @@
                 <div>
                     <label class="block text-xs font-semibold text-[#d4d4d8] mb-1.5 flex items-center justify-between">
                         <span>Password</span>
-                        <a href="#" class="text-[10px] text-[#C8A14F] hover:underline">Forgot password?</a>
                     </label>
                     <div class="relative">
                         <i class="ri-lock-2-line absolute left-3.5 top-3.5 text-[#71717a] text-sm"></i>
                         <input x-bind:type="showPassword ? 'text' : 'password'" 
                                wire:model="password" 
-                               placeholder="••••••••••••" 
+                               autocomplete="new-password"
+                               placeholder="Enter your password" 
                                class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] focus:ring-1 focus:ring-[#C8A14F] rounded-2xl pl-10 pr-10 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-all">
                         <button type="button" @click="showPassword = !showPassword" class="absolute right-3.5 top-3.5 text-[#71717a] hover:text-white transition-colors" aria-label="Toggle password visibility">
                             <i x-bind:class="showPassword ? 'ri-eye-off-line' : 'ri-eye-line'" class="text-sm"></i>
