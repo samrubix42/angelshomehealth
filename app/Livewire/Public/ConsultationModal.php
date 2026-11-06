@@ -64,20 +64,20 @@ class ConsultationModal extends Component
         $validated = $this->validate([
             'name' => 'required|string|min:2|max:255',
             'phone' => 'required|string|min:7|max:50',
-            'email' => 'required|email|max:255',
+            'email' => 'nullable|email|max:255',
             'service' => 'required|string|max:255',
             'notes' => 'nullable|string|max:1000',
         ], [
             'name.required' => 'Please provide your full name.',
             'phone.required' => 'Please provide a valid phone number.',
-            'email.required' => 'Please enter a valid email address.',
+            'email.email' => 'Please enter a valid email address.',
             'service.required' => 'Please select a care service.',
         ]);
 
         Contact::create([
             'name' => $validated['name'],
             'phone' => $validated['phone'],
-            'email' => $validated['email'],
+            'email' => ! empty($validated['email']) ? $validated['email'] : null,
             'service' => $validated['service'],
             'notes' => $validated['notes'] ?? '',
             'is_read' => false,

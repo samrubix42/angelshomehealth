@@ -86,7 +86,7 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-xs font-bold text-[#d4d4d8] uppercase tracking-wider mb-1.5">Email Address *</label>
+                                    <label class="block text-xs font-bold text-[#d4d4d8] uppercase tracking-wider mb-1.5">Email Address (Optional)</label>
                                     <input type="email" 
                                            wire:model="email" 
                                            placeholder="Enter your email address" 

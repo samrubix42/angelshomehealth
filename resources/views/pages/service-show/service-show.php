@@ -65,13 +65,13 @@ new #[Layout('layouts::app')] class extends Component
         $validated = $this->validate([
             'name' => 'required|min:2',
             'phone' => 'required|min:7',
-            'email' => 'required|email',
+            'email' => 'nullable|email',
         ]);
 
         Contact::create([
             'name' => $validated['name'],
             'phone' => $validated['phone'],
-            'email' => $validated['email'],
+            'email' => ! empty($validated['email']) ? $validated['email'] : null,
             'service' => $this->service->title ?? 'General Care Inquiry',
             'notes' => $this->notes,
             'is_read' => false,

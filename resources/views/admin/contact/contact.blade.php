@@ -427,7 +427,7 @@
                                 @error('phone') <span class="text-[11px] text-red-500 mt-1 block font-medium">{{ $message }}</span> @enderror
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-700 mb-1">Email Address *</label>
+                                <label class="block text-xs font-semibold text-zinc-700 mb-1">Email Address (Optional)</label>
                                 <input type="email" 
                                        wire:model="email" 
                                        placeholder="contact@example.com" 

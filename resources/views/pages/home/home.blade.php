@@ -879,6 +879,19 @@
                      :style="'transform: translateX(-' + (activeSlide * stepPercent()) + '%)'">
                     
                     @foreach ($testimonials as $testimonial)
+                        @php
+                            $cleanedName = trim(preg_replace('/^(Dr\.|Mr\.|Mrs\.|Ms\.)\s+/i', '', $testimonial->name));
+                            $nameParts = array_values(array_filter(preg_split('/[\s&]+/', $cleanedName)));
+                            if (count($nameParts) >= 2) {
+                                $firstInitial = strtoupper(mb_substr($nameParts[0], 0, 1));
+                                $lastInitial = strtoupper(mb_substr(end($nameParts), 0, 1));
+                                $initials = "{$firstInitial}. {$lastInitial}.";
+                            } elseif (count($nameParts) === 1 && strlen($nameParts[0]) > 0) {
+                                $initials = strtoupper(mb_substr($nameParts[0], 0, 1)) . '.';
+                            } else {
+                                $initials = $testimonial->name;
+                            }
+                        @endphp
                         <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-3">
                             <div class="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-[#27272a] hover:border-[#C8A14F]/50 transition-all flex flex-col justify-between space-y-4 shadow-xl h-full">
                                 <div class="space-y-4">
@@ -894,9 +907,18 @@
                                         "{{ $testimonial->review }}"
                                     </blockquote>
                                 </div>
-                                <div class="pt-4 border-t border-[#27272a]">
-                                    <h4 class="font-heading font-bold text-white text-base">{{ $testimonial->name }}</h4>
-                                    <span class="text-xs text-[#C8A14F] font-semibold">{{ $testimonial->designation }}</span>
+                                <div class="pt-4 border-t border-[#27272a] flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-[#C8A14F]/15 border border-[#C8A14F]/40 text-[#C8A14F] font-heading font-extrabold text-xs flex items-center justify-center shrink-0 tracking-wider">
+                                            {{ $initials }}
+                                        </div>
+                                        <div>
+                                            <h4 class="font-heading font-bold text-white text-base tracking-wider">{{ $initials }}</h4>
+                                            @if (!empty($testimonial->designation))
+                                                <span class="text-xs text-[#a1a1aa] font-medium block">{{ $testimonial->designation }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

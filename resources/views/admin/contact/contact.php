@@ -187,7 +187,7 @@ new #[Layout('layouts::admin')] #[Title('Inquiries & Contacts | Angels Home Heal
         $this->validate([
             'name' => 'required|min:2|max:100',
             'phone' => 'required|min:7|max:50',
-            'email' => 'required|email|max:150',
+            'email' => 'nullable|email|max:150',
             'service' => 'nullable|string|max:150',
             'notes' => 'nullable|string|max:2000',
             'is_read' => 'boolean',
@@ -198,7 +198,7 @@ new #[Layout('layouts::admin')] #[Title('Inquiries & Contacts | Angels Home Heal
             $contact->update([
                 'name' => $this->name,
                 'phone' => $this->phone,
-                'email' => $this->email,
+                'email' => ! empty($this->email) ? $this->email : null,
                 'service' => $this->service,
                 'notes' => $this->notes,
                 'is_read' => $this->is_read,
@@ -213,7 +213,7 @@ new #[Layout('layouts::admin')] #[Title('Inquiries & Contacts | Angels Home Heal
             Contact::create([
                 'name' => $this->name,
                 'phone' => $this->phone,
-                'email' => $this->email,
+                'email' => ! empty($this->email) ? $this->email : null,
                 'service' => $this->service,
                 'notes' => $this->notes,
                 'is_read' => $this->is_read,

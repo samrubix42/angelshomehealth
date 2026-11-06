@@ -32,7 +32,7 @@ new #[Layout('layouts::app')] #[Title('Contact Us | Angels Home Health of Florid
         $validated = $this->validate([
             'name' => 'required|min:2',
             'phone' => 'required|min:7',
-            'email' => 'required|email',
+            'email' => 'nullable|email',
             'service' => 'required',
             'notes' => 'nullable|string',
         ]);
@@ -40,7 +40,7 @@ new #[Layout('layouts::app')] #[Title('Contact Us | Angels Home Health of Florid
         Contact::create([
             'name' => $validated['name'],
             'phone' => $validated['phone'],
-            'email' => $validated['email'],
+            'email' => ! empty($validated['email']) ? $validated['email'] : null,
             'service' => $validated['service'],
             'notes' => $this->notes,
             'is_read' => false,

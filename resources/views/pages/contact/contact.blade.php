@@ -161,7 +161,7 @@
                                         @error('phone') <span class="text-xs text-red-400 mt-1 block">{{ $message }}</span> @enderror
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold uppercase tracking-wider text-[#d4d4d8] mb-2">Email Address *</label>
+                                        <label class="block text-xs font-bold uppercase tracking-wider text-[#d4d4d8] mb-2">Email Address (Optional)</label>
                                         <input type="email" wire:model="email" placeholder="Enter your email address" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] focus:ring-1 focus:ring-[#C8A14F] rounded-xl px-4 py-3.5 text-sm text-white placeholder-[#52525b] focus:outline-none transition-colors">
                                         @error('email') <span class="text-xs text-red-400 mt-1 block">{{ $message }}</span> @enderror
                                     </div>

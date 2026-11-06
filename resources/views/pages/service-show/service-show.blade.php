@@ -125,7 +125,7 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-xs font-semibold text-[#d4d4d8] mb-1.5">Email Address *</label>
+                                    <label class="block text-xs font-semibold text-[#d4d4d8] mb-1.5">Email Address (Optional)</label>
                                     <input type="email" wire:model="email" placeholder="Enter your email address" class="w-full bg-[#121212] border border-[#27272a] focus:border-[#C8A14F] rounded-xl px-4 py-3 text-xs text-white placeholder-[#52525b] focus:outline-none transition-colors">
                                     @error('email') <span class="text-[10px] text-red-400 mt-1 block">{{ $message }}</span> @enderror
                                 </div>
