@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Staff Authentication | Angels Home Health of Florida' }}</title>
     <meta name="description" content="Angels Home Health Staff Portal Login">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,9 +33,12 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-[#C8A14F] selection:text-[#000000] min-h-screen bg-[#000000] text-white flex flex-col justify-between">
+<body class="antialiased selection:bg-[#C8A14F] selection:text-[#000000] min-h-screen bg-[#000000] text-white flex items-center justify-center p-4 sm:p-6 relative overflow-x-hidden">
 
-    <main class="flex-grow flex items-center justify-center">
+    <!-- Subtle Ambient Radial Gold Glow -->
+    <div class="fixed inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(200,161,79,0.12)_0,transparent_70%)] pointer-events-none"></div>
+
+    <main class="w-full max-w-md my-auto relative z-10 flex flex-col items-center justify-center">
         @yield('content', $slot ?? '')
     </main>
 
