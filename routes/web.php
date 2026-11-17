@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Blog;
+use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +13,37 @@ Route::livewire('/services/{slug?}', 'pages::service-show')->name('services.show
 Route::livewire('/contact', 'pages::contact')->name('contact');
 Route::livewire('/blog', 'pages::blog')->name('blog');
 Route::livewire('/blog/{slug?}', 'pages::blog-show')->name('blog.show');
+
+Route::get('/sitemap.xml', function () {
+    $staticPageRoutes = ['home', 'about', 'services', 'contact', 'blog'];
+
+    $staticPages = collect($staticPageRoutes)->map(fn (string $routeName): array => [
+        'loc' => route($routeName),
+        'priority' => $routeName === 'home' ? '1.0' : '0.8',
+    ]);
+
+    $servicePages = Service::query()
+        ->where('is_active', true)
+        ->get(['slug', 'updated_at'])
+        ->map(fn (Service $service): array => [
+            'loc' => route('services.show', ['slug' => $service->slug]),
+            'lastmod' => $service->updated_at?->toAtomString(),
+            'priority' => '0.7',
+        ]);
+
+    $blogPages = Blog::query()
+        ->where('is_active', true)
+        ->get(['slug', 'updated_at'])
+        ->map(fn (Blog $blog): array => [
+            'loc' => route('blog.show', ['slug' => $blog->slug]),
+            'lastmod' => $blog->updated_at?->toAtomString(),
+            'priority' => '0.6',
+        ]);
+
+    return response()->view('sitemap', [
+        'urls' => $staticPages->concat($servicePages)->concat($blogPages),
+    ], 200, ['Content-Type' => 'application/xml']);
+})->name('sitemap');
 
 // Guest Authentication Routes
 Route::middleware('guest')->group(function () {

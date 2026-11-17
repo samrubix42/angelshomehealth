@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Angels Home Health of Florida | Mount Dora & Statewide In-Home Care' }}</title>
     <meta name="description" content="Angels Home Health of Florida delivers compassionate, personalized home health care in Mount Dora and across Florida. Skilled Nursing, Physical Therapy, Behavioral Health & Chronic Disease Management.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
 
     <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
